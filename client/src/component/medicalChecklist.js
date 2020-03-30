@@ -1,4 +1,4 @@
-medicalChecklist[
+const medicalHistory = [
     {
         id: 1,
         name: 'Anemia'
@@ -116,3 +116,5 @@ medicalChecklist[
         name: 'Terberculosis'
     }
 ]
+
+export default medicalHistory;
