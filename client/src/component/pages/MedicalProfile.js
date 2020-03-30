@@ -23,6 +23,17 @@ function MedicalProfile({medicalChecklist}) {
                 <label for='DOB'>Date of Birth</label>
                 <h2>Past Medical History</h2>
                 {medicalHistory.map((h, i) => <MedicalItem key={i} history={h} />)}
+                <h2>Health Maintence</h2>
+                <h2>Past Surgical History</h2>
+                <p>Have you ever had surgery?</p>
+                <input name='surgeryYes' type='checkbox'></input>
+                <label for='surgeryYes'>Yes</label>
+                <h2>Current Medications</h2>
+                <p>Please list all current medicines and supplements</p>
+                <h2>Allergies</h2>
+
+
+
             </form>
 
         </Fragment>
