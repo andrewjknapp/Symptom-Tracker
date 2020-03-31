@@ -3,9 +3,6 @@ const UserSession = require('../../models/UserSession')
 
 module.exports = (app) => {
 
-    app.get()
-
-
     app.post('/api/account/signup', (req, res, next) => {
         const { body } = req;
         const { 
@@ -150,8 +147,61 @@ module.exports = (app) => {
 
     });
     });
+    app.get('/api/account/verify', (req, res, next) =>  {
+        const { query } = req;
+        const { token } = query
+        UserSession.find({
+            _id: token,
+            isDeleted: false
+        }, (err, sessions) => {
+            if (err) {
+                console.log(err);
+                return res.send({
+                    success: false,
+                    message: "Error: Server error"
+                });
+            }
+            if (sessions.length != 1) {
+                return res.send({
+                    success: false,
+                    message: 'Error: Invalid'
+                });
+            } else {
+                return res.send({
+                    success: true,
+                    message: 'Good'
+                })
+            }
 
+        });
+    });
 
+    app.get('/api/account/logout', (req, res, next) =>  {
+        const { query } = req;
+        const { token } = query;
+
+        // Verify the token is one of a kind and is not deleted.
+
+        UserSession.findOneandUpdate({
+            _id: token,
+            isDeleted: false
+        }, {
+           $set:{isDeleted:true}
+        }, null, (err, sessions) => {
+            if (err) {
+                console.log(err);
+                return res.send({
+                    success: false,
+                    message: "Error: Server error"
+                });
+            }
+
+            return res.send({
+                    success: true,
+                    message: 'Good'
+            });
+        });
+    });
 
 
 }
