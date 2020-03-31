@@ -1,6 +1,13 @@
 import React, { Fragment, Component, useState } from "react";
 import medicalHistory from "../medicalChecklist";
 
+// handleChange(event) {
+//     this.setState({value: event.target.value});
+//   }
+
+// value={this.state.value} onChange={this.handleChange} 
+
+
 
 function HistoryItem({ history }) {
     return (
@@ -16,16 +23,21 @@ function MedicationItem() {
    const updateMed = (event) => {
        setMed(event.target)
    }
-
+function SurgicalItem() {
+    const [surgery, setSurgery] = useState('');
+    const updateSurgery = (event) => {
+        setSurgery(event.target)
+    }
+}
 
 
 }
 function MedicalProfile() {
     return (
         <Fragment>
+            <h1>[Name's] Medical Information</h1>
             <form>
                 <div>
-                    <h1>[Name's] Medical Information</h1>
                     <h2>General Information</h2>
                     <label for='DOB'>Date of Birth</label>
                     <input name='DOB' type='date'></input>
@@ -36,6 +48,7 @@ function MedicalProfile() {
                     <input type="radio" id="female" name="gender" value="female" />
                     <label for="female">Female</label>
                 </div>
+
                 <div>
                     <h2>Past Medical History</h2>
                     {medicalHistory.map((h, i) => <HistoryItem key={i} history={h} />)}
@@ -68,7 +81,7 @@ function MedicalProfile() {
                     <p>Are you allergic to any medication?</p>
                     <input id='surgery' name='surgeryYes' type='radio'></input>
                     <label for='surgeryYes'>Yes</label>
-                    <input></input>
+                    <input  placeholder='Please list...'></input>
                     <br></br>
                     <input name='surgeryNo' type='radio'></input>
                     <label for='surgeryNo'>No</label>
@@ -83,7 +96,7 @@ function MedicalProfile() {
                     <p>Are you allergic to any foods?</p>
                     <input id='surgery' name='surgeryYes' type='radio'></input>
                     <label for='surgeryYes'>Yes</label>
-                    <input></input>
+                    <input placeholder='Please list...'></input>
                     <br></br>
                     <input name='surgeryNo' type='radio'></input>
                     <label for='surgeryNo'>No</label>
