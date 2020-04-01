@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import ReactDOM from "react-dom"
 import "./App.css";
 import MedicalProfile from "./component/pages/MedicalProfile"
 import NewPost from './component/pages/NewPost/NewPost'
