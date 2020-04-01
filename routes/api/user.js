@@ -1,12 +1,6 @@
 const router = require("express").Router();
 const userController = require("../../controllers/userController");
 
-//All API routes will be added here
-
-// Matches with /api/user/hello
-// router.route("/hello")
-//     .post(userController.createUser);
-
 // Matches with /api/user/physicians
 router.route("/physicians")
     .get(userController.getPhysicians) //find all user preferred physicians (currently returns dummy data)
