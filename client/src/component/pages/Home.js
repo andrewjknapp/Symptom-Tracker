@@ -34,6 +34,7 @@ class Home extends Component {
 
         this.onSignIn = this.OnSignIn.bind(this);
         this.onSignUp = this.OnSignUp.bind(this);
+        this.logout = this.logout.bind(this);
     }
     componentDidMount() {
         const obj = getFromStorage('symptom_tracker');
@@ -182,6 +183,40 @@ class Home extends Component {
         //grab state and post request to backend
 
     }
+
+    logout() {
+        this.setState({
+            isLoading: true,
+        })
+        const obj = getFromStorage('symptom_tracker');
+        if (obj && obj.token) {
+            const { token } = obj;
+            //verify token
+            fetch('/api/account/logout?token=' + token)
+            .then(res => res.json())
+            .then(json => {
+                if (json.success) {
+                    this.setState({
+                        token: '',
+                        isLoading: false
+                    });
+                } else {
+                    this.setState({
+                        isLoading: false,
+
+                    });
+                }
+            });
+        } else {
+                this.setState({
+                    isLoading: false,
+                    // set state for different things/
+                });
+            }
+    }
+
+
+    }
     
 
     render() {
@@ -211,7 +246,8 @@ class Home extends Component {
             );
         }
         return (
-            <div></div>
+            <div>Landing Page</div>
+            <button onClick={this.logout}> Logout</button>
         )
     }
 }
