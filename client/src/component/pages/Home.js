@@ -32,8 +32,8 @@ class Home extends Component {
         this.onTextBoxChangeSignUpFirstName = this.onTextBoxChangeSignUpFirstName.bind(this);
         this.onTextBoxChangeSignUpLastName = this.onTextBoxChangeSignUpLastName.bind(this);
 
-        this.onSignIn = this.OnSignIn.bind(this);
-        this.onSignUp = this.OnSignUp.bind(this);
+        this.onSignIn = this.onSignIn.bind(this);
+        this.onSignUp = this.onSignUp.bind(this);
         this.logout = this.logout.bind(this);
     }
     componentDidMount() {
@@ -118,7 +118,7 @@ class Home extends Component {
                 email: signUpEmail,
                 password: signUpPassword,
             }),
-        }).then(res = res.json())
+        }).then(res => res.json())
         .then(json => {
             if (json.success) {
                 this.setState({
@@ -161,7 +161,7 @@ class Home extends Component {
                 email: signInEmail,
                 password: signInPassword,
             }),
-        }).then(res = res.json())
+        }).then(res => res.json())
         .then(json => {
             if (json.success) {
                 setInStorage('symptom_tracker', { token: json.token });
@@ -230,7 +230,7 @@ class Home extends Component {
             signUpLastName,
             signUpEmail,
             signUpPassword,
-            signUpError
+            signUpError,
             
         } = this.state;
         if (isLoading) {

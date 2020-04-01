@@ -4,11 +4,10 @@ const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
     id: String,
-	username: { type: String, required: true },
 	password: { type: String, required: true },
 	email: { type: String, require: true },
 	firstName: { type: String, required: true },
-    lastName: String,
+    lastName: { type: String},
     isDeleted: {
         type: Boolean,
         default: false
