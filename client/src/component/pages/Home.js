@@ -36,8 +36,9 @@ class Home extends Component {
         this.onSignUp = this.OnSignUp.bind(this);
     }
     componentDidMount() {
-        const token = getFromStorage('symptom_tracker');
-        if (token) {
+        const obj = getFromStorage('symptom_tracker');
+        if (obj && obj.token) {
+            const { token } = obj;
             //verify token
             fetch('/api/account/verify?token=' + token)
             .then(res => res.json())
@@ -95,7 +96,7 @@ class Home extends Component {
     onSignUp() {
         //grab state and post request to backend
         const {
-            signUpFirstname,
+            signUpFirstName,
             signUpLastName,
             signUpEmail,
             signUpPassword,
@@ -141,6 +142,45 @@ class Home extends Component {
 
 
     onSignIn() {
+        const {
+            signInEmail,
+            signInPassword,
+        } = this.state;
+
+        this.setState({
+            isLoading: true,
+        });
+
+        fetch('/api/account/signup', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                firstName: signUpFirstName,
+                lastName: signUpLastName,
+                email: signUpEmail,
+                password: signUpPassword,
+            }),
+        }).then(res = res.json())
+        .then(json => {
+            if (json.success) {
+                setInStorage('symptom_tracker', { token: json.token });
+                this.setState( {
+                    signInError: json.message,
+                    isLoading: false,
+                    signInPasword: '',
+                    signinEmail: '',
+                    token: json.token,
+                });
+            } else {
+                this.setState({
+                    signInError: json.message,
+                    isLoading: false,
+                });
+            }
+                
+            });
         //grab state and post request to backend
 
     }
