@@ -246,8 +246,11 @@ class Home extends Component {
             );
         }
         return (
-            <div>Landing Page</div>
+            <div>Landing Page
+            
             <button onClick={this.logout}> Logout</button>
-        )
-    }
+            </div>
+        );
 }
+
+export default Home;
