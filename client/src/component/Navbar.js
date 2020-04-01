@@ -14,7 +14,7 @@ function Navbar() {
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <Link to={MedicalProfile} class="nav-link">Medical Profile<span class="sr-only">(current)</span></Link>
+        {/* <Link to={MedicalProfile} class="nav-link">Medical Profile<span class="sr-only">(current)</span></Link> */}
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Find a Physician</a>
