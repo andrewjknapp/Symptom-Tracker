@@ -31,6 +31,18 @@ function MedicalProfile() {
                     <p>Have you ever had surgery?</p>
                     <input id='yes' name='surgery' type='radio' value='yes'></input>
                     <label for='surgeryYes'>Yes</label>
+                    <table id='table'>
+                        <thead>
+                            <th>Type</th>
+                            <th>Year</th>
+                        </thead>
+                        {[...Array(medCount)].map((m, i) => (
+                            <tr key={i}>
+                                <td><input type="input" id="surgeryType" name="type" /></td>
+                                <td><input type="input" id="surgeryYear" name="year" /></td>
+                            </tr>
+                        ))}
+                    </table>
                     <br></br>
                     <input id='no' name='surgery' type='radio' value='no'></input>
                     <label for='surgeryNo'>No</label>
