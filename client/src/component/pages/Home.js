@@ -216,7 +216,7 @@ class Home extends Component {
     }
 
 
-    }
+    
     
 
     render() {
@@ -251,6 +251,8 @@ class Home extends Component {
             <button onClick={this.logout}> Logout</button>
             </div>
         );
+    }
 }
+
 
 export default Home;
