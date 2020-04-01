@@ -1,0 +1,15 @@
+#createPost, #printInfo {
+    background-color: grey;
+    border-radius: 25px;
+    font-family: 'Rambla', sans-serif;
+    padding: 15px 40px;
+    font-size: 25px;
+    margin: 4px 2px;
+    margin-left: 25px;
+    cursor: pointer;
+    width: 100px;
+}
+
+.navbarAll {
+    font-size: 25px;
+}

@@ -1,10 +1,11 @@
-import React , {Fragment} from "react";
-
-
+import React , {Fragment, Link} from "react";
+import "./assets/css/Navbar.css";
+import MedicalProfile from './pages/MedicalProfile'
 
 
 function Navbar() {
     return(
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#">Symptom Tracker</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,7 +14,7 @@ function Navbar() {
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Medical Profile<span class="sr-only">(current)</span></a>
+        <Link to={MedicalProfile} class="nav-link">Medical Profile<span class="sr-only">(current)</span></Link>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Find a Physician</a>
@@ -30,6 +31,7 @@ function Navbar() {
     </ul>
   </div>
 </nav>
+
     )
 }
 
