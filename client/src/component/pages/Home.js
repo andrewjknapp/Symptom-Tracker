@@ -151,16 +151,14 @@ class Home extends Component {
             isLoading: true,
         });
 
-        fetch('/api/account/signup', {
+        fetch('/api/account/signin', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                firstName: signUpFirstName,
-                lastName: signUpLastName,
-                email: signUpEmail,
-                password: signUpPassword,
+                email: signInEmail,
+                password: signInPassword,
             }),
         }).then(res = res.json())
         .then(json => {
