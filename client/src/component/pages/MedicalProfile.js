@@ -29,10 +29,10 @@ function MedicalProfile() {
 
                     <h2>Past Surgical History</h2>
                     <p>Have you ever had surgery?</p>
-                    <input id='surgery' name='surgeryYes' type='radio'></input>
+                    <input id='yes' name='surgery' type='radio' value='yes'></input>
                     <label for='surgeryYes'>Yes</label>
                     <br></br>
-                    <input name='surgeryNo' type='radio'></input>
+                    <input id='no' name='surgery' type='radio' value='no'></input>
                     <label for='surgeryNo'>No</label>
 
                     <h2>Current Medications</h2>
@@ -55,12 +55,12 @@ function MedicalProfile() {
                     </table>
                     <h2>Allergies</h2>
                     <p>Are you allergic to any medication?</p>
-                    <input id='surgery' name='surgeryYes' type='radio'></input>
-                    <label for='surgeryYes'>Yes </label>
+                    <input id='yes' name='allergies' type='radio' value='yes' />
+                    <label for='allergies'>Yes </label>
                     <input placeholder='Please list...'></input>
                     <br></br>
-                    <input name='surgeryNo' type='radio'></input>
-                    <label for='surgeryNo'>No</label>
+                    <input id='no' name='surgery' type='radio' value='no' />
+                    <label for='surgery'>No</label>
 
                     <p>Are you allergic to latex?</p>
                     <input id='surgery' name='surgeryYes' type='radio'></input>
