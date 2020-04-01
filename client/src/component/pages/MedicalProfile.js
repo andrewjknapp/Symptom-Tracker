@@ -41,7 +41,9 @@ function MedicalProfile() {
                                 <td><input type="input" id="surgeryType" name="type" /></td>
                                 <td><input type="input" id="surgeryYear" name="year" /></td>
                             </tr>
+
                         ))}
+                        <button type='button' id='add' onClick={updateMed}>Add</button>
                     </table>
                     <br></br>
                     <input id='no' name='surgery' type='radio' value='no'></input>
