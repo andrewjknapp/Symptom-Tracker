@@ -3,7 +3,7 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 const routes = require("./routes");
 const mongoose = require("mongoose");
-const test = require("./routes/api/test");
+const accounts = require("./routes/api/accounts");
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -17,8 +17,8 @@ if (process.env.NODE_ENV === "production") {
 //   res.json({hello: "hello"})
 // })
 
-// app.use(routes);
-app.use("/api", test)
+app.use(routes);
+app.use("/api", accounts)
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/symptomtracker_db");
 
