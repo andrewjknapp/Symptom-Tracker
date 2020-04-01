@@ -1,4 +1,6 @@
 import React, { Fragment, Component, useState } from "react";
+import navBar from "../Navbar"
+import Navbar from "../Navbar";
 
 function MedicalProfile() {
     const [medCount, setMedCount] = useState(1);
@@ -6,7 +8,8 @@ function MedicalProfile() {
         setMedCount(medCount + 1)
     }
     return (
-        <Fragment>
+        <article>
+      
             <h1>[Name's] Medical Information</h1>
             <form>
                 <div>
@@ -96,7 +99,7 @@ function MedicalProfile() {
                     <button type='submit'>Submit</button>
                 </div>
             </form>
-        </Fragment>
+        </article>
 
     )
 }
