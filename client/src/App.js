@@ -9,7 +9,7 @@ function App() {
     <Fragment>
       <Navbar />
     {/* <NewPost /> */}
-    <PrintOut />
+    {/* <PrintOut /> */}
     </Fragment>
   );
 }
