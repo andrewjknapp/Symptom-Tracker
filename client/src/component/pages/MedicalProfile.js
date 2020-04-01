@@ -51,7 +51,7 @@ function MedicalProfile() {
                             </tr>
                         ))}
                         <br></br>
-                        <button id='add' onClick={updateMed}>Add</button>
+                        <button type='button' id='add' onClick={updateMed}>Add</button>
                     </table>
                     <h2>Allergies</h2>
                     <p>Are you allergic to any medication?</p>
