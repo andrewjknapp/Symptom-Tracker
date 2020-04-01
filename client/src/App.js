@@ -8,7 +8,8 @@ function App() {
   return (
     <Fragment>
       <Navbar />
-    <NewPost />
+    {/* <NewPost /> */}
+    <PrintOut />
     </Fragment>
   );
 }

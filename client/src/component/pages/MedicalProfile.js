@@ -9,7 +9,6 @@ function MedicalProfile() {
     }
     return (
         <Fragment>
-             <Navbar />
       
             <h1>[Name's] Medical Information</h1>
             <form>
