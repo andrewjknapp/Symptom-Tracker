@@ -1,12 +1,15 @@
 import React, { Fragment } from "react";
 import "./App.css";
 // import MedicalProfile from "./component/pages/MedicalProfile"
-import NewPost from './component/pages/NewPost/NewPost'
+// import NewPost from './component/pages/NewPost/NewPost'
+import Chart from './component/pages/Chart'
 
 function App() {
   return (
     <Fragment>
-    <NewPost />
+    {/* <MedicalProfile /> */}
+    {/* <NewPost /> */}
+    <Chart />
     </Fragment>
   );
 }

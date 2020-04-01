@@ -6,7 +6,9 @@
   "proxy": "http://localhost:3001/",
   "dependencies": {
     "axios": "^0.19.2",
+    "chart.js": "^2.9.3",
     "react": "^16.6.3",
+    "react-chartjs-2": "^2.9.0",
     "react-dom": "^16.6.3",
     "react-scripts": "^2.1.1"
   },
