@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
 import { BrowserRouter as Router, Switch, Route, Link, useRouteMatch, useParams } from "react-router-dom";
 import "./assets/css/Navbar.css";
-import MedicalProfile from './pages/MedicalProfile'
 
 
 function Navbar() {
