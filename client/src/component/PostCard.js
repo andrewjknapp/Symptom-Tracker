@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class PostCard extends Component {
   render() {
     return (
-      <div className="card text-center">
+      <div className="card text-center m-5">
         <div className="card-header">(Render the date here?)</div>
         <div className="card-body">
           <h5 className="card-title">Title of User's post</h5>
