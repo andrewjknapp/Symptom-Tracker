@@ -17,10 +17,10 @@ function Navbar() {
                         <Link to='/medical-profile' class="nav-link">Medical Profile</Link>
                     </li>
                     <li class="nav-item">
-                        <Link to='/additional-medical-support' class="nav-link" >Additional Medical Support</Link>
+                        <Link to='/chart' id='chart' class="nav-link" >Chart</Link>
                     </li>
                     <li class="nav-item">
-                        <Link to='/chart' id='chart' class="nav-link" >Chart</Link>
+                        <Link to='/additional-medical-support' class="nav-link" >Additional Medical Support</Link>
                     </li>
                 </ul>
                 <span class="navbar-text nav-icons"><Link to='/new-post' id='newPost' class="nav-link" >🌡</Link></span>
