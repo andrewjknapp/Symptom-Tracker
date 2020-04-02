@@ -27,7 +27,10 @@ function CreateAccountPage (props) {
         //     //split ^these into seperate components...
         // };
 
-    const [loading, set] = useState
+    const [loading, setLoading] = useState(false);
+    const [token, setToken] =useState('');
+    const [signUp, setSignUp] = useState('');
+    const[signIn, setSignIn] =useState('');
 
         // this.onSignInChange = this.onSignInChange.bind(this);
         // this.onSignUpChange = this.onSignUpChange.bind(this);
@@ -50,7 +53,8 @@ function CreateAccountPage (props) {
 
 
 
-    componentDidMount() {
+    // componentDidMount() 
+    useEffect(() => {
         const obj = getFromStorage('symptom_tracker');
         if (obj && obj.token) {
             const { token } = obj;
@@ -76,7 +80,7 @@ function CreateAccountPage (props) {
                 // set state for different things/
             });
         }
-    }
+    }, [])
 
     const onSignUp = () => {
         //grab state and post request to backend
