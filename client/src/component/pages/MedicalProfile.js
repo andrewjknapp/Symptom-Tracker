@@ -1,6 +1,4 @@
 import React, { Fragment, Component, useState } from "react";
-import navBar from "../Navbar"
-import Navbar from "../Navbar";
 
 function MedicalProfile() {
     const [medCount, setMedCount] = useState(1);
