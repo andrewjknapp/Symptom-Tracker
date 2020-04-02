@@ -133,7 +133,7 @@ router.post('/account/signin', (req, res, next) => {
 
     //otherwise correct the user
     const userSession = new UserSession();
-    userSession.userID = user._id;
+    userSession.userId = user._id;
     userSession.save((err, doc) => {
         if (err) {
             return res.send({
@@ -173,10 +173,8 @@ router.get('/account/verify', (req, res, next) =>  {
                 message: 'Error: Invalid'
             });
         } else {
-            return res.send({
-                success: true,
-                message: 'Good'
-            })
+            req.user = sessions;
+            return res.json(sessions)
         }
 
     });

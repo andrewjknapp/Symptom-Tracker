@@ -7,11 +7,14 @@ const UserSchema = new Schema({
 	password: { type: String, required: true },
 	email: { type: String, require: true },
 	firstName: { type: String, required: true },
-    lastName: { type: String},
+    lastName: String,
     isDeleted: {
         type: Boolean,
         default: false
-    }
+    },
+    preferredPhysicians: { type: Array },
+    medicalProfile: { type: Object },
+    posts: { type: Array }
 });
 
 UserSchema.methods.generateHash = function(password) {

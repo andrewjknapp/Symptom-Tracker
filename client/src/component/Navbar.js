@@ -13,7 +13,7 @@ function Navbar() {
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav main-navbar">
                     <li class="nav-item">
                         <Link to='/medical-profile' class="nav-link">Medical Profile</Link>
                     </li>
@@ -23,13 +23,9 @@ function Navbar() {
                     <li class="nav-item">
                         <Link to='/chart' id='chart' class="nav-link" >Chart</Link>
                     </li>
-                    <li class="nav-item">
-                        <Link to='/new-post' id='newPost' class="nav-link" >🌡</Link>
-                    </li>
-                    <li class="nav-item">
-                        <Link to='print-out' id='printOut' class="nav-link">🖨</Link>
-                    </li>
                 </ul>
+                <span class="navbar-text nav-icons"><Link to='/new-post' id='newPost' class="nav-link" >🌡</Link></span>
+                <span class="navbar-text nav-icons"><Link to='print-out' id='printOut' class="nav-link">🖨</Link></span>
             </div>
         </nav>
 
