@@ -15,8 +15,8 @@ function App() {
           <Route absolute path="/medical-profile">
             <MedicalProfile />
           </Route>
-          <Route absolute path="/find-physician">
-            {/* <FindPhysician/> */}
+          <Route absolute path="/find-hospital">
+            {/* <FindHospital/> */}
           </Route>
           <Route absolute path="/chart">
             <Chart />
