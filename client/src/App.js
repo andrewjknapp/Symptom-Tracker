@@ -13,16 +13,13 @@ function App() {
     <Fragment>
        <Router>      
         <Switch>
-<<<<<<< HEAD
           <Route path="/">
             <CreateAccountPage />
           </Route>
 
-=======
         <Route absolute path="/landing-page">
             <LandingPage />
           </Route>
->>>>>>> master
           <Route absolute path="/medical-profile">
           <Navbar />
             <MedicalProfile />

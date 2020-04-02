@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import MedicalProfile from "./MedicalProfile";
 // import LoginPage from "./LoginPage";
 
@@ -27,10 +27,27 @@ function CreateAccountPage (props) {
         //     //split ^these into seperate components...
         // };
 
-    const [loading, setLoading] = useState(false);
-    const [token, setToken] =useState('');
-    const [signUp, setSignUp] = useState('');
-    const[signIn, setSignIn] =useState('');
+    const [loading, setLoading] = useState({
+        isLoading: true,
+    });
+    const [token, setToken] = useState('');
+    const [signUp, setSignUp] = useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: '',
+    });
+    const [errors, setErrors] = useState({
+        signInError: '',
+        signUpError: '',
+    })
+    const[signIn, setSignIn] = useState({
+        userEmail: '',
+        userPassword: '',
+    });
+    // const[logout, setLogOut] = useState({
+    //     token: '',    
+    // });
 
         // this.onSignInChange = this.onSignInChange.bind(this);
         // this.onSignUpChange = this.onSignUpChange.bind(this);
@@ -40,15 +57,9 @@ function CreateAccountPage (props) {
         // this.onSignIn = this.onSignIn.bind(this);
         // this.onSignUp = this.onSignUp.bind(this);
         // this.logout = this.logout.bind(this);
-    }
     //replace componentDidMount with useEffect
 
-    useEffect(() => {
-        fetch(‘url’)
-        .then(res => res.json())
-        .then(items => setItems(items)
-        .catch(console.log(err))
-       }, [])
+
 
 
 
@@ -63,19 +74,21 @@ function CreateAccountPage (props) {
                 .then(res => res.json())
                 .then(json => {
                     if (json.success) {
-                        this.setState({
+                        setToken({
                             token,
+                        });
+                        setLoading({
                             isLoading: false
-                        });
-                    } else {
-                        this.setState({
-                            isLoading: false,
-
-                        });
+                        })
+                    } 
+                    else {
+                        setLoading({
+                            isLoading: false
+                        })
                     }
                 });
         } else {
-            this.setState({
+            setLoading({
                 isLoading: false,
                 // set state for different things/
             });
@@ -85,13 +98,13 @@ function CreateAccountPage (props) {
     const onSignUp = () => {
         //grab state and post request to backend
         const {
-            signUpFirstName,
-            signUpLastName,
-            signUpEmail,
-            signUpPassword,
-        } = this.state;
+            firstName,
+            lastName,
+            email,
+            password,
+        } = signUp;
 
-        this.setState({
+        setLoading({
             isLoading: true,
         });
 
@@ -101,28 +114,31 @@ function CreateAccountPage (props) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                firstName: signUpFirstName,
-                lastName: signUpLastName,
-                email: signUpEmail,
-                password: signUpPassword,
+                firstName: firstName,
+                lastName: lastName,
+                email: email,
+                password: password,
             }),
         }).then(res => res.json())
             .then(json => {
                 if (json.success) {
-                    this.setState({
-                        signUpError: json.message,
+                    setErrors(...errors, {signUpError: json.message})
+                    setLoading({
                         isLoading: false,
-                        signUpEmail: '',
-                        signUpPassword: '',
-                        signUpFirstName: '',
-                        signUpLastName: '',
+                    })
+                    setSignUp({
+                        email: '',
+                        password: '',
+                        firstName: '',
+                        lastName: '',
                     });
                 } else {
-                    this.setState({
+                    setErrors({
                         signUpError: json.message,
+
+                    })
+                    setLoading({
                         isLoading: false,
-
-
                     })
                 }
 
@@ -131,11 +147,11 @@ function CreateAccountPage (props) {
 
     const onSignIn = () => {
         const {
-            signInEmail,
-            signInPassword,
-        } = this.state;
+            userEmail,
+            userPassword,
+        } = signIn;
 
-        this.setState({
+        setLoading({
             isLoading: true,
         });
 
@@ -145,32 +161,37 @@ function CreateAccountPage (props) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                email: signInEmail,
-                password: signInPassword,
+                email: userEmail,
+                password: userPassword,
             }),
         }).then(res => res.json())
             .then(json => {
                 if (json.success) {
-                    setInStorage('symptom_tracker', { token: json.token });
-                    this.setState({
-                        signInError: json.message,
+                    setErrors(...errors, {signInError: json.message})
+                    setLoading({
                         isLoading: false,
-                        signInPasword: '',
-                        signinEmail: '',
-                        token: json.token,
+                    })
+                    setInStorage('symptom_tracker', { token: json.token });
+                    setSignIn({
+                        pasword: userPassword,
+                        email: userEmail,
                     });
+                    setToken({
+                        token: json.token,
+                    })
                 } else {
-                    this.setState({
+                    setErrors({
                         signInError: json.message,
+                    })
+                    setLoading({
                         isLoading: false,
                     });
                 }
-
             });
         //grab state and post request to backend
     }
     const logout = () => {
-        this.setState({
+        setLoading({
             isLoading: true,
         })
         const obj = getFromStorage('symptom_tracker');
@@ -181,37 +202,41 @@ function CreateAccountPage (props) {
                 .then(res => res.json())
                 .then(json => {
                     if (json.success) {
-                        this.setState({
+                        setToken({
                             token: '',
-                            isLoading: false
                         });
-                    } else {
-                        this.setState({
+                        setLoading({
                             isLoading: false,
-
+                        })
+                    } else {
+                        setLoading({
+                            isLoading: false,
                         });
                     }
                 });
         } else {
-            this.setState({
+            setLoading({
                 isLoading: false,
                 // set state for different things/
             });
         }
     }
     //destructure the object
-    onSignInChange = (e) =>  {
+    const onSignInChange = (e) =>  {
         const {name, value} = e.target;
-        this.setState({
+        setSignIn({
             [name]: value,
         });
     };
-    onSignUpChange = (e) => {
+    const onSignUpChange = (e) => {
         const {name, value} = e.target;
-        this.setState({
+        setSignUp({
             [name]: value,
         });
     };
+
+    const { email, password, firstName, lastName } = signUp
+    const { userEmail, userPassword } = signIn
     // render() {
     //     const {
     //         isLoading,
@@ -237,66 +262,64 @@ function CreateAccountPage (props) {
                         <label htmlFor="username">Email:</label>
                         {/* each input should have a name (email) */}
                         <input type="email"
-                            name="signInEmail"
+                            name="userEmail"
                             placeholder="Email"
-                            value={signInEmail}
-                            onChange={this.onSignInChange}
+                            value={userEmail}
+                            onChange={onSignInChange}
                         />
 
                         <label htmlFor="password">Password:</label>
                         <input type="password"
-                            name="signInPassword"
+                            name="userPassword"
                             placeholder="password"
-                            value={signInPassword}
-                            onChange={this.onSignInChange}
+                            value={userPassword}
+                            onChange={onSignInChange}
                         />
                     
-                        <button onClick={this.onSignIn}
+                        <button onClick={onSignIn}
                             className="btn btn-primary mt-3">Log In</button>
                     </form>
                     <br />
                     <form>
                         <input type="text"
-                            name="signUpFirstName"
+                            name="firstName"
                             placeholder="First Name"
-                            value={signUpFirstName}
-                            onChange={this.onSignUpChange} />
+                            value={firstName}
+                            onChange={onSignUpChange} />
                         <br />
                         <input
                             type="text"
-                            name="signUpLastName"
+                            name="lastName"
                             placeholder="Last Name"
-                            value={signUpLastName}
-                            onChange={this.onSignUpChange}
+                            value={lastName}
+                            onChange={onSignUpChange}
                         />
                         <br />
-                        <input type="username" placeholder="Email"
-                            name="signUpEmail"
-                            value={signUpEmail}
-                            onChange={this.onSignUpChange}
+                        <input type="email" placeholder="Email"
+                            name="email"
+                            value={email}
+                            onChange={onSignUpChange}
                         />
                         <br />
                         <input type="password" placeholder="password"
-                            name="signUpPassword"
-                            value={signUpPassword}
-                            onChange={this.onSignUpChange}
+                            name="password"
+                            value={password}
+                            onChange={onSignUpChange}
                         />
                         <br />
                         
-                        <button onClick={this.onSignUp}
+                        <button onClick={onSignUp}
                             className="btn btn-primary mt-3">Sign Up</button>
                     </form>
+
+
+                {/* Ternary Operator to render medical profile and button based on login token */}
+            <div><MedicalProfile />
+              <button onClick={logout}> Logout</button>
+            </div>
                 </div>
             );
-        }
-        return (
-            <div><MedicalProfile />
-
-
-                <button onClick={this.logout}> Logout</button>
-            </div>
-        );
-    }
+      
 }
 
 
