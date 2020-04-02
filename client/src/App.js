@@ -7,12 +7,16 @@ import PrintOut from './component/pages/PrintOut';
 import Navbar from "./component/Navbar";
 import Chart from './component/pages/Chart';
 import AdditionalMedicalSupport from './component/pages/AdditionalMedicalSupport';
+import LandingPage from './component/pages/LandingPage'
 function App() {
   return (
     <Fragment>
        <Router>
       <Navbar />
         <Switch>
+        <Route absolute path="/landing-page">
+            <LandingPage />
+          </Route>
           <Route absolute path="/medical-profile">
             <MedicalProfile />
           </Route>
@@ -29,7 +33,6 @@ function App() {
             <PrintOut />
           </Route>
         </Switch>
-
     </Router>
     </Fragment >
   );
