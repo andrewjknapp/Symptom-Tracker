@@ -6,7 +6,7 @@ import NewPost from './component/pages/NewPost/NewPost'
 import PrintOut from './component/pages/PrintOut';
 import Navbar from "./component/Navbar";
 import Chart from './component/pages/Chart';
-import FindHospital from './component/pages/FindHospital';
+import AdditionalMedicalSupport from './component/pages/AdditionalMedicalSupport';
 function App() {
   return (
     <Fragment>
@@ -16,8 +16,8 @@ function App() {
           <Route absolute path="/medical-profile">
             <MedicalProfile />
           </Route>
-          <Route absolute path="/find-hospital">
-            <FindHospital/>
+          <Route absolute path="/additional-medical-support">
+            <AdditionalMedicalSupport/>
           </Route>
           <Route absolute path="/chart">
             <Chart />

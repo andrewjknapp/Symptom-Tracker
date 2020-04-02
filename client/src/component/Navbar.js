@@ -17,7 +17,7 @@ function Navbar() {
                         <Link to='/medical-profile' class="nav-link">Medical Profile</Link>
                     </li>
                     <li class="nav-item">
-                        <Link to='/find-hospital' class="nav-link" >Find a Hospital</Link>
+                        <Link to='/additional-medical-support' class="nav-link" >Additional Medical Support</Link>
                     </li>
                     <li class="nav-item">
                         <Link to='/chart' id='chart' class="nav-link" >Chart</Link>

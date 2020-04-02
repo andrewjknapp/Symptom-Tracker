@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 
-function FindHospital() {
+function AdditionalMedicalSupport() {
     return (
         <Fragment>
             <iframe src="http://www.ushospitalfinder.com/widgets/widget" width="400" height="200" frameborder="0"> </iframe>
@@ -11,4 +11,4 @@ function FindHospital() {
     )
 }
 
-export default FindHospital;
+export default AdditionalMedicalSupport;
