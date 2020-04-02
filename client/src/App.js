@@ -12,19 +12,19 @@ function App() {
        <Router>
       <Navbar />
         <Switch>
-          <Route path="/medical-profile">
+          <Route absolute path="/medical-profile">
             <MedicalProfile />
           </Route>
-          <Route path="/find-physician">
+          <Route absolute path="/find-physician">
             {/* <FindPhysician/> */}
           </Route>
-          <Route path="/chart">
+          <Route absolute path="/chart">
             <Chart />
           </Route>
-          <Route path="/new-post">
+          <Route absolute path="/new-post">
             <NewPost />
           </Route>
-          <Route path="/print-out">
+          <Route absolute path="/print-out">
             <PrintOut />
           </Route>
         </Switch>
