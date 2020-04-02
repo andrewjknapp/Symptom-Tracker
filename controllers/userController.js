@@ -25,10 +25,11 @@ module.exports = {
         //receive object of post data and add to mongo db
 
         const { title, description, symptoms } = req.body
+        const time = Date.now()
 
         db.User.findOneAndUpdate({ id: id }, {
             $push: {
-                posts: { title, description, symptoms }
+                posts: { title, description, symptoms, time }
             }
         })
         .then(dbModel => res.json(dbModel))
