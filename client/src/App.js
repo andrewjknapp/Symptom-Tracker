@@ -6,6 +6,7 @@ import NewPost from './component/pages/NewPost/NewPost'
 import PrintOut from './component/pages/PrintOut';
 import Navbar from "./component/Navbar";
 import Chart from './component/pages/Chart';
+import PostCard from './component/PostCard'
 function App() {
   return (
     <Fragment>
@@ -28,7 +29,7 @@ function App() {
             <PrintOut />
           </Route>
         </Switch>
-
+      <PostCard />
     </Router>
     </Fragment >
   );
