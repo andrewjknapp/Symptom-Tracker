@@ -14,6 +14,7 @@ module.exports = {
     },
 
     getPosts: function(req, res) {
+        
         db.User.findOne({ id: id })
         .then( userInfo => res.json(userInfo.posts))
         .catch(err => res.status(422).json(err));

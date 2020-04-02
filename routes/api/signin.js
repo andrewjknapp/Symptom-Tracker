@@ -129,10 +129,11 @@ module.exports = (app) => {
                 message: 'Error: Invalid'
             });
         }
-
+        const user = users[0];
         //otherwise correct the user
         const userSession = new UserSession();
-        userSession.userID = user._id;
+        
+        userSession.userID = "bill"//user._id;
         userSession.save((err, doc) => {
             if (err) {
                 return res.send({
@@ -171,10 +172,7 @@ module.exports = (app) => {
                     message: 'Error: Invalid'
                 });
             } else {
-                return res.send({
-                    success: true,
-                    message: 'Good'
-                })
+                return res.json(sessions)
             }
 
         });
