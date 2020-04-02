@@ -11,8 +11,6 @@ function App() {
     <Fragment>
        <Router>
       <Navbar />
-  
-
         <Switch>
           <Route path="/medical-profile">
             <MedicalProfile />
@@ -32,8 +30,6 @@ function App() {
         </Switch>
 
     </Router>
-    {/* <NewPost /> */ }
-  {/* <PrintOut /> */ }
     </Fragment >
   );
 }
