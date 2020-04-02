@@ -20,10 +20,7 @@
   },
   "dependencies": {
     "bcrypt": "^4.0.1",
-<<<<<<< HEAD
-=======
     "dotenv": "^8.2.0",
->>>>>>> master
     "chart.js": "^2.9.3",
     "express": "^4.16.3",
     "if-env": "^1.0.4",
