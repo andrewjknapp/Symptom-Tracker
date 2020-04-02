@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import MedicalProfile from "./MedicalProfile";
 // import LoginPage from "./LoginPage";
 
@@ -9,33 +9,47 @@ import {
 } from '../../utils/storage';
 
 
-class CreateAccountPage extends Component {
-    constructor(props) {
-        super(props);
+function CreateAccountPage (props) {
+// class CreateAccountPage extends Component {
+    // constructor(props) {
+        // super(props);
+    //4 hooks needed (is loading, token, signups, signins...)
+        // this.state = {
+        //     isLoading: true,
+        //     token: '',
+        //     signUpError: '',
+        //     signInError: '',
+        //     signInEmail: '',
+        //     signInPassword: '',
+        //     signUpFirstName: '',
+        //     signUpEmail: '',
+        //     signUpPassword: '',
+        //     //split ^these into seperate components...
+        // };
 
-        this.state = {
-            isLoading: true,
-            token: '',
-            signUpError: '',
-            signInError: '',
-            signInEmail: '',
-            signInPassword: '',
-            signUpFirstName: '',
-            signUpEmail: '',
-            signUpPassword: '',
-            //split ^these into seperate components...
-        };
-        this.onSignInChange = this.onSignInChange.bind(this);
-        this.onSignUpChange = this.onSignUpChange.bind(this);
-        // this.onTextBoxChangeSignUpEmail = this.onTextBoxChangeSignUpEmail.bind(this);
-        // this.onTextBoxChangeSignUpPassword = this.onTextBoxChangeSignUpPassword.bind(this);
-        // this.onTextBoxChangeSignUpFirstName = this.onTextBoxChangeSignUpFirstName.bind(this);
-        // this.onTextBoxChangeSignUpLastName = this.onTextBoxChangeSignUpLastName.bind(this);
+    const [loading, set] = useState
 
-        this.onSignIn = this.onSignIn.bind(this);
-        this.onSignUp = this.onSignUp.bind(this);
-        this.logout = this.logout.bind(this);
+        // this.onSignInChange = this.onSignInChange.bind(this);
+        // this.onSignUpChange = this.onSignUpChange.bind(this);
+        
+        
+      
+        // this.onSignIn = this.onSignIn.bind(this);
+        // this.onSignUp = this.onSignUp.bind(this);
+        // this.logout = this.logout.bind(this);
     }
+    //replace componentDidMount with useEffect
+
+    useEffect(() => {
+        fetch(‘url’)
+        .then(res => res.json())
+        .then(items => setItems(items)
+        .catch(console.log(err))
+       }, [])
+
+
+
+
     componentDidMount() {
         const obj = getFromStorage('symptom_tracker');
         if (obj && obj.token) {
@@ -64,7 +78,7 @@ class CreateAccountPage extends Component {
         }
     }
 
-    onSignUp() {
+    const onSignUp = () => {
         //grab state and post request to backend
         const {
             signUpFirstName,
@@ -111,8 +125,7 @@ class CreateAccountPage extends Component {
             });
     }
 
-
-    onSignIn() {
+    const onSignIn = () => {
         const {
             signInEmail,
             signInPassword,
@@ -151,10 +164,8 @@ class CreateAccountPage extends Component {
 
             });
         //grab state and post request to backend
-
     }
-
-    logout() {
+    const logout = () => {
         this.setState({
             isLoading: true,
         })
@@ -185,39 +196,37 @@ class CreateAccountPage extends Component {
         }
     }
     //destructure the object
-    onSignInChange (e) {
+    onSignInChange = (e) =>  {
         const {name, value} = e.target;
         this.setState({
             [name]: value,
         });
     };
-    onSignUpChange (e) {
+    onSignUpChange = (e) => {
         const {name, value} = e.target;
         this.setState({
             [name]: value,
         });
     };
+    // render() {
+    //     const {
+    //         isLoading,
+    //         token,
+    //         signInError,
+    //         signInEmail,
+    //         signInPassword,
+    //         signUpFirstName,
+    //         signUpLastName,
+    //         signUpEmail,
+    //         signUpPassword,
+    //         signUpError,
 
-
-    render() {
-        const {
-            isLoading,
-            token,
-            signInError,
-            signInEmail,
-            signInPassword,
-            signUpFirstName,
-            signUpLastName,
-            signUpEmail,
-            signUpPassword,
-            signUpError,
-
-        } = this.state;
-        console.log(signUpLastName, signInEmail, signUpPassword)
-        if (isLoading) {
-            return (<div><p>Loading...</p></div>)
-        }
-        if (!token) {
+    //     } = this.state;
+    //     console.log(signUpLastName, signInEmail, signUpPassword)
+    //     if (isLoading) {
+    //         return (<div><p>Loading...</p></div>)
+    //     }
+    //     if (!token) {
             return (
                 <div>
                     <form>
@@ -242,9 +251,6 @@ class CreateAccountPage extends Component {
                             className="btn btn-primary mt-3">Log In</button>
                     </form>
                     <br />
-
-
-
                     <form>
                         <input type="text"
                             name="signUpFirstName"
