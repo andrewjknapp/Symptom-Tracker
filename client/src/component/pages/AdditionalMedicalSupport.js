@@ -2,22 +2,22 @@ import React, { Fragment } from "react";
 
 
 
-let Search = React.createClass({
-    getInitialState: function() {
-        return { showResults: false };
-    },
-    onClick: function() {
-        this.setState({ showResults: true });
-    },
-    render: function() {
-        return (
-            <div>
-                <input type="submit" value="Search" onClick={this.onClick} />
-                { this.state.showResults ? <Results /> : null }
-            </div>
-        );
-    }
-});
+// let Search = React.createClass({
+//     getInitialState: function() {
+//         return { showResults: false };
+//     },
+//     onClick: function() {
+//         this.setState({ showResults: true });
+//     },
+//     render: function() {
+//         return (
+//             <div>
+//                 <input type="submit" value="Search" onClick={this.onClick} />
+//                 { this.state.showResults ? <Results /> : null }
+//             </div>
+//         );
+//     }
+// });
 
 function AdditionalMedicalSupport() {
     return (
