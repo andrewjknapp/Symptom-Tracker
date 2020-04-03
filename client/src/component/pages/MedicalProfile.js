@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 
 function MedicalProfile() {
+    const [surgeryCount, setSurgeryCount] = useState(1);
+    const updateSurgery = () => {
+        setSurgeryCount(surgeryCount + 1)
+    }
+    
     const [medCount, setMedCount] = useState(1);
     const updateMed = () => {
         setMedCount(medCount + 1)
@@ -40,7 +45,7 @@ function MedicalProfile() {
                             </tr>
                         </thead>
                         <tbody>
-                            {[...Array(medCount)].map((m, i) => (
+                            {[...Array(surgeryCount)].map((m, i) => (
                                 <tr key={i}>
                                     <td><input type="input" id="surgeryType" name="type" /></td>
                                     <td><input type="input" id="surgeryYear" name="year" /></td>
@@ -49,7 +54,7 @@ function MedicalProfile() {
                             ))}
                         </tbody>
                     </table>
-                    <button type='button' id='add' onClick={updateMed}>Add</button>
+                    <button type='button' id='add' onClick={updateSurgery}>Add</button>
                     <br></br>
                     <input id='no' name='surgery' type='radio' value='no'></input>
                     <label htmlFor='surgeryNo'>No</label>
