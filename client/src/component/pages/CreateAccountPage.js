@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import MedicalProfile from "./MedicalProfile";
 // import LoginPage from "./LoginPage";
 import UserContext from "../../utils/UserContext";
-import Logout from "./Logout";
+import Logout from "../Logout";
 
 import "whatwg-fetch";
 
 import {
     getFromStorage, setInStorage
 } from '../../utils/storage';
+import { Redirect } from 'react-router';
 
 
 function CreateAccountPage(props) {
@@ -32,6 +33,8 @@ function CreateAccountPage(props) {
         userEmail: '',
         userPassword: '',
     });
+    const [toLandingPage, setToLandingPage] = useState(false);
+
 
     useEffect(() => {
         const obj = getFromStorage('symptom_tracker');
@@ -90,8 +93,8 @@ function CreateAccountPage(props) {
             }),
         }).then(res => res.json())
             .then(json => {
-                console.log("response")
-                if (json.success) {
+                console.log(json)
+                if (json) {
                     // setErrors(...errors, {signUpError: json.message})
                     setLoading({
                         isLoading: false,
@@ -102,6 +105,7 @@ function CreateAccountPage(props) {
                         firstName: '',
                         lastName: '',
                     });
+                    setToLandingPage(true)
                 } else {
                     setErrors({
                         signUpError: json.message,
@@ -114,7 +118,22 @@ function CreateAccountPage(props) {
 
             });
     }
+    const onSignInSuccess = (json) => {
 
+        setErrors({ ...errors, signInError: json.message })
+        setLoading({
+            isLoading: false,
+        })
+        setInStorage('symptom_tracker', { token: json.token });
+        setSignIn({
+            pasword: userPassword,
+            email: userEmail,
+        });
+        setToken({
+            token: json.token,
+        })
+
+    }
     const onSignIn = (e) => {
         e.preventDefault();
         const {
@@ -138,19 +157,10 @@ function CreateAccountPage(props) {
         }).then(res => res.json())
             .then(json => {
                 if (json.success) {
-                    setErrors(...errors, { signInError: json.message })
-                    setLoading({
-                        isLoading: false,
-                    })
-                    setInStorage('symptom_tracker', { token: json.token });
-                    setSignIn({
-                        pasword: userPassword,
-                        email: userEmail,
-                    });
-                    setToken({
-                        token: json.token,
-                    })
+                    onSignInSuccess(json);
+                    setToLandingPage(true);
                 } else {
+
                     setErrors({
                         signInError: json.message,
                     })
@@ -161,41 +171,42 @@ function CreateAccountPage(props) {
             });
         //grab state and post request to backend
     }
-    // const logout = () => {
-    //     setLoading({
-    //         isLoading: true,
-    //     })
-    //     const obj = getFromStorage('symptom_tracker');
-    //     if (obj && obj.token) {
-    //         const { token } = obj;
-    //         //verify token
-    //         fetch('/api/account/logout?token=' + token)
-    //             .then(res => res.json())
-    //             .then(json => {
-    //                 if (json.success) {
-    //                     setToken({
-    //                         token: '',
-    //                     });
-    //                     setLoading({
-    //                         isLoading: false,
-    //                     })
-    //                 } else {
-    //                     setLoading({
-    //                         isLoading: false,
-    //                     });
-    //                 }
-    //             });
-    //     } else {
-    //         setLoading({
-    //             isLoading: false,
-    //             // set state for different things/
-    //         });
-    //     }
-    // }
+    const logout = () => {
+        setLoading({
+            isLoading: true,
+        })
+        const obj = getFromStorage('symptom_tracker');
+        if (obj && obj.token) {
+            const { token } = obj;
+            //verify token
+            fetch('/api/account/logout?token=' + token)
+                .then(res => res.json())
+                .then(json => {
+                    if (json.success) {
+                        setToken({
+                            token: '',
+                        });
+                        setLoading({
+                            isLoading: false,
+                        })
+                    } else {
+                        setLoading({
+                            isLoading: false,
+                        });
+                    }
+                });
+        } else {
+            setLoading({
+                isLoading: false,
+                // set state for different things/
+            });
+        }
+    }
     //destructure the object
     const onSignInChange = (e) => {
         const { name, value } = e.target;
         setSignIn({
+            ...signIn,
             [name]: value,
         });
     };
@@ -210,8 +221,7 @@ function CreateAccountPage(props) {
     const { email, password, firstName, lastName } = signUp
     const { userEmail, userPassword } = signIn
 
-
-    return (
+    return toLandingPage ? <Redirect to='/landing-page' /> : (
         <div>
             <div className="container">
                 <div className="row">
@@ -273,9 +283,7 @@ function CreateAccountPage(props) {
                                 className="btn btn-primary mt-3">Sign Up</button>
                         </form>
                     </div>
-                    <div><MedicalProfile />
-                        <button onClick={Logout}> Logout</button>
-                    </div>
+                    <Logout />
 
                 </div>
 
