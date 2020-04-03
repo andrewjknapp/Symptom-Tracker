@@ -1,6 +1,7 @@
 import React, { useState, Fragment } from "react";
 import "./NewPost.css";
 import API from "../../../utils/API";
+import { Link } from "react-router-dom";
 
 function NewPost() {
 
@@ -10,7 +11,8 @@ function NewPost() {
   const handleSubmit = e => {
     e.preventDefault();
     const symptoms = [{type: "Headache", severity: 9}]
-    API.savePost({ title, description, symptoms})
+    API.savePost({ title, description, symptoms});
+
   }
 
   return (
@@ -88,7 +90,6 @@ function NewPost() {
               ></input>
               <label className="form-check-label">Symptom 5</label>
             </div>
-
             <button onClick={handleSubmit} className="btn btn-primary">Submit</button>
           </div>
           <div className="col-sm-4"></div>

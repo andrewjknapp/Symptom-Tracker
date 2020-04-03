@@ -19,36 +19,6 @@ import API from '../../utils/API';
                     severity: 2
                 }
             ]
-        },
-        {
-            title: "My Head Hurts",
-            description: "I have had this headache since 12 this morning",
-            date: "2/12/20",
-            symptoms: [
-                {
-                    type: "Coughing",
-                    severity: 4
-                },
-                {
-                    type: "Headache",
-                    severity: 2
-                }
-            ]
-        },
-        {
-            title: "My Head Hurts",
-            description: "I have had this headache since 12 this morning",
-            date: "2/12/20",
-            symptoms: [
-                {
-                    type: "Coughing",
-                    severity: 4
-                },
-                {
-                    type: "Headache",
-                    severity: 2
-                }
-            ]
         }
     ]);
 
@@ -56,7 +26,7 @@ import API from '../../utils/API';
         API.getPosts()
         .then((res)=>{
             console.log(res.data);
-            setPosts(res.data);
+            setPosts(res.data.reverse());
         })
     },[])
 

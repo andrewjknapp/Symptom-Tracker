@@ -14,7 +14,6 @@ function App() {
     <Fragment>
        <Router>
         <Switch>
-
         <Route absolute path="/landing-page">
             <Navbar />
             <LandingPage />
