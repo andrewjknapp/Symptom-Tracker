@@ -11,6 +11,7 @@ import Navbar from "./component/Navbar";
 import CreateAccountPage from "./component/pages/CreateAccountPage";
 import Chart from './component/pages/Chart';
 import LandingPage from './component/pages/LandingPage'
+import AdditionalMedicalSupport from "./component/pages/AdditionalMedicalSupport";
 
 function AppReducer(state, action) {
   return state
@@ -47,6 +48,7 @@ function App() {
             <Navbar />
             <MedicalProfile />
           </Route>
+<<<<<<< HEAD
           <Route absolute path="/find-physician">
             <Navbar />
 
@@ -58,9 +60,22 @@ function App() {
           </Route>
           <Route absolute path="/new-post">
             <Navbar />
+=======
+          <Route absolute path="/additional-medical-support">
+          <Navbar />
+          <AdditionalMedicalSupport />
+          </Route>
+          <Route absolute path="/chart">
+          <Navbar />
+            <Chart />
+          </Route>
+          <Route absolute path="/new-post">
+          <Navbar />
+>>>>>>> master
             <NewPost />
           </Route>
           <Route absolute path="/print-out">
+          <Navbar />
             <PrintOut />
           </Route>
           <Route path="/">

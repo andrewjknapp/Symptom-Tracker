@@ -56,7 +56,7 @@ function MedicalProfile() {
                             ))}
                         </tbody>
                     </table>
-                    <button type='button' id='add' onClick={updateSurgery}>Add</button>
+                    <button className='buttons' type='button' id='add' onClick={updateSurgery}>Add</button>
                     <br></br>
                     <input id='no' name='surgery' type='radio' value='no'></input>
                     <label htmlFor='surgeryNo'>No</label>
@@ -81,7 +81,8 @@ function MedicalProfile() {
                             ))}
                         </tbody>
                     </table>
-                    <button type='button' id='add' onClick={updateMed}>Add</button>
+                    <button className='buttons' type='button' id='add' onClick={updateMed}>Add</button>
+                    <br></br>
                     <h2>Allergies</h2>
                     <p>Are you allergic to any medication?</p>
                     <input id='yes' name='allergies' type='radio' value='yes' />
@@ -108,7 +109,7 @@ function MedicalProfile() {
 
                 </div>
                 <div>
-                    <button type='submit'>Submit</button>
+                    <button className='buttons' type='submit'>Submit</button>
                 </div>
             </form>
         </article>
