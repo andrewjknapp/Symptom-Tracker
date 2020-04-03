@@ -38,10 +38,7 @@ function App() {
     }>
        <Router>      
         <Switch>
-          <Route path="/">
-            <CreateAccountPage />
-          </Route>
-
+         
         <Route absolute path="/landing-page">
             <LandingPage />
           </Route>
@@ -62,6 +59,9 @@ function App() {
           </Route>
           <Route absolute path="/print-out">
             <PrintOut />
+          </Route>
+          <Route path="/">
+            <CreateAccountPage />
           </Route>
         </Switch>
     </Router>
