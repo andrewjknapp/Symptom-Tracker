@@ -38,10 +38,7 @@ function App() {
     }>
        <Router>      
         <Switch>
-<<<<<<< HEAD
-=======
          
->>>>>>> master
         <Route absolute path="/landing-page">
             <LandingPage />
           </Route>
@@ -66,12 +63,6 @@ function App() {
           <Route path="/">
             <CreateAccountPage />
           </Route>
-<<<<<<< HEAD
-          <Route path="/">
-            <CreateAccountPage />
-          </Route>
-=======
->>>>>>> master
         </Switch>
     </Router>
     </UserContext.Provider >
