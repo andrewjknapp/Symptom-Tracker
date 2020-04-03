@@ -9,27 +9,27 @@ const state = {
         label: 'Cough',
         fill: false,
         lineTension: 0.5,
-        backgroundColor: 'green',
+        backgroundColor: '#3FE744',
         borderColor: '#3FE744',
-        borderWidth: 2,
+        borderWidth: 3,
         data: [3, 8, 5, 9, 2]
       },
       {
         label: 'Fever',
         fill: false,
         lineTension: 0.5,
-        backgroundColor: 'red',
+        backgroundColor: '#3F7CE7',
         borderColor: '#3F7CE7',
-        borderWidth: 2,
+        borderWidth: 3,
         data: [5, 7, 6, 4, 3]
       },
       {
         label: 'Stomachache',
         fill: false,
         lineTension: 0.5,
-        backgroundColor: 'red',
+        backgroundColor: '#E3290C',
         borderColor: '#E3290C',
-        borderWidth: 2,
+        borderWidth: 3,
         data: [4, 1, 3, 5, 3]
       }
     ]

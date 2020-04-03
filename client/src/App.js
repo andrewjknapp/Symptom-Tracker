@@ -38,14 +38,7 @@ function App() {
     }>
        <Router>      
         <Switch>
-<<<<<<< HEAD
-          <Route absolute path="/">
-            <CreateAccountPage />
-          </Route>
-
-=======
          
->>>>>>> master
         <Route absolute path="/landing-page">
             <LandingPage />
           </Route>
