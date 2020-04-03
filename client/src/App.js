@@ -14,7 +14,7 @@ function App() {
     <Fragment>
        <Router>
         <Switch>
-          <Route path="/">
+          <Route absolute path="/">
             <CreateAccountPage />
           </Route>
 
