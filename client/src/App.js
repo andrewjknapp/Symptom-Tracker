@@ -13,11 +13,7 @@ function App() {
     <Fragment>
        <Router>      
         <Switch>
-          <Route path="/">
-            <CreateAccountPage />
-          </Route>
-
-        <Route absolute path="/landing-page">
+          <Route absolute path="/landing-page">
             <LandingPage />
           </Route>
           <Route absolute path="/medical-profile">
@@ -37,6 +33,9 @@ function App() {
           </Route>
           <Route absolute path="/print-out">
             <PrintOut />
+          </Route>
+          <Route path="/">
+            <CreateAccountPage />
           </Route>
         </Switch>
     </Router>

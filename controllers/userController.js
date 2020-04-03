@@ -26,6 +26,9 @@ module.exports = {
 
         const { title, description, symptoms } = req.body
         const time = Date.now()
+        // let title="My Head is Hurting";
+        // let description="My head has been hurting since 12";
+        // let symptoms=[{type:"headache", severity:5}];
 
         db.User.findOneAndUpdate({ id: id }, {
             $push: {

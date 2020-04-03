@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PostCard from '../PostCard';
+import API from '../../utils/API';
 
  function LandingPage() {
 
@@ -50,6 +51,14 @@ import PostCard from '../PostCard';
             ]
         }
     ]);
+
+    useEffect(()=> {
+        API.getPosts()
+        .then((res)=>{
+            console.log(res.data);
+            setPosts(res.data);
+        })
+    },[])
 
     return (
         <article>

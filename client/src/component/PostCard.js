@@ -2,8 +2,9 @@ import React from "react";
 
 function PostCard(props) {
 
-  const { title, description, date, symptoms } = props.post;
-
+  const { title, description, date } = props.post;
+  let { symptoms } = props.post;
+  console.log(symptoms);
     return (
       <div className="card text-center m-5">
         <div className="card-header">{date}</div>

@@ -1,5 +1,6 @@
 import React, { useState, Fragment } from "react";
 import "./NewPost.css";
+import API from "../../../utils/API";
 
 function NewPost() {
 
@@ -7,8 +8,9 @@ function NewPost() {
   const [description, setDescription] = useState();
 
   const handleSubmit = e => {
-    console.log(title);
-    console.log(description);
+    e.preventDefault();
+    const symptoms = [{type: "Headache", severity: 9}]
+    API.savePost({ title, description, symptoms})
   }
 
   return (
