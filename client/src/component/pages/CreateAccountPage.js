@@ -162,10 +162,11 @@ function CreateAccountPage (props) {
             },
             body: JSON.stringify({
                 email: userEmail,
-                password: userPassword,
+                password: userPassword
             }),
         }).then(res => res.json())
             .then(json => {
+                console.log(json);
                 if (json.success) {
                     setErrors(...errors, {signInError: json.message})
                     setLoading({

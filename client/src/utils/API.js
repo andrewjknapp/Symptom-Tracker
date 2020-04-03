@@ -8,5 +8,9 @@ export default {
         const { title, description, symptoms } = post;
         const savedPost = { title, description, symptoms };
         return axios.post("/api/user/posts", savedPost);
+    },
+    deletePost: function(description) {
+        console.log(description);
+        return axios.put("/api/user/posts", {description});
     }
 }

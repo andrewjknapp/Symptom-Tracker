@@ -23,17 +23,26 @@ import API from '../../utils/API';
     ]);
 
     useEffect(()=> {
+        displayPosts();
+    },[])
+
+    function displayPosts() {
         API.getPosts()
         .then((res)=>{
-            console.log(res.data);
             setPosts(res.data.reverse());
         })
-    },[])
+    }
+
+    function deletePost(e) {
+        e.preventDefault();
+        API.deletePost(e.target.getAttribute("description"))
+        .then(()=>displayPosts())
+    }
 
     return (
         <article>
             <h1>Symptom Posts</h1>
-            {posts.map(userPost => <PostCard post={userPost}/>)}
+            {posts.map(userPost => <PostCard post={userPost} deletePost={deletePost}/>)}
         </article>
     )
 }

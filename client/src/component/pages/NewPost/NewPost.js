@@ -1,22 +1,26 @@
 import React, { useState, Fragment } from "react";
 import "./NewPost.css";
 import API from "../../../utils/API";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 function NewPost() {
 
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
+  const [toLandingPage, setToLandingPage] = useState(false);
 
   const handleSubmit = e => {
     e.preventDefault();
     const symptoms = [{type: "Headache", severity: 9}]
     API.savePost({ title, description, symptoms});
-
+    setToLandingPage(true);
   }
+
+  
 
   return (
     <Fragment>
+      {toLandingPage ? <Redirect to='/landing-page' /> : null}
       <h1 className="mt-5">Create A New Entry</h1>
       <form>
         <div className="row my-5">
@@ -90,7 +94,7 @@ function NewPost() {
               ></input>
               <label className="form-check-label">Symptom 5</label>
             </div>
-            <button onClick={handleSubmit} className="btn btn-primary">Submit</button>
+            <Link to="/landing-page"><button onClick={handleSubmit} className="btn btn-primary">Submit</button></Link>
           </div>
           <div className="col-sm-4"></div>
         </div>
