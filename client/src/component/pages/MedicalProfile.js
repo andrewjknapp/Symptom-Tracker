@@ -1,4 +1,4 @@
-import React, { Fragment, Component, useState } from "react";
+import React, { useState } from "react";
 
 function MedicalProfile() {
     const [medCount, setMedCount] = useState(1);
@@ -9,7 +9,7 @@ function MedicalProfile() {
         <article>
 
             <h1>[Name's] Medical InhtmlFormation</h1>
-            <htmlForm>
+            <form>
                 <div>
                     <h2>General InhtmlFormation</h2>
                     <label htmlFor='DOB'>Date of Birth: </label>
@@ -33,15 +33,21 @@ function MedicalProfile() {
                     <input id='yes' name='surgery' type='radio' value='yes'></input>
                     <label htmlFor='surgeryYes'>Yes</label>
                     <table id='table'>
-                        <th>Type</th>
-                        <th>Year</th>
-                        {[...Array(medCount)].map((m, i) => (
-                            <tr key={i}>
-                                <td><input type="input" id="surgeryType" name="type" /></td>
-                                <td><input type="input" id="surgeryYear" name="year" /></td>
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Year</th>
                             </tr>
+                        </thead>
+                        <tbody>
+                            {[...Array(medCount)].map((m, i) => (
+                                <tr key={i}>
+                                    <td><input type="input" id="surgeryType" name="type" /></td>
+                                    <td><input type="input" id="surgeryYear" name="year" /></td>
+                                </tr>
 
-                        ))}
+                            ))}
+                        </tbody>
                     </table>
                     <button type='button' id='add' onClick={updateMed}>Add</button>
                     <br></br>
@@ -52,20 +58,23 @@ function MedicalProfile() {
                     <p>Please list all current medicines and supplements</p>
                     <table id='table'>
                         <thead>
-                            <th>Medicine or Supplement</th>
-                            <th>Dosage</th>
-                            <th>How Much?</th>
-                        </thead>
-                        {[...Array(medCount)].map((m, i) => (
-                            <tr key={i}>
-                                <td><input type="input" id="medname" name="medname" /></td>
-                                <td><input type="input" id="medname" name="dosage" /></td>
-                                <td><input type="input" id="medname" name="howmuch" /></td>
+                            <tr>
+                                <th>Medicine or Supplement</th>
+                                <th>Dosage</th>
+                                <th>How Much?</th>
                             </tr>
-                        ))}
-                        <br></br>
-                        <button type='button' id='add' onClick={updateMed}>Add</button>
+                        </thead>
+                        <tbody>
+                            {[...Array(medCount)].map((m, i) => (
+                                <tr key={i}>
+                                    <td><input type="input" id="medname" name="medname" /></td>
+                                    <td><input type="input" id="medname" name="dosage" /></td>
+                                    <td><input type="input" id="medname" name="howmuch" /></td>
+                                </tr>
+                            ))}
+                        </tbody>
                     </table>
+                    <button type='button' id='add' onClick={updateMed}>Add</button>
                     <h2>Allergies</h2>
                     <p>Are you allergic to any medication?</p>
                     <input id='yes' name='allergies' type='radio' value='yes' />
@@ -94,7 +103,7 @@ function MedicalProfile() {
                 <div>
                     <button type='submit'>Submit</button>
                 </div>
-            </htmlForm>
+            </form>
         </article>
 
     )
