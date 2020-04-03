@@ -40,21 +40,24 @@ function App() {
         <Switch>
          
         <Route absolute path="/landing-page">
+            <Navbar />
             <LandingPage />
           </Route>
           <Route absolute path="/medical-profile">
-          <Navbar />
+            <Navbar />
             <MedicalProfile />
           </Route>
           <Route absolute path="/find-physician">
-          <Navbar />
+            <Navbar />
 
             {/* <FindPhysician/> */}
           </Route>
           <Route absolute path="/chart">
+            <Navbar />
             <Chart />
           </Route>
           <Route absolute path="/new-post">
+            <Navbar />
             <NewPost />
           </Route>
           <Route absolute path="/print-out">

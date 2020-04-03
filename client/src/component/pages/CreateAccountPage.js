@@ -284,7 +284,7 @@ function CreateAccountPage (props) {
 
 
                 {/* Ternary Operator to render medical profile and button based on login token */}
-            <div><MedicalProfile />
+            <div>
               <button onClick={logout}> Logout</button>
             </div>
                 </div>
