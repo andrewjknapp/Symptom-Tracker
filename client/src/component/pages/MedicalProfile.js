@@ -7,7 +7,7 @@ function MedicalProfile() {
     }
     return (
         <article>
-      
+
             <h1>[Name's] Medical Information</h1>
             <form>
                 <div>
@@ -33,10 +33,8 @@ function MedicalProfile() {
                     <input id='yes' name='surgery' type='radio' value='yes'></input>
                     <label for='surgeryYes'>Yes</label>
                     <table id='table'>
-                        <thead>
-                            <th>Type</th>
-                            <th>Year</th>
-                        </thead>
+                        <th>Type</th>
+                        <th>Year</th>
                         {[...Array(medCount)].map((m, i) => (
                             <tr key={i}>
                                 <td><input type="input" id="surgeryType" name="type" /></td>
@@ -44,8 +42,8 @@ function MedicalProfile() {
                             </tr>
 
                         ))}
-                        <button type='button' id='add' onClick={updateMed}>Add</button>
                     </table>
+                    <button type='button' id='add' onClick={updateMed}>Add</button>
                     <br></br>
                     <input id='no' name='surgery' type='radio' value='no'></input>
                     <label for='surgeryNo'>No</label>
