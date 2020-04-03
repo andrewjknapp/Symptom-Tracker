@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import MedicalProfile from "./MedicalProfile";
 // import LoginPage from "./LoginPage";
+import UserContext from "../../utils/UserContext";
 
 import "whatwg-fetch";
 
@@ -45,26 +46,7 @@ function CreateAccountPage (props) {
         userEmail: '',
         userPassword: '',
     });
-    // const[logout, setLogOut] = useState({
-    //     token: '',    
-    // });
 
-        // this.onSignInChange = this.onSignInChange.bind(this);
-        // this.onSignUpChange = this.onSignUpChange.bind(this);
-        
-        
-      
-        // this.onSignIn = this.onSignIn.bind(this);
-        // this.onSignUp = this.onSignUp.bind(this);
-        // this.logout = this.logout.bind(this);
-    //replace componentDidMount with useEffect
-
-
-
-
-
-
-    // componentDidMount() 
     useEffect(() => {
         const obj = getFromStorage('symptom_tracker');
         if (obj && obj.token) {
@@ -95,7 +77,8 @@ function CreateAccountPage (props) {
         }
     }, [])
 
-    const onSignUp = () => {
+    const onSignUp = (e) => {
+        e.preventDefault();
         //grab state and post request to backend
         const {
             firstName,
@@ -121,8 +104,9 @@ function CreateAccountPage (props) {
             }),
         }).then(res => res.json())
             .then(json => {
+                console.log("response")
                 if (json.success) {
-                    setErrors(...errors, {signUpError: json.message})
+                    // setErrors(...errors, {signUpError: json.message})
                     setLoading({
                         isLoading: false,
                     })
@@ -145,7 +129,8 @@ function CreateAccountPage (props) {
             });
     }
 
-    const onSignIn = () => {
+    const onSignIn = (e) => {
+        e.preventDefault();
         const {
             userEmail,
             userPassword,
@@ -239,26 +224,9 @@ function CreateAccountPage (props) {
 
     const { email, password, firstName, lastName } = signUp
     const { userEmail, userPassword } = signIn
-    // render() {
-    //     const {
-    //         isLoading,
-    //         token,
-    //         signInError,
-    //         signInEmail,
-    //         signInPassword,
-    //         signUpFirstName,
-    //         signUpLastName,
-    //         signUpEmail,
-    //         signUpPassword,
-    //         signUpError,
 
-    //     } = this.state;
-    //     console.log(signUpLastName, signInEmail, signUpPassword)
-    //     if (isLoading) {
-    //         return (<div><p>Loading...</p></div>)
-    //     }
-    //     if (!token) {
-            return (
+
+    return (
                 <div>
                     <form>
                         <label htmlFor="username">Email:</label>
