@@ -48,19 +48,6 @@ function App() {
             <Navbar />
             <MedicalProfile />
           </Route>
-<<<<<<< HEAD
-          <Route absolute path="/find-physician">
-            <Navbar />
-
-            {/* <FindPhysician/> */}
-          </Route>
-          <Route absolute path="/chart">
-            <Navbar />
-            <Chart />
-          </Route>
-          <Route absolute path="/new-post">
-            <Navbar />
-=======
           <Route absolute path="/additional-medical-support">
           <Navbar />
           <AdditionalMedicalSupport />
@@ -71,7 +58,6 @@ function App() {
           </Route>
           <Route absolute path="/new-post">
           <Navbar />
->>>>>>> master
             <NewPost />
           </Route>
           <Route absolute path="/print-out">
