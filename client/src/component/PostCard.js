@@ -4,9 +4,9 @@ function PostCard(props) {
 
   const { title, description, date } = props.post;
   let { symptoms } = props.post;
-
+  console.log(props.key);
     return (
-      <div className="card text-center m-5">
+      <div key={props.keyNumber} className="card text-center m-5">
         <div className="card-header">{date}</div>
         <div className="card-body">
           <h5 className="card-title">{title}</h5>

@@ -42,7 +42,7 @@ import API from '../../utils/API';
     return (
         <article>
             <h1>Symptom Posts</h1>
-            {posts.map(userPost => <PostCard post={userPost} deletePost={deletePost}/>)}
+            {posts.map((userPost, i) => <PostCard keyNumber={i} post={userPost} deletePost={deletePost}/>)}
         </article>
     )
 }
