@@ -54,9 +54,6 @@ router.post("/account/signup", (req, res) => {
                 message: 'Error: Account already exists.'
             });
         }
-        
-    
-
 
         //save the new user
 
@@ -67,21 +64,10 @@ router.post("/account/signup", (req, res) => {
         newUser.lastName = lastName;
         newUser.password = newUser.generateHash(password);
         newUser.save()
-        .then(user => res.json(user))
+        .then(user => {res.json(user);
+        console.log(user);
+        }   )
         .catch(err => console.log(err));
-        // newUser.save((err, user) => 
-        // {
-        //     if (err) {
-        //         res.send({
-        //             success: false,
-        //             message: 'Error: Server error'
-        //         });
-        //     }
-        //     res.send({
-        //         success: true,
-        //         message: 'Signed up'
-        //     });
-        // });
     });
 })
 
