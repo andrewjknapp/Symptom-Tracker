@@ -1,25 +1,32 @@
-import React, { Fragment, Component, useState } from "react";
+import React, { useState } from "react";
+import "../assets/css/MedicalProfile.css";
+
 
 function MedicalProfile() {
+    const [surgeryCount, setSurgeryCount] = useState(1);
+    const updateSurgery = () => {
+        setSurgeryCount(surgeryCount + 1)
+    }
+    
     const [medCount, setMedCount] = useState(1);
     const updateMed = () => {
         setMedCount(medCount + 1)
     }
     return (
         <article>
-      
+
             <h1>[Name's] Medical Information</h1>
             <form>
                 <div>
                     <h2>General Information</h2>
-                    <label for='DOB'>Date of Birth: </label>
+                    <label htmlFor='DOB'>Date of Birth: </label>
                     <input name='DOB' type='date'></input>
 
                     <p>Please select the sex assigned to you at birth:</p>
                     <input type="radio" id="male" name="gender" value="male" />
-                    <label for="male">Male</label>
+                    <label htmlFor="male">Male</label>
                     <input type="radio" id="female" name="gender" value="female" />
-                    <label for="female">Female</label>
+                    <label htmlFor="female">Female</label>
                 </div>
 
                 <div>
@@ -31,70 +38,78 @@ function MedicalProfile() {
                     <h2>Past Surgical History</h2>
                     <p>Have you ever had surgery?</p>
                     <input id='yes' name='surgery' type='radio' value='yes'></input>
-                    <label for='surgeryYes'>Yes</label>
+                    <label htmlFor='surgeryYes'>Yes</label>
                     <table id='table'>
                         <thead>
-                            <th>Type</th>
-                            <th>Year</th>
-                        </thead>
-                        {[...Array(medCount)].map((m, i) => (
-                            <tr key={i}>
-                                <td><input type="input" id="surgeryType" name="type" /></td>
-                                <td><input type="input" id="surgeryYear" name="year" /></td>
+                            <tr>
+                                <th>Type</th>
+                                <th>Year</th>
                             </tr>
+                        </thead>
+                        <tbody>
+                            {[...Array(surgeryCount)].map((m, i) => (
+                                <tr key={i}>
+                                    <td><input type="input" id="surgeryType" name="type" /></td>
+                                    <td><input type="input" id="surgeryYear" name="year" /></td>
+                                </tr>
 
-                        ))}
-                        <button type='button' id='add' onClick={updateMed}>Add</button>
+                            ))}
+                        </tbody>
                     </table>
+                    <button className='buttons' type='button' id='add' onClick={updateSurgery}>Add</button>
                     <br></br>
                     <input id='no' name='surgery' type='radio' value='no'></input>
-                    <label for='surgeryNo'>No</label>
+                    <label htmlFor='surgeryNo'>No</label>
 
                     <h2>Current Medications</h2>
                     <p>Please list all current medicines and supplements</p>
                     <table id='table'>
                         <thead>
-                            <th>Medicine or Supplement</th>
-                            <th>Dosage</th>
-                            <th>How Much?</th>
-                        </thead>
-                        {[...Array(medCount)].map((m, i) => (
-                            <tr key={i}>
-                                <td><input type="input" id="medname" name="medname" /></td>
-                                <td><input type="input" id="medname" name="dosage" /></td>
-                                <td><input type="input" id="medname" name="howmuch" /></td>
+                            <tr>
+                                <th>Medicine or Supplement</th>
+                                <th>Dosage</th>
+                                <th>How Much?</th>
                             </tr>
-                        ))}
-                        <br></br>
-                        <button type='button' id='add' onClick={updateMed}>Add</button>
+                        </thead>
+                        <tbody>
+                            {[...Array(medCount)].map((m, i) => (
+                                <tr key={i}>
+                                    <td><input type="input" id="medname" name="medname" /></td>
+                                    <td><input type="input" id="medname" name="dosage" /></td>
+                                    <td><input type="input" id="medname" name="howmuch" /></td>
+                                </tr>
+                            ))}
+                        </tbody>
                     </table>
+                    <button className='buttons' type='button' id='add' onClick={updateMed}>Add</button>
+                    <br></br>
                     <h2>Allergies</h2>
                     <p>Are you allergic to any medication?</p>
                     <input id='yes' name='allergies' type='radio' value='yes' />
-                    <label for='allergies'>Yes </label>
+                    <label htmlFor='allergies'>Yes </label>
                     <input placeholder='Please list...'></input>
                     <br></br>
                     <input id='no' name='surgery' type='radio' value='no' />
-                    <label for='surgery'>No</label>
+                    <label htmlFor='surgery'>No</label>
 
                     <p>Are you allergic to latex?</p>
                     <input id='surgery' name='surgeryYes' type='radio'></input>
-                    <label for='surgeryYes'>Yes</label>
+                    <label htmlFor='surgeryYes'>Yes</label>
 
                     <br></br>
                     <input name='surgeryNo' type='radio'></input>
-                    <label for='surgeryNo'>No</label>
+                    <label htmlFor='surgeryNo'>No</label>
                     <p>Are you allergic to any foods?</p>
                     <input id='surgery' name='surgeryYes' type='radio'></input>
-                    <label for='surgeryYes'>Yes </label>
+                    <label htmlFor='surgeryYes'>Yes </label>
                     <input placeholder='Please list...'></input>
                     <br></br>
                     <input name='surgeryNo' type='radio'></input>
-                    <label for='surgeryNo'>No</label>
+                    <label htmlFor='surgeryNo'>No</label>
 
                 </div>
                 <div>
-                    <button type='submit'>Submit</button>
+                    <button className='buttons' type='submit'>Submit</button>
                 </div>
             </form>
         </article>
