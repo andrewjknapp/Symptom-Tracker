@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import "../assets/css/MedicalProfile.css";
+
 
 function MedicalProfile() {
     const [surgeryCount, setSurgeryCount] = useState(1);
@@ -13,10 +15,10 @@ function MedicalProfile() {
     return (
         <article>
 
-            <h1>[Name's] Medical InhtmlFormation</h1>
+            <h1>[Name's] Medical Information</h1>
             <form>
                 <div>
-                    <h2>General InhtmlFormation</h2>
+                    <h2>General Information</h2>
                     <label htmlFor='DOB'>Date of Birth: </label>
                     <input name='DOB' type='date'></input>
 

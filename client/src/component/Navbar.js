@@ -1,5 +1,5 @@
-import React, { Fragment } from "react";
-import { BrowserRouter as Router, Switch, Route, Link, useRouteMatch, useParams } from "react-router-dom";
+import React from "react";
+import { BrowserRouter as Link } from "react-router-dom";
 import "./assets/css/Navbar.css";
 
 
@@ -7,7 +7,7 @@ function Navbar() {
     return (
 
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a className="navbar-brand" href="#">Symptom Tracker</a>
+            <Link className="navbar-brand">Symptom Tracker</Link>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>
