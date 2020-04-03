@@ -18,8 +18,11 @@ function AdditionalMedicalSupport() {
 
 
         <Fragment>
-            <a onClick={showHospital} >Find a Hospital</a>
-            <a onClick={showService}>Preventative Services</a>
+            <div className='buttons'>
+            <a className='buttons'  onClick={showHospital} >Find a Hospital </a>
+         
+            <a className='buttons' onClick={showService}>Preventative Services</a>
+            </div>
             {
                 hospital ? <iframe src="http://www.ushospitalfinder.com/widgets/widget" width="400" height="200" frameborder="0"> </iframe> : ''
             }
