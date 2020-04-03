@@ -1,6 +1,16 @@
-.buttons {
+.buttonDiv{
     display: flex;
     justify-content: center;    
     align-items: center;
-position: absolute;
+}
+
+
+.buttons {
+    display: inline-block;
+    padding: 15px 32px;
+    background-color: grey;
+    border-radius: 25px;
+    font-size: 18px;
+    margin-top: 10px;
+    margin-left: 5px;
 }

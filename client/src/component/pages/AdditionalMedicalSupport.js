@@ -1,5 +1,5 @@
 import React, { Fragment, Component, useState } from "react";
-
+import "../assets/css/AdditionalMedicalSupport.css";
 
 
 function AdditionalMedicalSupport() {
@@ -18,10 +18,9 @@ function AdditionalMedicalSupport() {
 
 
         <Fragment>
-            <div className='buttons'>
-            <a className='buttons'  onClick={showHospital} >Find a Hospital </a>
-         
-            <a className='buttons' onClick={showService}>Preventative Services</a>
+            <div className='buttonDiv' >
+            <a className='buttons' onClick={showHospital} >Find a Hospital</a>
+            <a  className='buttons' onClick={showService}>Preventative Services</a>
             </div>
             {
                 hospital ? <iframe src="http://www.ushospitalfinder.com/widgets/widget" width="400" height="200" frameborder="0"> </iframe> : ''
