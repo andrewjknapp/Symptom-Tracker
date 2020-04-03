@@ -18,6 +18,7 @@ function PostCard(props) {
           {symptoms.map(symp => <li>{symp.type}, Severity: {symp.severity}</li>)}
           </ul>
         </div>
+        <button className="btn btn-primary mt-3">Delete</button>
         <div className="card-footer text-muted"></div>
       </div>
     );
