@@ -231,6 +231,7 @@ function CreateAccountPage (props) {
     const onSignUpChange = (e) => {
         const {name, value} = e.target;
         setSignUp({
+            ...signUp,
             [name]: value,
         });
     };
