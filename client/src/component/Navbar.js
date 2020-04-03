@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
 import { BrowserRouter as Router, Switch, Route, Link, useRouteMatch, useParams } from "react-router-dom";
 import "./assets/css/Navbar.css";
-import MedicalProfile from './pages/MedicalProfile'
 
 
 function Navbar() {
@@ -18,10 +17,10 @@ function Navbar() {
                         <Link to='/medical-profile' class="nav-link">Medical Profile</Link>
                     </li>
                     <li class="nav-item">
-                        <Link to='/find-physician' class="nav-link" >Find a Physician</Link>
+                        <Link to='/chart' id='chart' class="nav-link" >Chart</Link>
                     </li>
                     <li class="nav-item">
-                        <Link to='/chart' id='chart' class="nav-link" >Chart</Link>
+                        <Link to='/additional-medical-support' class="nav-link" >Additional Medical Support</Link>
                     </li>
                 </ul>
                 <span class="navbar-text nav-icons"><Link to='/new-post' id='newPost' class="nav-link" >🌡</Link></span>
