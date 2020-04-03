@@ -5,12 +5,21 @@ import React, { Fragment, Component, useState } from "react";
 function AdditionalMedicalSupport() {
     const [hospital, setHospital] = useState(false)
     const [service, setService] = useState(false)
+
+    const showHospital = () => {
+        setHospital(true)
+        setService(false)
+    }
+    const showService = () => {
+        setHospital(false)
+        setService(true)
+    }
     return (
 
 
         <Fragment>
-            <a onClick={() => setHospital(!hospital)} >Find a Hospital</a>
-            <a onClick={() => setService(!service)}>Preventative Services</a>
+            <a onClick={showHospital} >Find a Hospital</a>
+            <a onClick={showService}>Preventative Services</a>
             {
                 hospital ? <iframe src="http://www.ushospitalfinder.com/widgets/widget" width="400" height="200" frameborder="0"> </iframe> : ''
             }
@@ -21,6 +30,6 @@ function AdditionalMedicalSupport() {
             }
         </Fragment>
     )
-}
+    }
 
-export default AdditionalMedicalSupport;
+    export default AdditionalMedicalSupport;
