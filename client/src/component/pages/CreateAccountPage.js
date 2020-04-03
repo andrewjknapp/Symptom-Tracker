@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import MedicalProfile from "./MedicalProfile";
+import React, { useState, useEffect, useContext } from 'react';
+// import MedicalProfile from "./MedicalProfile";
 // import LoginPage from "./LoginPage";
 import UserContext from "../../utils/UserContext";
 import Logout from "../Logout";
-
 import "whatwg-fetch";
 
 import {
@@ -14,6 +13,7 @@ import { Redirect } from 'react-router';
 
 function CreateAccountPage(props) {
 
+    const { dispatch, state } = useContext(UserContext);
     //hook it up with some hooks for all our different states
     const [loading, setLoading] = useState({
         isLoading: true,
@@ -132,7 +132,10 @@ function CreateAccountPage(props) {
         setToken({
             token: json.token,
         })
-
+        dispatch({
+            type: "handleLogIn",
+            payload: json.userId,
+        })
     }
     const onSignIn = (e) => {
         e.preventDefault();

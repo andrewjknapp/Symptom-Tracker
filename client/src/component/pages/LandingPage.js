@@ -1,8 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import PostCard from '../PostCard';
+import UserContext from '../../utils/UserContext';
 
- function LandingPage() {
-
+function LandingPage() {
+    const {
+        state, dispatch
+    } = useContext(UserContext);
+    console.log(state, dispatch);
     const [posts, setPosts] = useState([
         {
             title: "My Head Hurts",
@@ -53,8 +57,8 @@ import PostCard from '../PostCard';
 
     return (
         <article>
-            <h1>Symptom Posts</h1>
-            {posts.map(userPost => <PostCard post={userPost}/>)}
+            <h1>Symptom Posts-{state.userId}</h1>
+            {posts.map(userPost => <PostCard post={userPost} />)}
         </article>
     )
 }

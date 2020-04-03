@@ -14,6 +14,12 @@ import LandingPage from './component/pages/LandingPage'
 import AdditionalMedicalSupport from "./component/pages/AdditionalMedicalSupport";
 
 function AppReducer(state, action) {
+  if (action.type === "handleLogIn") {
+    return {
+      ...state, userId: action.payload
+    }
+
+  }
   return state
 }
 
@@ -38,6 +44,7 @@ function App() {
       //any child of this, now has access to state and dispatch!
     }>
       <Router>
+        {/* conditional render of navbar(to-do) */}
         <Switch>
           <Route absolute path="/landing-page">
             <Navbar />
