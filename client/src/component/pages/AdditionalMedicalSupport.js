@@ -19,8 +19,8 @@ function AdditionalMedicalSupport() {
 
         <Fragment>
             <div className='buttonDiv' >
-                <a className='buttons glow-button' onClick={showHospital} >Find a Hospital</a>
-                <a className='buttons glow-button' onClick={showService}>Preventative Services</a>
+                <a className='supportButtons glow-button' onClick={showHospital} >Find a Hospital</a>
+                <a className='supportButtons glow-button' onClick={showService}>Preventative Services</a>
             </div>
             <div className='prevent'>
                 {
