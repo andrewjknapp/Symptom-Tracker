@@ -1,10 +1,15 @@
 
-.buttons {
+.medButtons {
     display: inline-block;
     padding: 5px 16px;
-    background-color: grey;
-    border-radius: 25px;
+    background-color: #3D52D5;
+    border-radius: 15px;
     font-size: 12px;
     margin-top: 10px;
     margin-left: 5px;
+}
+
+.medtext {
+color: #3C3744;
+font: ;
 }

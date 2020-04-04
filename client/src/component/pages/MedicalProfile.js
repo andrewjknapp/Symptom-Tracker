@@ -13,7 +13,7 @@ function MedicalProfile() {
         setMedCount(medCount + 1)
     }
     return (
-        <article>
+        <article class='medtext'>
 
             <h1>[Name's] Medical Information</h1>
             <form>
@@ -56,7 +56,7 @@ function MedicalProfile() {
                             ))}
                         </tbody>
                     </table>
-                    <button className='buttons' type='button' id='add' onClick={updateSurgery}>Add</button>
+                    <button className='medButtons' type='button' id='add' onClick={updateSurgery}>Add</button>
                     <br></br>
                     <input id='no' name='surgery' type='radio' value='no'></input>
                     <label htmlFor='surgeryNo'>No</label>
@@ -81,7 +81,7 @@ function MedicalProfile() {
                             ))}
                         </tbody>
                     </table>
-                    <button className='buttons' type='button' id='add' onClick={updateMed}>Add</button>
+                    <button className='medButtons' type='button' id='add' onClick={updateMed}>Add</button>
                     <br></br>
                     <h2>Allergies</h2>
                     <p>Are you allergic to any medication?</p>
@@ -109,7 +109,7 @@ function MedicalProfile() {
 
                 </div>
                 <div>
-                    <button className='buttons' type='submit'>Submit</button>
+                    <button className='medButtons' type='submit'>Submit</button>
                 </div>
             </form>
         </article>
