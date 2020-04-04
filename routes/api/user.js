@@ -17,11 +17,13 @@ router.route("/physicians")
     .put(userController.removePhysician) //delete physician
 
 router.route("/posts")
-    .get(userController.getPosts) //find all user posts
     //Expexts req.body {title: "", description: "", symptoms: [{ type:"", severity: num }]}
     .post(userController.addPost) //add new user post
     //.put() //update post?
     .put(userController.deletePost) //remove post
+
+router.route("/posts/:id")
+    .get(userController.getPosts)
 
 router.route("/profile")
     .get(userController.getProfile) //return user profile information

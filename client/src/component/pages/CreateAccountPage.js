@@ -123,7 +123,7 @@ function CreateAccountPage(props) {
         setLoading({
             isLoading: false,
         })
-        setInStorage('symptom_tracker', { token: json.token });
+        setInStorage('symptom_tracker', { token: json.token, firstName: json.firstName, id: json.userId  });
         setSignIn({
             pasword: userPassword,
             email: userEmail,
@@ -154,10 +154,11 @@ function CreateAccountPage(props) {
             },
             body: JSON.stringify({
                 email: userEmail,
-                password: userPassword,
+                password: userPassword
             }),
         }).then(res => res.json())
             .then(json => {
+                //console.log(json);
                 if (json.success) {
                     onSignInSuccess(json);
                     setToLandingPage(true);
@@ -178,6 +179,7 @@ function CreateAccountPage(props) {
             isLoading: true,
         })
         const obj = getFromStorage('symptom_tracker');
+        
         if (obj && obj.token) {
             const { token } = obj;
             //verify token

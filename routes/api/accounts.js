@@ -117,25 +117,13 @@ router.post('/account/signin', (req, res, next) => {
                 message: 'Error: Invalid'
             });
         }
-
-        //otherwise correct the user
-        const userSession = new UserSession();
-        userSession.userId = user._id;
-        userSession.save((err, doc) => {
-            if (err) {
-                return res.send({
-                    success: false,
-                    message: 'Error: server error'
-                });
-            }
-            return res.send({
-                success: true,
-                message: 'Valid sign in!!!',
-                token: doc._id,
-                userId: user._id,
-                //every time they log in they create a document id, the token points back to user id//
-            });
-
+        return res.send({
+            success: true,
+            message: 'Valid sign in',
+            token: doc._id,
+            userId: userSession.userId,
+            firstName: user.firstName
+            //every time they log in they create a document id, the token points back to user id//
         });
 
     });
