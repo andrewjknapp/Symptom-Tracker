@@ -2,32 +2,19 @@ import React, { useState, useEffect } from 'react';
 import MedicalProfile from "./MedicalProfile";
 // import LoginPage from "./LoginPage";
 import UserContext from "../../utils/UserContext";
+import Logout from "../Logout";
 
 import "whatwg-fetch";
 
 import {
     getFromStorage, setInStorage
 } from '../../utils/storage';
+import { Redirect } from 'react-router';
 
 
-function CreateAccountPage (props) {
-// class CreateAccountPage extends Component {
-    // constructor(props) {
-        // super(props);
-    //4 hooks needed (is loading, token, signups, signins...)
-        // this.state = {
-        //     isLoading: true,
-        //     token: '',
-        //     signUpError: '',
-        //     signInError: '',
-        //     signInEmail: '',
-        //     signInPassword: '',
-        //     signUpFirstName: '',
-        //     signUpEmail: '',
-        //     signUpPassword: '',
-        //     //split ^these into seperate components...
-        // };
+function CreateAccountPage(props) {
 
+    //hook it up with some hooks for all our different states
     const [loading, setLoading] = useState({
         isLoading: true,
     });
@@ -42,10 +29,12 @@ function CreateAccountPage (props) {
         signInError: '',
         signUpError: '',
     })
-    const[signIn, setSignIn] = useState({
+    const [signIn, setSignIn] = useState({
         userEmail: '',
         userPassword: '',
     });
+    const [toLandingPage, setToLandingPage] = useState(false);
+
 
     useEffect(() => {
         const obj = getFromStorage('symptom_tracker');
@@ -62,7 +51,7 @@ function CreateAccountPage (props) {
                         setLoading({
                             isLoading: false
                         })
-                    } 
+                    }
                     else {
                         setLoading({
                             isLoading: false
@@ -104,8 +93,8 @@ function CreateAccountPage (props) {
             }),
         }).then(res => res.json())
             .then(json => {
-                console.log("response")
-                if (json.success) {
+                console.log(json)
+                if (json) {
                     // setErrors(...errors, {signUpError: json.message})
                     setLoading({
                         isLoading: false,
@@ -116,6 +105,7 @@ function CreateAccountPage (props) {
                         firstName: '',
                         lastName: '',
                     });
+                    setToLandingPage(true)
                 } else {
                     setErrors({
                         signUpError: json.message,
@@ -128,7 +118,22 @@ function CreateAccountPage (props) {
 
             });
     }
+    const onSignInSuccess = (json) => {
 
+        setErrors({ ...errors, signInError: json.message })
+        setLoading({
+            isLoading: false,
+        })
+        setInStorage('symptom_tracker', { token: json.token });
+        setSignIn({
+            pasword: userPassword,
+            email: userEmail,
+        });
+        setToken({
+            token: json.token,
+        })
+
+    }
     const onSignIn = (e) => {
         e.preventDefault();
         const {
@@ -153,19 +158,10 @@ function CreateAccountPage (props) {
             .then(json => {
                 console.log(json);
                 if (json.success) {
-                    setErrors(...errors, {signInError: json.message})
-                    setLoading({
-                        isLoading: false,
-                    })
-                    setInStorage('symptom_tracker', { token: json.token });
-                    setSignIn({
-                        pasword: userPassword,
-                        email: userEmail,
-                    });
-                    setToken({
-                        token: json.token,
-                    })
+                    onSignInSuccess(json);
+                    setToLandingPage(true);
                 } else {
+
                     setErrors({
                         signInError: json.message,
                     })
@@ -208,14 +204,15 @@ function CreateAccountPage (props) {
         }
     }
     //destructure the object
-    const onSignInChange = (e) =>  {
-        const {name, value} = e.target;
+    const onSignInChange = (e) => {
+        const { name, value } = e.target;
         setSignIn({
+            ...signIn,
             [name]: value,
         });
     };
     const onSignUpChange = (e) => {
-        const {name, value} = e.target;
+        const { name, value } = e.target;
         setSignUp({
             ...signUp,
             [name]: value,
@@ -225,7 +222,71 @@ function CreateAccountPage (props) {
     const { email, password, firstName, lastName } = signUp
     const { userEmail, userPassword } = signIn
 
+    return toLandingPage ? <Redirect to='/landing-page' /> : (
+        <div>
+            <div className="container">
+                <div className="row">
+                    <div className="col-5">
+                        <form className="form-group">
+                            <label htmlFor="username">Email:</label>
+                            {/* each input should have a name (email) */}
+                            <input type="email"
+                                name="userEmail"
+                                placeholder="Email"
+                                id="email"
+                                value={userEmail}
+                                onChange={onSignInChange}
+                            />
 
+                            <label htmlFor="password">Password:</label>
+                            <input type="password"
+                                name="userPassword"
+                                placeholder="password"
+                                id="password"
+                                value={userPassword}
+                                onChange={onSignInChange}
+                            />
+
+                            <button onClick={onSignIn}
+                                className="btn btn-primary mt-3">Log In</button>
+                        </form>
+                    </div>
+                    <div className="col-5">
+                        <form className="form-group">
+                            <input type="text"
+                                name="firstName"
+                                placeholder="First Name"
+                                value={firstName}
+                                onChange={onSignUpChange} />
+                            <br />
+                            <input
+                                type="text"
+                                name="lastName"
+                                placeholder="Last Name"
+                                value={lastName}
+                                onChange={onSignUpChange}
+                            />
+                            <br />
+                            <input type="email" placeholder="Email"
+                                name="email"
+                                value={email}
+                                onChange={onSignUpChange}
+                            />
+                            <br />
+                            <input type="password" placeholder="password"
+                                name="password"
+                                value={password}
+                                onChange={onSignUpChange}
+                            />
+                            <br />
+
+                            <button onClick={onSignUp}
+                                className="btn btn-primary mt-3">Sign Up</button>
+                        </form>
+                    </div>
+                    <Logout />
+
+<<<<<<< HEAD
     return (
                 <div>
                     <form>
@@ -287,9 +348,21 @@ function CreateAccountPage (props) {
             <div>
               <button onClick={logout}> Logout</button>
             </div>
+=======
+>>>>>>> master
                 </div>
-            );
-      
+
+
+
+
+
+            </div>
+
+            {/* Ternary Operator to render medical profile and button based on login token */}
+
+        </div>
+    );
+
 }
 
 
