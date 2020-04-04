@@ -33,7 +33,7 @@ function App() {
     userId: "",
   }
 
-  const [state, dispatch] = useReducer(AppReducer, initialState)
+  const [state, dispatch]= useReducer(AppReducer, initialState)
   //gives back state and dispatch in brackets
 
   return (
@@ -43,10 +43,10 @@ function App() {
       }
       //any child of this, now has access to state and dispatch!
     }>
-      <Router>
+       <Router>      
         <Switch>
-
-          <Route absolute path="/landing-page">
+         
+        <Route absolute path="/landing-page">
             <Navbar />
             <LandingPage />
           </Route>
@@ -55,26 +55,26 @@ function App() {
             <MedicalProfile />
           </Route>
           <Route absolute path="/additional-medical-support">
-            <Navbar />
-            <AdditionalMedicalSupport />
+          <Navbar />
+          <AdditionalMedicalSupport />
           </Route>
           <Route absolute path="/chart">
-            <Navbar />
+          <Navbar />
             <Chart />
           </Route>
           <Route absolute path="/new-post">
-            <Navbar />
+          <Navbar />
             <NewPost />
           </Route>
           <Route absolute path="/print-out">
-            <Navbar />
+          <Navbar />
             <PrintOut />
           </Route>
           <Route path="/">
             <CreateAccountPage />
           </Route>
         </Switch>
-      </Router>
+    </Router>
     </UserContext.Provider >
   );
 }
