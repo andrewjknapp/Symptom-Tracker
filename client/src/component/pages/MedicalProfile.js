@@ -23,10 +23,10 @@ function MedicalProfile() {
                     <input name='DOB' type='date'></input>
 
                     <p class='medBody1'>Please select the sex assigned to you at birth:</p>
-                    <input class='medBody2' type="radio" id="male" name="gender" value="male" />
-                    <label htmlFor="male">Male</label>
-                    <input class='medBody2' type="radio" id="female" name="gender" value="female" />
-                    <label htmlFor="female">Female</label>
+                    <input class='medInput' type="radio" id="male" name="gender" value="male" />
+                    <label class='medBody2' htmlFor="male">Male</label>
+                    <input class='medInput' type="radio" id="female" name="gender" value="female" />
+                    <label class='medBody2' htmlFor="female">Female</label>
                 </div>
 
                 <div>
@@ -37,8 +37,8 @@ function MedicalProfile() {
 
                     <h2>Past Surgical History</h2>
                     <p>Have you ever had surgery?</p>
-                    <input class='medBody2'id='yes' name='surgery' type='radio' value='yes'></input>
-                    <label htmlFor='surgeryYes'>Yes</label>
+                    <input class='medInput'id='yes' name='surgery' type='radio' value='yes'></input>
+                    <label class='medBody2' htmlFor='surgeryYes'>Yes</label>
                     <table id='table'>
                         <thead>
                             <tr>
@@ -58,8 +58,8 @@ function MedicalProfile() {
                     </table>
                     <button className='medButtons' type='button' id='add' onClick={updateSurgery}>Add</button>
                     <br></br>
-                    <input class='medBody2' id='no' name='surgery' type='radio' value='no'></input>
-                    <label htmlFor='surgeryNo'>No</label>
+                    <input class='medInput' id='no' name='surgery' type='radio' value='no'></input>
+                    <label class='medBody2' htmlFor='surgeryNo'>No</label>
 
                     <h2>Current Medications</h2>
                     <p>Please list all current medicines and supplements</p>
@@ -85,27 +85,27 @@ function MedicalProfile() {
                     <br></br>
                     <h2>Allergies</h2>
                     <p>Are you allergic to any medication?</p>
-                    <input id='yes' name='allergies' type='radio' value='yes' />
-                    <label htmlFor='allergies'>Yes </label>
-                    <input placeholder='Please list...'></input>
+                    <input class='medInput' id='yes' name='allergies' type='radio' value='yes' />
+                    <label class='medBody2' htmlFor='allergies'>Yes</label>
+                    <input class='medInput' placeholder='Please list...'></input>
                     <br></br>
-                    <input id='no' name='surgery' type='radio' value='no' />
-                    <label htmlFor='surgery'>No</label>
+                    <input class='medInput' id='no' name='surgery' type='radio' value='no' />
+                    <label class='medBody2' htmlFor='surgery'>No</label>
 
                     <p>Are you allergic to latex?</p>
-                    <input id='surgery' name='surgeryYes' type='radio'></input>
-                    <label htmlFor='surgeryYes'>Yes</label>
+                    <input class='medInput' id='surgery' name='surgeryYes' type='radio'></input>
+                    <label class='medBody2' htmlFor='surgeryYes'>Yes</label>
 
                     <br></br>
-                    <input name='surgeryNo' type='radio'></input>
-                    <label htmlFor='surgeryNo'>No</label>
+                    <input class='medInput' name='surgeryNo' type='radio'></input>
+                    <label class='medBody2' htmlFor='surgeryNo'>No</label>
                     <p>Are you allergic to any foods?</p>
-                    <input class='medBody2' id='surgery' name='surgeryYes' type='radio'></input>
-                    <label htmlFor='surgeryYes'>Yes </label>
-                    <input class='medBody2' placeholder='Please list...'></input>
+                    <input class='medInput' id='surgery' name='surgeryYes' type='radio'></input>
+                    <label class='medBody2' htmlFor='surgeryYes'>Yes </label>
+                    <input class='medInput' placeholder='Please list...'></input>
                     <br></br>
-                    <input name='surgeryNo' type='radio'></input>
-                    <label htmlFor='surgeryNo'>No</label>
+                    <input class='medInput' name='surgeryNo' type='radio'></input>
+                    <label class='medBody2' htmlFor='surgeryNo'>No</label>
 
                 </div>
                 <div>
