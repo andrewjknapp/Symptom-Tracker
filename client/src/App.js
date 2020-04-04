@@ -14,6 +14,12 @@ import LandingPage from './component/pages/LandingPage'
 import AdditionalMedicalSupport from "./component/pages/AdditionalMedicalSupport";
 
 function AppReducer(state, action) {
+  if (action.type === "handleLogIn") {
+    return {
+      ...state, userId: action.payload
+    }
+
+  }
   return state
 }
 
@@ -39,8 +45,13 @@ function App() {
     }>
        <Router>      
         <Switch>
+<<<<<<< HEAD
          
         <Route absolute path="/landing-page">
+=======
+
+          <Route absolute path="/landing-page">
+>>>>>>> master
             <Navbar />
             <LandingPage />
           </Route>

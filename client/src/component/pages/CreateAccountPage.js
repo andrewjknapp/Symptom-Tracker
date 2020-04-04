@@ -1,19 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import MedicalProfile from "./MedicalProfile";
-// import LoginPage from "./LoginPage";
+import React, { useState, useEffect, useContext } from 'react';
 import UserContext from "../../utils/UserContext";
 import Logout from "../Logout";
-
 import "whatwg-fetch";
 
 import {
     getFromStorage, setInStorage
 } from '../../utils/storage';
 import { Redirect } from 'react-router';
+import LogInHeader from '../sections/LogInHeader';
 
 
 function CreateAccountPage(props) {
 
+    const { dispatch, state } = useContext(UserContext);
     //hook it up with some hooks for all our different states
     const [loading, setLoading] = useState({
         isLoading: true,
@@ -132,7 +131,10 @@ function CreateAccountPage(props) {
         setToken({
             token: json.token,
         })
-
+        dispatch({
+            type: "handleLogIn",
+            payload: json.userId,
+        })
     }
     const onSignIn = (e) => {
         e.preventDefault();
@@ -227,6 +229,9 @@ function CreateAccountPage(props) {
         <div>
             <div className="container">
                 <div className="row">
+                    <LogInHeader />
+                </div>
+                <div className="row">
                     <div className="col-5">
                         <form className="form-group">
                             <label htmlFor="username">Email:</label>
@@ -306,43 +311,3 @@ function CreateAccountPage(props) {
 export default CreateAccountPage;
 
 
-
-
-
-// function CreateAccountPage() {
-//     return (
-//         <div>
-//             <h1>Sign Up Page</h1>
-            // <form>
-            //     <input type="text" 
-            //     placeholder="First Name" 
-            //     value={signUpFirstName}
-            //     onChange={this.onTextBoxChangeSignUpFirstName} />
-            //     <br />
-            //     <input 
-            //     type="text" 
-            //     placeholder="Last Name"
-            //     value={signUpLastName}
-            //     onChange={this.onTextBoxChangeSignUpLastName}
-            //     />
-            //     <br />
-            //     <input type="username" placeholder="Email" 
-            //     value={signUpEmail}
-            //     onChange={this.onTextBoxChangeSignUpEmail}
-            //     />
-            //     <br />
-            //     <input type="password" placeholder="password"
-            //     value={signUpPassword}
-            //     onChange={this.onTextBoxChangeSignUpPassword}
-            //     />
-            //     <br />
-            //     <button onClick={this.onSignUp} 
-            //     className="btn btn-primary mt-3">Sign Up</button>
-            // </form>
-//         </div>
-//     )
-
-// }
-// //will need bcryptjs?//
-// //
-// export default CreateAccountPage;
