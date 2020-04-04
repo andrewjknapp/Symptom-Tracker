@@ -35,9 +35,19 @@
     padding-right: 10px;
 }
 
+.navbarTitle:hover {
+    color: #FBFFF1;
+    text-decoration: none;
+}
+
 .navLink {
     font-family: 'Kanit';
     color: #B4C5E4;
     padding-left: 10px;
     padding-right: 10px;
+}
+
+.navLink:hover {
+    color: #FBFFF1;
+    text-decoration: none;
 }
