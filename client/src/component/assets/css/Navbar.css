@@ -21,3 +21,15 @@
 .nav-icons {
     font-size: 1.5em;
 }
+
+.navColor {
+    background-color: #090C9B;
+}
+
+.navbarTitle {
+    color: #FBFFF1;
+    font-family: 'Kanit';
+    font-weight: 600;
+    font-size: 25px;
+    padding-right: 10px;
+}
