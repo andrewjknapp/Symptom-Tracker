@@ -1,5 +1,5 @@
-import React, { Fragment, useReducer, useContext } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import React, { useReducer } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 
 import UserContext from "./utils/UserContext";

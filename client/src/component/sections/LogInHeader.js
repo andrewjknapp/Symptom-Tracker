@@ -1,4 +1,6 @@
 import React from "react";
+import "../assets/css/colors.css";
+import "../assets/css/accountpage.css";
 
 
 function LogInHeader() {
@@ -6,7 +8,7 @@ function LogInHeader() {
     return (
         <div className="container">
             <div className="header">
-                <h1>Symptom Tracker</h1>
+                <h1 className="lightBlue">Symptom Tracker</h1>
                 <br />
                 <h3 id="">Please sign in below.</h3>
                 <br />

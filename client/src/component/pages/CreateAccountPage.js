@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
 import UserContext from "../../utils/UserContext";
-import Logout from "../Logout";
+// import Logout from "../Logout";
 import "whatwg-fetch";
 import "../assets/css/accountpage.css";
+import "../assets/css/colors.css";
 
 import {
     getFromStorage, setInStorage
@@ -252,7 +253,7 @@ function CreateAccountPage(props) {
                                 value={userEmail}
                                 onChange={onSignInChange}
                             />
-
+                            <br />
                             <label htmlFor="password">Password:</label>
                             <input type="password"
                                 name="userPassword"
@@ -261,11 +262,14 @@ function CreateAccountPage(props) {
                                 value={userPassword}
                                 onChange={onSignInChange}
                             />
-
+                            <br />
                             <button onClick={onSignIn}
                                 className="btn btn-primary mt-3">Log In</button>
                         </form>
                     </div>
+                    <br />
+                </div>
+                <div className="row">
                     <div className="col-5">
                         <form className="form-group">
                             <input type="text"

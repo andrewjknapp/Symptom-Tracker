@@ -1,9 +1,25 @@
-.body {
-    background-color: #B4C5E4;
-
+body {
+    background-image: url("../images/microscope.jpg");
 }
 
 h1 {
-    font-weight: 700;
+    font-weight: 1000;
+    font-size: 75px;
     font-family: Helvetica;
+    text-shadow: aqua;
+    color: #3C3744;
+    font-family: 'Kanit';
+}
+
+h3 {
+    text-align: center;
+    text-emphasis: emphasis;
+}
+
+h4 {
+    text-align: center;
+}
+
+form {
+    left: 20%;
 }
