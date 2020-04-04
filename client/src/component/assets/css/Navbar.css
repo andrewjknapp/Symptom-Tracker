@@ -33,3 +33,10 @@
     font-size: 25px;
     padding-right: 10px;
 }
+
+.navLink {
+    font-family: 'Kanit';
+    color: #B4C5E4;
+    padding-left: 10px;
+    padding-right: 10px;
+}
