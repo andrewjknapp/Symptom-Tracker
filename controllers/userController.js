@@ -14,8 +14,8 @@ module.exports = {
     },
 
     getPosts: function(req, res) {
-        
-        db.User.findOne({ id: id })
+        const userId = req.params.id;
+        db.User.findOne({ _id: userId })
         .then( userInfo => res.json(userInfo.posts))
         .catch(err => res.status(422).json(err));
         
@@ -24,13 +24,13 @@ module.exports = {
     addPost: function(req, res) {
         //receive object of post data and add to mongo db
 
-        const { title, description, symptoms } = req.body
+        const { title, description, symptoms, id } = req.body
         const time = Date.now()
         // let title="My Head is Hurting";
         // let description="My head has been hurting since 12";
         // let symptoms=[{type:"headache", severity:5}];
 
-        db.User.findOneAndUpdate({ id: id }, {
+        db.User.findOneAndUpdate({ _id: id }, {
             $push: {
                 posts: { title, description, symptoms, time }
             }
@@ -41,8 +41,8 @@ module.exports = {
 
     deletePost: function(req, res) {
         //receive id of post and delete from mongo db
-        const { description } = req.body;
-        db.User.findOneAndUpdate({ id: id }, 
+        const { description, id } = req.body;
+        db.User.findOneAndUpdate({ _id: id }, 
             { $pull: { "posts": { description } } } )
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));

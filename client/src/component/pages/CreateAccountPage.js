@@ -124,7 +124,7 @@ function CreateAccountPage(props) {
         setLoading({
             isLoading: false,
         })
-        setInStorage('symptom_tracker', { token: json.token });
+        setInStorage('symptom_tracker', { token: json.token, firstName: json.firstName, id: json.userId  });
         setSignIn({
             pasword: userPassword,
             email: userEmail,
@@ -156,7 +156,7 @@ function CreateAccountPage(props) {
             }),
         }).then(res => res.json())
             .then(json => {
-                console.log(json);
+                //console.log(json);
                 if (json.success) {
                     onSignInSuccess(json);
                     setToLandingPage(true);
@@ -177,6 +177,7 @@ function CreateAccountPage(props) {
             isLoading: true,
         })
         const obj = getFromStorage('symptom_tracker');
+        
         if (obj && obj.token) {
             const { token } = obj;
             //verify token
@@ -286,70 +287,6 @@ function CreateAccountPage(props) {
                     </div>
                     <Logout />
 
-<<<<<<< HEAD
-    return (
-                <div>
-                    <form>
-                        <label htmlFor="username">Email:</label>
-                        {/* each input should have a name (email) */}
-                        <input type="email"
-                            name="userEmail"
-                            placeholder="Email"
-                            value={userEmail}
-                            onChange={onSignInChange}
-                        />
-
-                        <label htmlFor="password">Password:</label>
-                        <input type="password"
-                            name="userPassword"
-                            placeholder="password"
-                            value={userPassword}
-                            onChange={onSignInChange}
-                        />
-                    
-                        <button onClick={onSignIn}
-                            className="btn btn-primary mt-3">Log In</button>
-                    </form>
-                    <br />
-                    <form>
-                        <input type="text"
-                            name="firstName"
-                            placeholder="First Name"
-                            value={firstName}
-                            onChange={onSignUpChange} />
-                        <br />
-                        <input
-                            type="text"
-                            name="lastName"
-                            placeholder="Last Name"
-                            value={lastName}
-                            onChange={onSignUpChange}
-                        />
-                        <br />
-                        <input type="email" placeholder="Email"
-                            name="email"
-                            value={email}
-                            onChange={onSignUpChange}
-                        />
-                        <br />
-                        <input type="password" placeholder="password"
-                            name="password"
-                            value={password}
-                            onChange={onSignUpChange}
-                        />
-                        <br />
-                        
-                        <button onClick={onSignUp}
-                            className="btn btn-primary mt-3">Sign Up</button>
-                    </form>
-
-
-                {/* Ternary Operator to render medical profile and button based on login token */}
-            <div>
-              <button onClick={logout}> Logout</button>
-            </div>
-=======
->>>>>>> master
                 </div>
 
 
