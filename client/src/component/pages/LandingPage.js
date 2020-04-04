@@ -1,9 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import PostCard from '../PostCard';
 import API from '../../utils/API';
+import UserContext from '../../utils/UserContext';
 
- function LandingPage() {
-
+function LandingPage() {
+    const {
+        state, dispatch
+    } = useContext(UserContext);
+    console.log(state, dispatch);
     const [posts, setPosts] = useState([
         {
             title: "My Head Hurts",
@@ -22,27 +26,27 @@ import API from '../../utils/API';
         }
     ]);
 
-    useEffect(()=> {
+    useEffect(() => {
         displayPosts();
-    },[])
+    }, [])
 
     function displayPosts() {
         API.getPosts()
-        .then((res)=>{
-            setPosts(res.data.reverse());
-        })
+            .then((res) => {
+                setPosts(res.data.reverse());
+            })
     }
 
     function deletePost(e) {
         e.preventDefault();
         API.deletePost(e.target.getAttribute("description"))
-        .then(()=>displayPosts())
+            .then(() => displayPosts())
     }
 
     return (
         <article>
             <h1>Symptom Posts</h1>
-            {posts.map((userPost, i) => <PostCard keyNumber={i} post={userPost} deletePost={deletePost}/>)}
+            {posts.map((userPost, i) => <PostCard keyNumber={i} post={userPost} deletePost={deletePost} />)}
         </article>
     )
 }

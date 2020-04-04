@@ -4,7 +4,7 @@ const router = require("express").Router();
 
 router.post("/account/signup", (req, res) => {
     const { body } = req;
-    const { 
+    const {
         firstName,
         lastName,
         password
@@ -64,16 +64,17 @@ router.post("/account/signup", (req, res) => {
         newUser.lastName = lastName;
         newUser.password = newUser.generateHash(password);
         newUser.save()
-        .then(user => {res.json(user);
-        console.log(user);
-        }   )
-        .catch(err => console.log(err));
+            .then(user => {
+                res.json(user);
+                console.log(user);
+            })
+            .catch(err => console.log(err));
     });
 })
 
 router.post('/account/signin', (req, res, next) => {
     const { body } = req;
-    const { 
+    const {
         password
     } = body;
     let {
@@ -111,20 +112,9 @@ router.post('/account/signin', (req, res, next) => {
         }
         const user = users[0];
         if (!user.validPassword(password)) {
-           return res.send({
-            success: false,
-            message: 'Error: Invalid'
-        });
-    }
-
-    //otherwise correct the user
-    const userSession = new UserSession();
-    userSession.userId = user._id;
-    userSession.save((err, doc) => {
-        if (err) {
             return res.send({
                 success: false,
-                message: 'Error: server error'
+                message: 'Error: Invalid'
             });
         }
         return res.send({
@@ -137,11 +127,9 @@ router.post('/account/signin', (req, res, next) => {
         });
 
     });
-
-});
 });
 
-router.get('/account/verify', (req, res, next) =>  {
+router.get('/account/verify', (req, res, next) => {
     const { query } = req;
     const { token } = query
     UserSession.find({
@@ -167,7 +155,7 @@ router.get('/account/verify', (req, res, next) =>  {
 
     });
 });
-router.get('/account/logout', (req, res, next) =>  {
+router.get('/account/logout', (req, res, next) => {
     const { query } = req;
     const { token } = query;
 
@@ -177,8 +165,8 @@ router.get('/account/logout', (req, res, next) =>  {
         _id: token,
         isDeleted: false
     }, {
-       $set:{
-           isDeleted:true
+        $set: {
+            isDeleted: true
         }
     }, null, (err, sessions) => {
         if (err) {
@@ -190,8 +178,8 @@ router.get('/account/logout', (req, res, next) =>  {
         }
 
         return res.send({
-                success: true,
-                message: 'Good'
+            success: true,
+            message: 'Good'
         });
     });
 });

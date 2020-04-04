@@ -8,7 +8,7 @@ module.exports = (app) => {
     app.post('/signup', (req, res, next) => {
 
         const { body } = req;
-        const { 
+        const {
             firstName,
             lastName,
             password
@@ -57,7 +57,7 @@ module.exports = (app) => {
                     success: false,
                     message: 'Error: Account already exists.'
                 });
-            } 
+            }
 
             //save the new user
 
@@ -86,7 +86,7 @@ module.exports = (app) => {
 
     app.post('/api/account/signin', (req, res, next) => {
         const { body } = req;
-        const { 
+        const {
             password
         } = body;
         let {
@@ -124,35 +124,37 @@ module.exports = (app) => {
             }
             const user = users[0];
             if (!user.validPassword(password)) {
-               return res.send({
-                success: false,
-                message: 'Error: Invalid'
-            });
-        }
-        const user = users[0];
-        //otherwise correct the user
-        const userSession = new UserSession();
-        
-        userSession.userID = "bill"//user._id;
-        userSession.save((err, doc) => {
-            if (err) {
                 return res.send({
                     success: false,
-                    message: 'Error: server error'
+                    message: 'Error: Invalid'
                 });
             }
-            return res.send({
-                success: true,
-                message: 'Valid sign in',
-                token: doc._id
-                //every time they log in they create a document id, the token points back to user id//
+            const user = users[0];
+            //otherwise correct the user
+            const userSession = new UserSession();
+
+            userSession.userId = user._id;
+            userSession.save((err, doc) => {
+                if (err) {
+                    return res.send({
+                        success: false,
+                        message: 'Error: server error'
+                    });
+                }
+                return res.send({
+                    success: true,
+                    message: 'Valid sign in!!!',
+                    token: doc._id,
+                    userId: user._id
+                    // todo: add user Token, don't actually have it yet!
+                    //every time they log in they create a document id, the token points back to user id//
+                });
+
             });
 
         });
-
     });
-    });
-    app.get('/api/account/verify', (req, res, next) =>  {
+    app.get('/api/account/verify', (req, res, next) => {
         const { query } = req;
         const { token } = query
         UserSession.find({
@@ -178,7 +180,7 @@ module.exports = (app) => {
         });
     });
 
-    app.get('/api/account/logout', (req, res, next) =>  {
+    app.get('/api/account/logout', (req, res, next) => {
         const { query } = req;
         const { token } = query;
 
@@ -188,7 +190,7 @@ module.exports = (app) => {
             _id: token,
             isDeleted: false
         }, {
-           $set:{isDeleted:true}
+            $set: { isDeleted: true }
         }, null, (err, sessions) => {
             if (err) {
                 console.log(err);
@@ -199,8 +201,8 @@ module.exports = (app) => {
             }
 
             return res.send({
-                    success: true,
-                    message: 'Good'
+                success: true,
+                message: 'Good'
             });
         });
     });
