@@ -117,15 +117,6 @@ router.post('/account/signin', (req, res, next) => {
                 message: 'Error: Invalid'
             });
         }
-<<<<<<< HEAD
-        return res.send({
-            success: true,
-            message: 'Valid sign in',
-            token: doc._id,
-            userId: userSession.userId,
-            firstName: user.firstName
-            //every time they log in they create a document id, the token points back to user id//
-=======
         const userSession = new UserSession();
         userSession.userId = user._id;
         userSession.save((err, doc) => {
@@ -143,10 +134,9 @@ router.post('/account/signin', (req, res, next) => {
                 firstName: user.firstName
                 //every time they log in they create a document id, the token points back to user id//
             });
-    
->>>>>>> master
+
         });
-    
+
     });
 });
 
