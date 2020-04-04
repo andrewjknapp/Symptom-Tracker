@@ -1,0 +1,12 @@
+#printButton {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #3D52D5;
+    color: #FBFFF1;
+    border-radius: 50px;
+    font-family: Kanit;
+    font-size: 22px;
+    margin-top: 10px;
+    margin-left: 5px;
+}

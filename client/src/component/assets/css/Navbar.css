@@ -21,3 +21,33 @@
 .nav-icons {
     font-size: 1.5em;
 }
+
+.navColor {
+        background-image: url("../images/microscope.jpg");
+    
+}
+
+.navbarTitle {
+    color: #FBFFF1;
+    font-family: 'Kanit';
+    font-weight: 600;
+    font-size: 25px;
+    padding-right: 10px;
+}
+
+.navbarTitle:hover {
+    color: #FBFFF1;
+    text-decoration: none;
+}
+
+.navLink {
+    font-family: 'Kanit';
+    color: #B4C5E4;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.navLink:hover {
+    color: #FBFFF1;
+    text-decoration: none;
+}

@@ -4,13 +4,20 @@ import "../assets/css/MedicalProfile.css";
 
 function MedicalProfile() {
     const [surgeryCount, setSurgeryCount] = useState(1);
-    const updateSurgery = () => {
+    const addSurgery = () => {
         setSurgeryCount(surgeryCount + 1)
     }
+    const removeSurgery = () => {
+        setSurgeryCount(surgeryCount - 1)
+    }
+
     
     const [medCount, setMedCount] = useState(1);
-    const updateMed = () => {
+    const addMed = () => {
         setMedCount(medCount + 1)
+    }
+    const removeMed = () => {
+        setMedCount(medCount - 1)
     }
     return (
         <article class='allMedText'>
@@ -37,6 +44,10 @@ function MedicalProfile() {
 
                     <h2>Past Surgical History</h2>
                     <p>Have you ever had surgery?</p>
+                   
+                    <input class='medInput' id='no' name='surgery' type='radio' value='no'></input>
+                    <label class='medBody2' htmlFor='surgeryNo'>No</label>
+                    <br></br>
                     <input class='medInput'id='yes' name='surgery' type='radio' value='yes'></input>
                     <label class='medBody2' htmlFor='surgeryYes'>Yes</label>
                     <table id='table'>
@@ -56,10 +67,9 @@ function MedicalProfile() {
                             ))}
                         </tbody>
                     </table>
-                    <button className='medButtons' type='button' id='add' onClick={updateSurgery}>Add</button>
-                    <br></br>
-                    <input class='medInput' id='no' name='surgery' type='radio' value='no'></input>
-                    <label class='medBody2' htmlFor='surgeryNo'>No</label>
+                    <button className='medButtons' type='button' id='add' onClick={addSurgery}>Add</button>
+                    <button className='medButtons' type='button' id='add' onClick={removeSurgery}>Remove</button>
+
 
                     <h2>Current Medications</h2>
                     <p>Please list all current medicines and supplements</p>
@@ -81,31 +91,38 @@ function MedicalProfile() {
                             ))}
                         </tbody>
                     </table>
-                    <button className='medButtons' type='button' id='add' onClick={updateMed}>Add</button>
+                    <button className='medButtons' type='button' id='add' onClick={addMed}>Add</button>
+                    <button className='medButtons' type='button' id='add' onClick={removeMed}>Remove</button>
+
                     <br></br>
                     <h2>Allergies</h2>
                     <p>Are you allergic to any medication?</p>
+                   
+                    <input class='medInput' id='no' name='surgery' type='radio' value='no' />
+                    <label class='medBody2' htmlFor='surgery'>No</label>
+                    <br></br>
                     <input class='medInput' id='yes' name='allergies' type='radio' value='yes' />
                     <label class='medBody2' htmlFor='allergies'>Yes</label>
                     <input class='medInput' placeholder='Please list...'></input>
-                    <br></br>
-                    <input class='medInput' id='no' name='surgery' type='radio' value='no' />
-                    <label class='medBody2' htmlFor='surgery'>No</label>
+                   
 
                     <p>Are you allergic to latex?</p>
-                    <input class='medInput' id='surgery' name='surgeryYes' type='radio'></input>
-                    <label class='medBody2' htmlFor='surgeryYes'>Yes</label>
-
-                    <br></br>
+                  
                     <input class='medInput' name='surgeryNo' type='radio'></input>
                     <label class='medBody2' htmlFor='surgeryNo'>No</label>
+                    <br></br>
+                    <input class='medInput' id='surgery' name='surgeryYes' type='radio'></input>
+                    <label class='medBody2' htmlFor='surgeryYes'>Yes</label>
+                
                     <p>Are you allergic to any foods?</p>
+                   
+                    <input class='medInput' name='surgeryNo' type='radio'></input>
+                    <label class='medBody2' htmlFor='surgeryNo'>No</label>
+                    <br></br>
                     <input class='medInput' id='surgery' name='surgeryYes' type='radio'></input>
                     <label class='medBody2' htmlFor='surgeryYes'>Yes </label>
                     <input class='medInput' placeholder='Please list...'></input>
-                    <br></br>
-                    <input class='medInput' name='surgeryNo' type='radio'></input>
-                    <label class='medBody2' htmlFor='surgeryNo'>No</label>
+                  
 
                 </div>
                 <div>

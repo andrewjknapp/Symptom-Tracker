@@ -1,24 +1,29 @@
+
+
 .buttonDiv{
     display: flex;
     justify-content: center;    
     align-items: center;
     margin-bottom: 15px;
+    color: #FBFFF1;
 }
 
 
-.buttons {
-    display: inline-block;
-    padding: 15px 32px;
-    background-color: grey;
-    border-radius: 25px;
-    font-size: 18px;
+.supportButtons {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #3D52D5;
+    border-radius: 50px;
+    font-family: Kanit;
+    font-size: 22px;
     margin-top: 10px;
     margin-left: 5px;
 }
 
 .glow-button:hover {
     color: rgba(255, 255, 255, 1);
-    box-shadow: 0 5px 15px rgba(0, 0, 255, .4);
+    box-shadow: 0 5px 15px rgba(0, 0, 150, .4);
    }
    
 .prevent{
