@@ -75,7 +75,12 @@ function CreateAccountPage(props) {
             email,
             password,
         } = signUp;
-
+        
+        setSignIn({
+            userEmail: email,
+            userPassword: password
+        });
+        onSignIn(null);
         setLoading({
             isLoading: true,
         });
@@ -105,7 +110,7 @@ function CreateAccountPage(props) {
                         firstName: '',
                         lastName: '',
                     });
-                    setToLandingPage(true)
+                    
                 } else {
                     setErrors({
                         signUpError: json.message,
@@ -138,8 +143,11 @@ function CreateAccountPage(props) {
         })
     }
     const onSignIn = (e) => {
-        e.preventDefault();
-        const {
+        if(e !== null) {
+            e.preventDefault();
+        }
+        
+        let {
             userEmail,
             userPassword,
         } = signIn;

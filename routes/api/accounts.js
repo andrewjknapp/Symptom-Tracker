@@ -134,9 +134,9 @@ router.post('/account/signin', (req, res, next) => {
                 firstName: user.firstName
                 //every time they log in they create a document id, the token points back to user id//
             });
-
+    
         });
-
+    
     });
 });
 
