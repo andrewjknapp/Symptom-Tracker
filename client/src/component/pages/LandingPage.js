@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PostCard from '../PostCard';
+import API from '../../utils/API';
 
  function LandingPage() {
 
@@ -18,43 +19,30 @@ import PostCard from '../PostCard';
                     severity: 2
                 }
             ]
-        },
-        {
-            title: "My Head Hurts",
-            description: "I have had this headache since 12 this morning",
-            date: "2/12/20",
-            symptoms: [
-                {
-                    type: "Coughing",
-                    severity: 4
-                },
-                {
-                    type: "Headache",
-                    severity: 2
-                }
-            ]
-        },
-        {
-            title: "My Head Hurts",
-            description: "I have had this headache since 12 this morning",
-            date: "2/12/20",
-            symptoms: [
-                {
-                    type: "Coughing",
-                    severity: 4
-                },
-                {
-                    type: "Headache",
-                    severity: 2
-                }
-            ]
         }
     ]);
+
+    useEffect(()=> {
+        displayPosts();
+    },[])
+
+    function displayPosts() {
+        API.getPosts()
+        .then((res)=>{
+            setPosts(res.data.reverse());
+        })
+    }
+
+    function deletePost(e) {
+        e.preventDefault();
+        API.deletePost(e.target.getAttribute("description"))
+        .then(()=>displayPosts())
+    }
 
     return (
         <article>
             <h1>Symptom Posts</h1>
-            {posts.map(userPost => <PostCard post={userPost}/>)}
+            {posts.map((userPost, i) => <PostCard keyNumber={i} post={userPost} deletePost={deletePost}/>)}
         </article>
     )
 }

@@ -130,7 +130,9 @@ router.post('/account/signin', (req, res, next) => {
         return res.send({
             success: true,
             message: 'Valid sign in',
-            token: doc._id
+            token: doc._id,
+            userId: userSession.userId,
+            firstName: user.firstName
             //every time they log in they create a document id, the token points back to user id//
         });
 
