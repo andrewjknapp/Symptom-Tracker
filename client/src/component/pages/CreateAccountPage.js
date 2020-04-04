@@ -75,7 +75,7 @@ function CreateAccountPage(props) {
             email,
             password,
         } = signUp;
-        
+
         setSignIn({
             userEmail: email,
             userPassword: password
@@ -110,7 +110,7 @@ function CreateAccountPage(props) {
                         firstName: '',
                         lastName: '',
                     });
-                    
+
                 } else {
                     setErrors({
                         signUpError: json.message,
@@ -143,10 +143,10 @@ function CreateAccountPage(props) {
         })
     }
     const onSignIn = (e) => {
-        if(e !== null) {
+        if (e !== null) {
             e.preventDefault();
         }
-        
+
         let {
             userEmail,
             userPassword,
@@ -299,13 +299,9 @@ function CreateAccountPage(props) {
                                 className="btn btn-primary mt-3">Sign Up</button>
                         </form>
                     </div>
-                    <Logout />
+                    {/* <Logout /> */}
 
                 </div>
-
-
-
-
 
             </div>
 
