@@ -45,13 +45,8 @@ function App() {
     }>
        <Router>      
         <Switch>
-<<<<<<< HEAD
          
         <Route absolute path="/landing-page">
-=======
-
-          <Route absolute path="/landing-page">
->>>>>>> master
             <Navbar />
             <LandingPage />
           </Route>
