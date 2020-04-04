@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import UserContext from "../../utils/UserContext";
 import Logout from "../Logout";
 import "whatwg-fetch";
+import "../assets/css/accountpage.css";
 
 import {
     getFromStorage, setInStorage
@@ -74,7 +75,12 @@ function CreateAccountPage(props) {
             email,
             password,
         } = signUp;
-
+        
+        setSignIn({
+            userEmail: email,
+            userPassword: password
+        });
+        onSignIn(null);
         setLoading({
             isLoading: true,
         });
@@ -104,7 +110,7 @@ function CreateAccountPage(props) {
                         firstName: '',
                         lastName: '',
                     });
-                    setToLandingPage(true)
+                    
                 } else {
                     setErrors({
                         signUpError: json.message,
@@ -123,7 +129,7 @@ function CreateAccountPage(props) {
         setLoading({
             isLoading: false,
         })
-        setInStorage('symptom_tracker', { token: json.token, firstName: json.firstName, id: json.userId  });
+        setInStorage('symptom_tracker', { token: json.token, firstName: json.firstName, id: json.userId });
         setSignIn({
             pasword: userPassword,
             email: userEmail,
@@ -137,8 +143,11 @@ function CreateAccountPage(props) {
         })
     }
     const onSignIn = (e) => {
-        e.preventDefault();
-        const {
+        if(e !== null) {
+            e.preventDefault();
+        }
+        
+        let {
             userEmail,
             userPassword,
         } = signIn;
@@ -179,7 +188,7 @@ function CreateAccountPage(props) {
             isLoading: true,
         })
         const obj = getFromStorage('symptom_tracker');
-        
+
         if (obj && obj.token) {
             const { token } = obj;
             //verify token
@@ -226,7 +235,7 @@ function CreateAccountPage(props) {
     const { userEmail, userPassword } = signIn
 
     return toLandingPage ? <Redirect to='/landing-page' /> : (
-        <div>
+        <div className="body">
             <div className="container">
                 <div className="row">
                     <LogInHeader />
