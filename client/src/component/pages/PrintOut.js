@@ -15,7 +15,7 @@ class PrintOut extends React.Component {
         return (
             <div>
                 <ReactToPrint
-                    trigger={() => <button id='printButton' href="#">Print this out!</button>}
+                    trigger={() => <button id='printButton' >Print this out!</button>}
                     content={() => this.componentRef}
                 />
                 <ComponentToPrint ref={el => (this.componentRef = el)} />
