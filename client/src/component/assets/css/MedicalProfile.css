@@ -1,10 +1,54 @@
 
-.buttons {
+.medButtons {
     display: inline-block;
     padding: 5px 16px;
-    background-color: grey;
+    background-color: #3D52D5;
+    color: #FBFFF1;
     border-radius: 25px;
     font-size: 12px;
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+.allMedText {
+    color: #3C3744;
+    font-family: 'Kanit';
+    margin-left: 15px;
+}
+
+.medHead1 {
+    color: #3D52D5;
+    font-weight: 700;
+
+}
+
+.medHead2 {
+    font-weight: 500;
+
+}
+
+.medBody1 {
+    font-weight: 400;
+
+}
+
+.medBody2 {
+    font-weight: 300;
+    margin-right: 10px;
+
+}
+
+.medInput {
+
+}
+
+.submitButton {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3D52D5;
+    color: #FBFFF1;
+    border-radius: 50px;
+    font-size: 22px;
     margin-top: 10px;
     margin-left: 5px;
 }
