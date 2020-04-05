@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import PostCard from '../PostCard';
 import API from '../../utils/API';
 import UserContext from '../../utils/UserContext';
+import '../assets/css/LandingPage.css'
 
 function LandingPage() {
     const {
