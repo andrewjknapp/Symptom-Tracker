@@ -7,7 +7,7 @@ function LandingPage() {
     const {
         state, dispatch
     } = useContext(UserContext);
-    console.log(state, dispatch);
+    //console.log(state, dispatch);
     const [posts, setPosts] = useState([
         {
             title: "My Head Hurts",

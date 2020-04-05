@@ -25,7 +25,7 @@ module.exports = {
         //receive object of post data and add to mongo db
 
         const { title, description, symptoms, id } = req.body
-        const time = Date.now()
+        const time = new Date()
         // let title="My Head is Hurting";
         // let description="My head has been hurting since 12";
         // let symptoms=[{type:"headache", severity:5}];
