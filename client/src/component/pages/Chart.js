@@ -149,6 +149,7 @@ import API from '../../utils/API';
               title:{
                 display:true,
                 text:'Symptom Severity',
+                fontFamily: 'Kanit',
                 fontColor: '#090C9B',
                 fontSize: 40
               },
