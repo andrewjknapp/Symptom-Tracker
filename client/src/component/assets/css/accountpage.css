@@ -4,7 +4,6 @@ body {
 
 h1 {
     font-weight: 1000;
-    font-size: 75px;
     font-family: Helvetica;
     text-shadow: aqua;
     color: #3C3744;
@@ -21,5 +20,5 @@ h4 {
 }
 
 form {
-    left: 20%;
+    column-width: auto;
 }

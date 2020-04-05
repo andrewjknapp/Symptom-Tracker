@@ -7,14 +7,12 @@ function LogInHeader() {
 
     return (
         <div className="container">
-            <div className="header">
-                <h1 className="lightBlue">Symptom Tracker</h1>
-                <br />
-                <h3 id="">Please sign in below.</h3>
-                <br />
-                <h4>If you do not yet have an account, please feel free to sign up<br />
-            as a new user</h4>
+            <div className="header row">
+                <div className="col-7">
+                    <h1 className="lightBlue">Symptom Tracker</h1>
+                </div>
             </div>
+
         </div>
     )
 };

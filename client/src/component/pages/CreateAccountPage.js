@@ -242,7 +242,8 @@ function CreateAccountPage(props) {
                     <LogInHeader />
                 </div>
                 <div className="row">
-                    <div className="col-5">
+                    <div className="col-7">
+                        <h4>User Log In</h4>
                         <form className="form-group">
                             <label htmlFor="username">Email:</label>
                             {/* each input should have a name (email) */}
@@ -270,14 +271,16 @@ function CreateAccountPage(props) {
                     <br />
                 </div>
                 <div className="row">
-                    <div className="col-5">
+                    <div className="col-7">
                         <form className="form-group">
+                            <label htmlFor="username">First Name:</label>
                             <input type="text"
                                 name="firstName"
                                 placeholder="First Name"
                                 value={firstName}
                                 onChange={onSignUpChange} />
                             <br />
+                            <label htmlFor="Last Name">Last Name:</label>
                             <input
                                 type="text"
                                 name="lastName"
@@ -286,12 +289,14 @@ function CreateAccountPage(props) {
                                 onChange={onSignUpChange}
                             />
                             <br />
+                            <label htmlFor="email">Email: </label>
                             <input type="email" placeholder="Email"
                                 name="email"
                                 value={email}
                                 onChange={onSignUpChange}
                             />
                             <br />
+                            <label htmlFor="password">Password: </label>
                             <input type="password" placeholder="password"
                                 name="password"
                                 value={password}
