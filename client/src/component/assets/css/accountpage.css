@@ -1,12 +1,32 @@
-body {
+#accountBackground {
+    height: 100vh;
     background-image: url("../images/microscope.jpg");
 }
 
-h1 {
-    font-weight: 1000;
-    text-shadow: aqua;
-    color: #3C3744;
+.my-page-text {
+    /*height: inherit;*/
+    padding: 8% 5% 5% 3%;
+    /*top: 55px;*/
+
+    /*To support older browsers*/
+    height: 100%;
+    width: 100%;
+
+    /* Set the height to match that of the viewport. */
+    height: 100vh;
+
+    /* Set the width to match that of the viewport. */
+    width: 100vw;
+
+    background-repeat: no-repeat;
+    background-size: 100%; 
+}
+
+.login {
+    font-weight: 600;
+    color: #FBFFF1 !important;
     font-family: 'Kanit';
+    text-align: center;
 }
 
 h3 {
@@ -14,11 +34,22 @@ h3 {
     text-emphasis: emphasis;
 }
 
-h4 {
+.h4 h4 {
     text-align: center;
     font-weight: 800;
+    color: #B4C5E4 !important;
 }
 
-form {
-    column-width: auto;
+
+.UserInput input {
+    align-content: center !important;
 }
+
+button {
+    left: 20% !important;
+    border-radius: 25px;
+    color: #FBFFF1 !important;
+    background-color: #3D52D5 !important;
+}
+
+

@@ -234,18 +234,19 @@ function CreateAccountPage(props) {
 
     const { email, password, firstName, lastName } = signUp
     const { userEmail, userPassword } = signIn
+    var style = { backgroundImage: 'url( "../assets/images/microscope.jpg")' };
 
     return toLandingPage ? <Redirect to='/landing-page' /> : (
-        <div className="body">
+        <div className="loginBody" style={style}>
             <div className="container">
                 <div className="row">
                     <LogInHeader />
                 </div>
                 <div className="row">
                     <div className="col-7">
-                        <h4>User Log In</h4>
+                        <h4 className="h4">User Log In</h4>
                         <form className="form-group">
-                            <label htmlFor="username">Email:</label>
+                            {/* <label htmlFor="username">Email:</label> */}
                             {/* each input should have a name (email) */}
                             <input type="email"
                                 name="userEmail"
@@ -255,7 +256,7 @@ function CreateAccountPage(props) {
                                 onChange={onSignInChange}
                             />
                             <br />
-                            <label htmlFor="password">Password:</label>
+                            {/* <label htmlFor="password">Password:</label> */}
                             <input type="password"
                                 name="userPassword"
                                 placeholder="password"
@@ -272,16 +273,16 @@ function CreateAccountPage(props) {
                 </div>
                 <div className="row">
                     <div className="col-7">
-                        <h4>User Registration</h4>
-                        <form className="form-group">
-                            <label htmlFor="username">First Name:</label>
+                        <h4 className="h4">User Registration</h4>
+                        <form className="form-group UserInput">
+                            {/* <label htmlFor="username">First Name: </label> */}
                             <input type="text"
                                 name="firstName"
                                 placeholder="First Name"
                                 value={firstName}
                                 onChange={onSignUpChange} />
                             <br />
-                            <label htmlFor="Last Name">Last Name:</label>
+                            {/* <label htmlFor="Last Name">Last Name: </label> */}
                             <input
                                 type="text"
                                 name="lastName"
@@ -290,14 +291,14 @@ function CreateAccountPage(props) {
                                 onChange={onSignUpChange}
                             />
                             <br />
-                            <label htmlFor="email">Email: </label>
+                            {/* <label htmlFor="email">Email: </label> */}
                             <input type="email" placeholder="Email"
                                 name="email"
                                 value={email}
                                 onChange={onSignUpChange}
                             />
                             <br />
-                            <label htmlFor="password">Password: </label>
+                            {/* <label htmlFor="password">Password: </label> */}
                             <input type="password" placeholder="password"
                                 name="password"
                                 value={password}

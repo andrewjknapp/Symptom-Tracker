@@ -71,7 +71,9 @@ function App() {
             <PrintOut />
           </Route>
           <Route path="/">
-            <CreateAccountPage />
+            <div id="accountBackground">
+              <CreateAccountPage />
+            </div>
           </Route>
         </Switch>
       </Router>
