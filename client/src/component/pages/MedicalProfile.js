@@ -30,14 +30,38 @@ function MedicalProfile() {
                     <input name='DOB' type='date'></input>
 
                     <p class='medBody1'>Please select the sex assigned to you at birth:</p>
-                    <input class='medInput' type="radio" id="male" name="gender" value="male" />
+                    <input class='medInput' type="radio" id="male" name="maleSex" value="male" />
                     <label class='medBody2' htmlFor="male">Male</label>
-                    <input class='medInput' type="radio" id="female" name="gender" value="female" />
+                    <input class='medInput' type="radio" id="female" name="femaleSex" value="female" />
                     <label class='medBody2' htmlFor="female">Female</label>
+                    <input class='medInput' type="radio" id="perferNot" name="noSex" value="prefer-not-to-say" />
+                    <label class='medBody2' htmlFor="prefer-not-to-say">Prefer not to say</label>
+
+                    <p class='medBody1'>Please select your gender identity:</p>
+                    <input class='medInput' type="radio" id="male" name="maleId" value="male" />
+                    <label class='medBody2' htmlFor="male">Male</label>
+                    <input class='medInput' type="radio" id="female" name="femaleId" value="female" />
+                    <label class='medBody2' htmlFor="female">Female</label>
+                    <br></br>
+                    <input class='medInput' type="radio" id="" name="transMan" value="female" />
+                    <label class='medBody2' htmlFor="female">Trans Man</label>
+                    <input class='medInput' type="radio" id="female" name="transWoman" value="female" />
+                    <label class='medBody2' htmlFor="female">Trans Woman</label>
+                    <br></br>
+                    <input class='medInput' type="radio" id="female" name="nonbinary" value="female" />
+                    <label class='medBody2' htmlFor="female">Nonbinary/Gender Nonconforming</label>
+                    <br></br>
+                    <input class='medInput' type="radio" id="female" name="otherId" value="female" />
+                    <label class='medBody2' htmlFor="female">Other, please specifiy:</label>
+                    <input class='medInput'></input>
+                    <br></br>
+                    <input class='medInput' type="radio" id="perferNot" name="noId" value="prefer-not-to-say" />
+                    <label class='medBody2' htmlFor="prefer-not-to-say">Prefer not to say</label>
                 </div>
 
                 <div>
                     <h2>Past Medical History</h2>
+                    <p>Have you had </p>
                     <p>Please list any conditions you have had, separated by a comma:</p>
                     <textarea type='text' placeholder='Please list...'></textarea>
                     <br></br>
