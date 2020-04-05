@@ -4,7 +4,7 @@ import API from '../../utils/API';
 
   function Chart() {
 
-    const [ chartToggle, setChartToggle ] = useState(false);
+    const [ chartToggle, setChartToggle ] = useState(true);
     const [ posts, setPosts ] = useState([]);
     const [chartData, setChartData] = useState(
       {
