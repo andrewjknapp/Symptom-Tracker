@@ -6,7 +6,7 @@ import { getFromStorage } from "./storage";
 export default {
     getPosts: function() {
         const user = getFromStorage('symptom_tracker');
-        console.log(user.id);
+        //console.log(user.id);
         return axios.get("/api/user/posts/" + user.id);
     },
     savePost: function(post) {

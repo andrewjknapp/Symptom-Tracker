@@ -1,4 +1,6 @@
 import React from "react";
+import './assets/css/PostCard.css'
+
 
 function PostCard(props) {
 
@@ -9,16 +11,16 @@ function PostCard(props) {
       <div key={props.keyNumber} className="card text-center m-5">
         <div className="card-header">{date}</div>
         <div className="card-body">
-          <h5 className="card-title">{title}</h5>
+          <h5 style={{fontSize: '40px'}} className="card-title">{title}</h5>
           <p className="card-text">
             {description}
           </p>
-          <h6>Symptoms</h6>
+          <h6 style={{fontSize: '40px'}} >Symptoms</h6>
           <ul>
           {symptoms.map(symp => <li>{symp.type}, Severity: {symp.severity}</li>)}
           </ul>
         </div>
-        <button className="btn btn-primary mt-3" onClick={props.deletePost} description={description}>Delete</button>
+        <button style={{ margin: '0 auto', width: '30%', color: 'white',backgroundColor: '#3D52D5'}} className="btn my-3" onClick={props.deletePost} description={description}>Delete</button>
         <div className="card-footer text-muted"></div>
       </div>
     );
