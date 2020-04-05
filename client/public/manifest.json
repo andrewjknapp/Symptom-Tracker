@@ -1,9 +1,9 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Symptom Tracker",
+  "name": "Symptom Tracker",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "Virus-PNG-Photo.png",
       "sizes": "196x196",
       "type": "image/png"
     }
