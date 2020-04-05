@@ -4,6 +4,9 @@
    vertical-align: auto;
 }
 .newpost-header {
+    font-family: 'Kanit';
+    font-size: 50px;
+    color: #090C9B;
     text-align: center;
 }
 
