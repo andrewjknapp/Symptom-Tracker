@@ -272,6 +272,7 @@ function CreateAccountPage(props) {
                 </div>
                 <div className="row">
                     <div className="col-7">
+                        <h4>User Registration</h4>
                         <form className="form-group">
                             <label htmlFor="username">First Name:</label>
                             <input type="text"

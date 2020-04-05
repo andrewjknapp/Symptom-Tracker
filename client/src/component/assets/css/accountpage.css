@@ -4,7 +4,6 @@ body {
 
 h1 {
     font-weight: 1000;
-    font-family: Helvetica;
     text-shadow: aqua;
     color: #3C3744;
     font-family: 'Kanit';
@@ -17,6 +16,7 @@ h3 {
 
 h4 {
     text-align: center;
+    font-weight: 800;
 }
 
 form {
