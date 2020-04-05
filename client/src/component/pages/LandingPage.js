@@ -46,7 +46,7 @@ function LandingPage() {
 
     return (
         <article>
-            <h1>Symptom Posts</h1>
+            <h1 className='landing-header' >Symptom Posts</h1>
             {posts.map((userPost, i) => <PostCard keyNumber={i} post={userPost} deletePost={deletePost} />)}
         </article>
     )

@@ -2,7 +2,8 @@
     font-family: 'Kanit'
 }
 
-h1 {
+.landing-header {
+    text-align: center;
     color: #090C9B;
     font-family: 'Kanit';
     font-size: 60px;
