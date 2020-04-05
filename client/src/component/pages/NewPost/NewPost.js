@@ -83,7 +83,7 @@ function NewPost() {
   return (
     <Fragment>
       {toLandingPage ? <Redirect to='/landing-page' /> : null}
-      <h1 className="mt-5">Create A New Entry</h1>
+      <h1 className='newpost-header'>Create A New Entry</h1>
       <form>
         <div className="row my-5">
           <div className="col-sm-3"></div>
@@ -168,7 +168,7 @@ function NewPost() {
               {showNums.showCough ? <input type="number" min="0" max="9" name="coughNum" onChange={handleNumChange}/> : null}
             </div>
 
-            <Link to="/landing-page"><button onClick={handleSubmit} className="btn btn-primary">Submit</button></Link>
+            <Link to="/landing-page"><button style={{ margin: '0 auto', width: '30%', color: 'white',backgroundColor: '#3D52D5', buttonRadius: '50px'}}onClick={handleSubmit} className="btn btn-primary my-3 glow-button">Save</button></Link>
           </div>
 
           <div className="col-sm-4"></div>

@@ -186,7 +186,9 @@ import API from '../../utils/API';
               title:{
                 display:true,
                 text: graphLabel,
-                fontSize:20
+                fontFamily: 'Kanit',
+                fontColor: '#090C9B',
+                fontSize: 40
               },
               legend:{
                 display:true,

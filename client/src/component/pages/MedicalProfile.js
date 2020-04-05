@@ -96,8 +96,8 @@ function MedicalProfile() {
                             ))}
                         </tbody>
                     </table>
-                    <button className='medButtons' type='button' id='add' onClick={addSurgery}>Add</button>
-                    <button className='medButtons' type='button' id='add' onClick={removeSurgery}>Remove</button>
+                    <button className='medButtons glow-button' type='button' id='add' onClick={addSurgery}>Add</button>
+                    <button className='medButtons glow-button' type='button' id='add' onClick={removeSurgery}>Remove</button>
 
                     <h2>Current Medications</h2>
                     <p>Are you currently taking any medications?</p>
@@ -125,8 +125,8 @@ function MedicalProfile() {
                             ))}
                         </tbody>
                     </table>
-                    <button className='medButtons' type='button' id='add' onClick={addMed}>Add</button>
-                    <button className='medButtons' type='button' id='add' onClick={removeMed}>Remove</button>
+                    <button className='medButtons glow-button' type='button' id='add' onClick={addMed}>Add</button>
+                    <button className='medButtons glow-button' type='button' id='add' onClick={removeMed}>Remove</button>
 
                     <br></br>
                     <h2>Allergies</h2>
@@ -160,7 +160,7 @@ function MedicalProfile() {
 
                 </div>
                 <div>
-                    <button className='submitButton' type='submit'>Save</button>
+                    <button className='submitButton glow-button' type='submit'>Save</button>
                 </div>
             </form>
         </article>
