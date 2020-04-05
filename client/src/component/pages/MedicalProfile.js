@@ -11,7 +11,7 @@ function MedicalProfile() {
         setSurgeryCount(surgeryCount - 1)
     }
 
-    
+
     const [medCount, setMedCount] = useState(1);
     const addMed = () => {
         setMedCount(medCount + 1)
@@ -61,19 +61,24 @@ function MedicalProfile() {
 
                 <div>
                     <h2>Past Medical History</h2>
-                    <p>Have you had </p>
+                    <p>Do you have any medical coniditions?</p>
+                    <input class='medInput' id='no' name='noCondition' type='radio' value='no'></input>
+                    <label class='medBody2' htmlFor='noCondition'>No</label>
+                    <br></br>
+                    <input class='medInput' id='yes' name='yesCondition' type='radio' value='yes'></input>
+                    <label class='medBody2' htmlFor='yesCondition'>Yes</label>
                     <p>Please list any conditions you have had, separated by a comma:</p>
                     <textarea type='text' placeholder='Please list...'></textarea>
                     <br></br>
 
                     <h2>Past Surgical History</h2>
                     <p>Have you ever had surgery?</p>
-                   
-                    <input class='medInput' id='no' name='surgery' type='radio' value='no'></input>
-                    <label class='medBody2' htmlFor='surgeryNo'>No</label>
+
+                    <input class='medInput' id='no' name='noNurgery' type='radio' value='no'></input>
+                    <label class='medBody2' htmlFor='noSurgery'>No</label>
                     <br></br>
-                    <input class='medInput'id='yes' name='surgery' type='radio' value='yes'></input>
-                    <label class='medBody2' htmlFor='surgeryYes'>Yes</label>
+                    <input class='medInput' id='yes' name='yesSurgery' type='radio' value='yes'></input>
+                    <label class='medBody2' htmlFor='yesSurgery'>Yes</label>
                     <table id='table'>
                         <thead>
                             <tr>
@@ -84,8 +89,8 @@ function MedicalProfile() {
                         <tbody>
                             {[...Array(surgeryCount)].map((m, i) => (
                                 <tr key={i}>
-                                    <td><input type="input" id="surgeryType" name="type" /></td>
-                                    <td><input type="input" id="surgeryYear" name="year" /></td>
+                                    <td><input type="input" id="surgeryType" name="surgeryType" /></td>
+                                    <td><input type="input" id="surgeryYear" name="surgeryYear" /></td>
                                 </tr>
 
                             ))}
@@ -93,9 +98,14 @@ function MedicalProfile() {
                     </table>
                     <button className='medButtons' type='button' id='add' onClick={addSurgery}>Add</button>
                     <button className='medButtons' type='button' id='add' onClick={removeSurgery}>Remove</button>
-
-
+                    
                     <h2>Current Medications</h2>
+                    <p>Are you currently taking any medications?</p>
+                    <input class='medInput' id='no' name='noMed' type='radio' value='no'></input>
+                    <label class='medBody2' htmlFor='noMed'>No</label>
+                    <br></br>
+                    <input class='medInput' id='yes' name='yesMed' type='radio' value='yes'></input>
+                    <label class='medBody2' htmlFor='yesMed'>Yes</label>
                     <p>Please list all current medicines and supplements</p>
                     <table id='table'>
                         <thead>
@@ -108,9 +118,9 @@ function MedicalProfile() {
                         <tbody>
                             {[...Array(medCount)].map((m, i) => (
                                 <tr key={i}>
-                                    <td><input type="input" id="medname" name="medname" /></td>
-                                    <td><input type="input" id="medname" name="dosage" /></td>
-                                    <td><input type="input" id="medname" name="howmuch" /></td>
+                                    <td><input type="input" id="medname" name="medName" /></td>
+                                    <td><input type="input" id="medname" name="medDosage" /></td>
+                                    <td><input type="input" id="medname" name="medHowMuch" /></td>
                                 </tr>
                             ))}
                         </tbody>
@@ -121,36 +131,36 @@ function MedicalProfile() {
                     <br></br>
                     <h2>Allergies</h2>
                     <p>Are you allergic to any medication?</p>
-                   
-                    <input class='medInput' id='no' name='surgery' type='radio' value='no' />
-                    <label class='medBody2' htmlFor='surgery'>No</label>
+
+                    <input class='medInput' id='no' name='noAllergy' type='radio' value='no' />
+                    <label class='medBody2' htmlFor='noAllergy'>No</label>
                     <br></br>
-                    <input class='medInput' id='yes' name='allergies' type='radio' value='yes' />
-                    <label class='medBody2' htmlFor='allergies'>Yes</label>
+                    <input class='medInput' id='yes' name='yesAllergy' type='radio' value='yes' />
+                    <label class='medBody2' htmlFor='yesAllergy'>Yes</label>
                     <input class='medInput' placeholder='Please list...'></input>
-                   
+
 
                     <p>Are you allergic to latex?</p>
-                  
-                    <input class='medInput' name='surgeryNo' type='radio'></input>
-                    <label class='medBody2' htmlFor='surgeryNo'>No</label>
+
+                    <input class='medInput' name='noLatex' type='radio'></input>
+                    <label class='medBody2' htmlFor='noLatex'>No</label>
                     <br></br>
-                    <input class='medInput' id='surgery' name='surgeryYes' type='radio'></input>
-                    <label class='medBody2' htmlFor='surgeryYes'>Yes</label>
-                
+                    <input class='medInput' name='yesLatex' type='radio'></input>
+                    <label class='medBody2' htmlFor='yesLatex'>Yes</label>
+
                     <p>Are you allergic to any foods?</p>
-                   
-                    <input class='medInput' name='surgeryNo' type='radio'></input>
-                    <label class='medBody2' htmlFor='surgeryNo'>No</label>
+
+                    <input class='medInput' name='noFood' type='radio'></input>
+                    <label class='medBody2' htmlFor='noFood'>No</label>
                     <br></br>
-                    <input class='medInput' id='surgery' name='surgeryYes' type='radio'></input>
-                    <label class='medBody2' htmlFor='surgeryYes'>Yes </label>
+                    <input class='medInput' name='yesFood' type='radio'></input>
+                    <label class='medBody2' htmlFor='yesFood'>Yes </label>
                     <input class='medInput' placeholder='Please list...'></input>
-                  
+
 
                 </div>
                 <div>
-                    <button className='submitButton' type='submit'>Submit</button>
+                    <button className='submitButton' type='submit'>Save</button>
                 </div>
             </form>
         </article>
