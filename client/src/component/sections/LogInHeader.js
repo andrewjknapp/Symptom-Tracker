@@ -1,18 +1,18 @@
 import React from "react";
+import "../assets/css/colors.css";
+import "../assets/css/accountpage.css";
 
 
 function LogInHeader() {
 
     return (
         <div className="container">
-            <div className="header">
-                <h1>Symptom Tracker</h1>
-                <br />
-                <h3>Please sign in below.</h3>
-                <br />
-                <h2>If you do not yet have an account, please feel free to sign up<br />
-            as a new user</h2>
+            <div className="header row">
+                <div className="col-7">
+                    <h1 className="login lightBlue">Symptom Tracker</h1>
+                </div>
             </div>
+
         </div>
     )
 };

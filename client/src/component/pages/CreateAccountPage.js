@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
 import UserContext from "../../utils/UserContext";
-import Logout from "../Logout";
+// import Logout from "../Logout";
 import "whatwg-fetch";
 import "../assets/css/accountpage.css";
+import "../assets/css/colors.css";
 
 import {
     getFromStorage, setInStorage
@@ -75,7 +76,7 @@ function CreateAccountPage(props) {
             email,
             password,
         } = signUp;
-        
+
         setSignIn({
             userEmail: email,
             userPassword: password
@@ -110,7 +111,7 @@ function CreateAccountPage(props) {
                         firstName: '',
                         lastName: '',
                     });
-                    
+
                 } else {
                     setErrors({
                         signUpError: json.message,
@@ -143,10 +144,10 @@ function CreateAccountPage(props) {
         })
     }
     const onSignIn = (e) => {
-        if(e !== null) {
+        if (e !== null) {
             e.preventDefault();
         }
-        
+
         let {
             userEmail,
             userPassword,
@@ -233,17 +234,19 @@ function CreateAccountPage(props) {
 
     const { email, password, firstName, lastName } = signUp
     const { userEmail, userPassword } = signIn
+    var style = { backgroundImage: 'url( "../assets/images/microscope.jpg")' };
 
     return toLandingPage ? <Redirect to='/landing-page' /> : (
-        <div className="body">
+        <div className="loginBody" style={style}>
             <div className="container">
                 <div className="row">
                     <LogInHeader />
                 </div>
                 <div className="row">
-                    <div className="col-5">
+                    <div className="col-7">
+                        <h4 className="h4">User Log In</h4>
                         <form className="form-group">
-                            <label htmlFor="username">Email:</label>
+                            {/* <label htmlFor="username">Email:</label> */}
                             {/* each input should have a name (email) */}
                             <input type="email"
                                 name="userEmail"
@@ -252,8 +255,8 @@ function CreateAccountPage(props) {
                                 value={userEmail}
                                 onChange={onSignInChange}
                             />
-
-                            <label htmlFor="password">Password:</label>
+                            <br />
+                            {/* <label htmlFor="password">Password:</label> */}
                             <input type="password"
                                 name="userPassword"
                                 placeholder="password"
@@ -261,19 +264,25 @@ function CreateAccountPage(props) {
                                 value={userPassword}
                                 onChange={onSignInChange}
                             />
-
+                            <br />
                             <button onClick={onSignIn}
                                 className="btn btn-primary mt-3">Log In</button>
                         </form>
                     </div>
-                    <div className="col-5">
-                        <form className="form-group">
+                    <br />
+                </div>
+                <div className="row">
+                    <div className="col-7">
+                        <h4 className="h4">User Registration</h4>
+                        <form className="form-group UserInput">
+                            {/* <label htmlFor="username">First Name: </label> */}
                             <input type="text"
                                 name="firstName"
                                 placeholder="First Name"
                                 value={firstName}
                                 onChange={onSignUpChange} />
                             <br />
+                            {/* <label htmlFor="Last Name">Last Name: </label> */}
                             <input
                                 type="text"
                                 name="lastName"
@@ -282,12 +291,14 @@ function CreateAccountPage(props) {
                                 onChange={onSignUpChange}
                             />
                             <br />
+                            {/* <label htmlFor="email">Email: </label> */}
                             <input type="email" placeholder="Email"
                                 name="email"
                                 value={email}
                                 onChange={onSignUpChange}
                             />
                             <br />
+                            {/* <label htmlFor="password">Password: </label> */}
                             <input type="password" placeholder="password"
                                 name="password"
                                 value={password}
@@ -299,13 +310,9 @@ function CreateAccountPage(props) {
                                 className="btn btn-primary mt-3">Sign Up</button>
                         </form>
                     </div>
-                    <Logout />
+                    {/* <Logout /> */}
 
                 </div>
-
-
-
-
 
             </div>
 
