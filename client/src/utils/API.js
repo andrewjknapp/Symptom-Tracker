@@ -12,8 +12,8 @@ export default {
     savePost: function(post) {
         const { id } = getFromStorage('symptom_tracker');
        
-        const { title, description, symptoms } = post;
-        const savedPost = { title, description, symptoms, id };
+        const { title, description, symptoms, temperature } = post;
+        const savedPost = { title, description, symptoms, id, temperature };
         return axios.post("/api/user/posts", savedPost);
     },
     deletePost: function(description) {

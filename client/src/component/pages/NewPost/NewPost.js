@@ -7,20 +7,20 @@ function NewPost() {
 
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
-  const [symptoms, setSymptoms] = useState([
-    {
-      type: "Headache", 
-      severity: 0
-    },
-    {
-      type: "Stomache Ache", 
-      severity: 0
-    },
-    {
-      type: "Fever", 
-      severity: 0
-    }
-  ]);
+  // const [symptoms, setSymptoms] = useState([
+  //   {
+  //     type: "Headache", 
+  //     severity: 0
+  //   },
+  //   {
+  //     type: "Stomache Ache", 
+  //     severity: 0
+  //   },
+  //   {
+  //     type: "Cough", 
+  //     severity: 0
+  //   }
+  // ]);
   const [toLandingPage, setToLandingPage] = useState(false);
 
   // const [headNum, setHeadNum] = useState(0);
@@ -28,15 +28,16 @@ function NewPost() {
   // const [feverNum, setFeverNum] = useState(0);
 
   const [sympNums, setSympNums] = useState({
-    headNum: 0,
-    stomNum: 0,
-    feverNum: 0
+    headNum: null,
+    stomNum: null,
+    coughNum: null,
+    temp: null
   });
 
   const [showNums, setShowNums] = useState({
     showHead: false,
     showStom: false,
-    showFever: false
+    showCough: false
   })
 
   const handleCheckBox = e => {
@@ -68,12 +69,14 @@ function NewPost() {
         severity: sympNums.stomNum
       },
       {
-        type: "Fever",
-        severity: sympNums.feverNum
+        type: "Cough",
+        severity: sympNums.coughNum
       }
     ]
 
-    API.savePost({ title, description, symptoms});
+    const temperature = sympNums.temp;
+
+    API.savePost({ title, description, symptoms, temperature});
     setToLandingPage(true);
   }
 
@@ -106,6 +109,21 @@ function NewPost() {
               placeholder="Describe your symptoms in a few sentences."
               onChange={e => setDescription(e.target.value)}
             ></textarea>
+          </div>
+          <div className="col-sm-3"></div>
+        </div>
+
+        <div className="row mb-5">
+          <div className="col-sm-3"></div>
+          <div className="col-sm-6">
+            <label for="temp-input">Enter your Temperature (Optional)</label>
+            <input 
+              id="temp-input" 
+              name="temp" 
+              min="80" 
+              type="number"
+              onChange={handleNumChange}
+            />
           </div>
           <div className="col-sm-3"></div>
         </div>
@@ -143,11 +161,11 @@ function NewPost() {
                 className="form-check-input"
                 type="checkbox"
                 value=""
-                name="showFever"
+                name="showCough"
                 onClick={handleCheckBox}
               ></input>
-              <label className="form-check-label">Fever</label>
-              {showNums.showFever ? <input type="number" min="0" max="9" name="feverNum" onChange={handleNumChange}/> : null}
+              <label className="form-check-label">Cough</label>
+              {showNums.showCough ? <input type="number" min="0" max="9" name="coughNum" onChange={handleNumChange}/> : null}
             </div>
 
             <Link to="/landing-page"><button onClick={handleSubmit} className="btn btn-primary">Submit</button></Link>
