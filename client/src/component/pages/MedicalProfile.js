@@ -1,11 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../assets/css/MedicalProfile.css";
 
 
 function MedicalProfile() {
 
     const [medicalProfile, setMedicalProfile] = useState({
-        
+        DOB: '',
+        sex: '',
+        identity: '',
+        condition: 'no',
+        conditionInfo: '',
+        surgery: 'no',
+
     });
 
     const [surgeryCount, setSurgeryCount] = useState(1);
@@ -13,7 +19,9 @@ function MedicalProfile() {
         setSurgeryCount(surgeryCount + 1)
     }
     const removeSurgery = () => {
-        setSurgeryCount(surgeryCount - 1)
+        if(surgeryCount > 1) {
+            setSurgeryCount(surgeryCount - 1)
+        }
     }
 
 
@@ -22,8 +30,27 @@ function MedicalProfile() {
         setMedCount(medCount + 1)
     }
     const removeMed = () => {
-        setMedCount(medCount - 1)
+        if(medCount > 1) {
+            setMedCount(medCount - 1)
+        }
     }
+
+    const handleArrayChange = e => {
+
+    }
+
+    const handleInputChange = e => {
+        setMedicalProfile({
+            ...medicalProfile,
+            [e.target.name]: e.target.value
+        })
+        
+    }
+
+    useEffect(()=>{
+        console.log(medicalProfile);
+    }, [medicalProfile])
+
     return (
         <article className='allMedText'>
 
@@ -32,57 +59,57 @@ function MedicalProfile() {
                 <div>
                     <h2 className='medHead2'>General Information</h2>
                     <label className='medBody2' htmlFor='DOB'>Date of Birth: </label>
-                    <input name='DOB' type='date'></input>
+                    <input name='DOB' type='date' onChange={handleInputChange}></input>
 
                     <p className='medBody1'>Please select the sex assigned to you at birth:</p>
-                    <input className='medInput' type="radio" id="male" name="sex" value="male" />
+                    <input className='medInput' type="radio" id="male" name="sex" value="male" onChange={handleInputChange}/>
                     <label className='medBody2' htmlFor="male">Male</label>
-                    <input className='medInput' type="radio" id="female" name="sex" value="female" />
+                    <input className='medInput' type="radio" id="female" name="sex" value="female" onChange={handleInputChange}/>
                     <label className='medBody2' htmlFor="female">Female</label>
-                    <input className='medInput' type="radio" id="perferNot" name="sex" value="prefer-not-to-say" />
+                    <input className='medInput' type="radio" id="perferNot" name="sex" value="Prefer not to say" onChange={handleInputChange}/>
                     <label className='medBody2' htmlFor="prefer-not-to-say">Prefer not to say</label>
 
                     <p className='medBody1'>Please select your gender identity:</p>
-                    <input className='medInput' type="radio" id="male" name="identity" value="male" />
-                    <label className='medBody2' htmlFor="male">Male</label>
-                    <input className='medInput' type="radio" id="female" name="identity" value="female" />
-                    <label className='medBody2' htmlFor="female">Female</label>
+                    <input className='medInput' type="radio" id="imale" name="identity" value="male" onChange={handleInputChange} />
+                    <label className='medBody2' htmlFor="imale">Male</label>
+                    <input className='medInput' type="radio" id="ifemale" name="identity" value="female" onChange={handleInputChange} />
+                    <label className='medBody2' htmlFor="ifemale">Female</label>
                     <br></br>
-                    <input className='medInput' type="radio" id="" name="identity" value="female" />
-                    <label className='medBody2' htmlFor="female">Trans Man</label>
-                    <input className='medInput' type="radio" id="female" name="identity" value="female" />
-                    <label className='medBody2' htmlFor="female">Trans Woman</label>
+                    <input className='medInput' type="radio" id="iTransMan" name="identity" value="Trans Man"  onChange={handleInputChange}/>
+                    <label className='medBody2' htmlFor="iTransMan">Trans Man</label>
+                    <input className='medInput' type="radio" id="iTransWoman" name="identity" value="Trans Woman" onChange={handleInputChange}/>
+                    <label className='medBody2' htmlFor="iTransWoman">Trans Woman</label>
                     <br></br>
-                    <input className='medInput' type="radio" id="female" name="identity" value="female" />
-                    <label className='medBody2' htmlFor="female">Nonbinary/Gender Nonconforming</label>
+                    <input className='medInput' type="radio" id="iNonConform" name="identity" value="Nonbinary/Gender Nonconforming" onChange={handleInputChange}/>
+                    <label className='medBody2' htmlFor="iNonConform">Nonbinary/Gender Nonconforming</label>
                     <br></br>
-                    <input className='medInput' type="radio" id="female" name="identity" value="female" />
-                    <label className='medBody2' htmlFor="female">Other, please specifiy:</label>
-                    <input className='medInput'></input>
+                    <input className='medInput' type="radio" id="iOther" value=""/>
+                    <label className='medBody2' htmlFor="iOther">Other, please specifiy:</label>
+                    <input className='medInput' name="identity" onChange={handleInputChange}></input>
                     <br></br>
-                    <input className='medInput' type="radio" id="perferNot" name="identity" value="prefer-not-to-say" />
-                    <label className='medBody2' htmlFor="prefer-not-to-say">Prefer not to say</label>
+                    <input className='medInput' type="radio" id="iPerferNot" name="identity" value="Prefer not to say" onChange={handleInputChange}/>
+                    <label className='medBody2' htmlFor="iPreferNot">Prefer not to say</label>
                 </div>
 
                 <div>
                     <h2>Past Medical History</h2>
                     <p>Do you have any chronic illness or serious medical condition?</p>
-                    <input className='medInput' id='no' name='condition' type='radio' value='no'></input>
-                    <label className='medBody2' htmlFor='no'>No</label>
+                    <input className='medInput' id='cNo' name='condition' type='radio' value='no' onChange={handleInputChange}></input>
+                    <label className='medBody2' htmlFor='cNo'>No</label>
                     <br></br>
-                    <input className='medInput' id='yes' name='condition' type='radio' value='yes'></input>
-                    <label className='medBody2' htmlFor='yes'>Yes</label>
+                    <input className='medInput' id='cYes' name='condition' type='radio' value='yes' onChange={handleInputChange}></input>
+                    <label className='medBody2' htmlFor='cYes'>Yes</label>
                     <p>Please list any conditions you have had, separated by a comma:</p>
-                    <textarea type='text' placeholder='Please list...'></textarea>
+                    <textarea type='text' placeholder='Please list...' name="conditionInfo" onChange={handleInputChange}></textarea>
                     <br></br>
 
                     <h2>Past Surgical History</h2>
                     <p>Have you ever had any surgery in the past?</p>
 
-                    <input className='medInput' id='no' name='surgery' type='radio' value='no'></input>
+                    <input className='medInput' id='noSurgery' name='surgery' type='radio' value='no' onChange={handleInputChange}></input>
                     <label className='medBody2' htmlFor='noSurgery'>No</label>
                     <br></br>
-                    <input className='medInput' id='yes' name='surgery' type='radio' value='yes'></input>
+                    <input className='medInput' id='yesSurgery' name='surgery' type='radio' value='yes' onChange={handleInputChange}></input>
                     <label className='medBody2' htmlFor='yesSurgery'>Yes</label>
                     <table id='table'>
                         <thead>
@@ -94,8 +121,8 @@ function MedicalProfile() {
                         <tbody>
                             {[...Array(surgeryCount)].map((m, i) => (
                                 <tr key={i}>
-                                    <td><input type="input" id="surgeryType" name="surgeryType" /></td>
-                                    <td><input type="input" id="surgeryYear" name="surgeryYear" /></td>
+                                    <td><input type="input" id="surgeryType" name={"surgeryType" + i} /></td>
+                                    <td><input type="input" id="surgeryYear" name={"surgeryYear" + i} /></td>
                                 </tr>
 
                             ))}
