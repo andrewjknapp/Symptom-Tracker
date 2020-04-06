@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../assets/css/MedicalProfile.css";
 
 
+
 function MedicalProfile() {
     const [surgeryCount, setSurgeryCount] = useState(1);
     const addSurgery = () => {
@@ -163,7 +164,9 @@ function MedicalProfile() {
                     <button className='submitButton glow-button' type='submit'>Save</button>
                 </div>
             </form>
+
         </article>
+     
 
     )
 }
