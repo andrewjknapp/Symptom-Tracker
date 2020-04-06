@@ -36,25 +36,6 @@ import API from '../../utils/API';
       }
     );
 
-    const [ tempChartData, setTempChartData ] = useState(
-      {
-        labels: ['Monday', 'Tuesday', 'Wednesday',
-                 'Thursday', 'Friday'],
-        datasets: [
-          {
-            label: 'Temperature',
-            fill: false,
-            lineTension: 0.5,
-            backgroundColor: '#3FE744',
-            borderColor: '#3FE744',
-            borderWidth: 3,
-            pointHoverRadius: 6,
-            data: [99, 98, 102, 99, 98]
-          }
-        ]
-      }
-    )
-
     function newLine(color, data, label) {
 
       return {
@@ -94,7 +75,9 @@ import API from '../../utils/API';
             coughSev.push(symp.severity);
 
           }
+          return "";
         })
+        return "";
       });
 
       return {
@@ -116,6 +99,7 @@ import API from '../../utils/API';
         case 4: day = "Thur"; break;
         case 5: day = "Fri"; break;
         case 6: day = "Sat"; break;
+        default: day = ""
       }
       let amPm = "am";
       let hour = time.getHours();
