@@ -21,5 +21,13 @@ export default {
         const { id } = getFromStorage('symptom_tracker');
         
         return axios.put("/api/user/posts", {description, id});
+    },
+    getProfile: function() {
+        const { id } = getFromStorage('symptom_tracker');
+        return axios.get("/api/user/profile/" + id);
+    },
+    saveProfile: function(profile) {
+        const { id } = getFromStorage('symptom_tracker');
+        return axios.post("/api/user/profile", { profile, id });
     }
 }

@@ -88,14 +88,15 @@ module.exports = {
     },
 
     getProfile: function(req, res) {
-        db.User.findOne({ id: id })
+        const { id } = req.params;
+        db.User.findOne({ _id: id })
         .then(dbModel => res.json(dbModel.medicalProfile))
         .catch(err => res.status(422).json(err));
     },
 
     setProfile: function(req, res) {
-        const { profile } = req.body;
-        db.User.findOneAndUpdate({ id: id }, {
+        const { profile, id } = req.body;
+        db.User.findOneAndUpdate({ _id: id }, {
             $set: {
                 medicalProfile : profile
             }
