@@ -18,9 +18,7 @@ function Logout() {
 
     return isLoggedOut ? <Redirect to="/"/> : (
 
-    <button
-        onClick={logoutUser}
-    >Logout</button>
+    <button onClick={logoutUser}>Logout</button>
    
     )
 }
