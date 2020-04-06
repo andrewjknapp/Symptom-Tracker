@@ -178,6 +178,7 @@ import API from '../../utils/API';
       return (
         <div>
           <button
+            className='glow-button'
             onClick={()=>setChartToggle(!chartToggle)}
           >{buttonLabel}</button>
           <Line

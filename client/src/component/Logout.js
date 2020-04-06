@@ -2,11 +2,6 @@ import React, { useState } from "react";
 import { removeFromStorage } from "../utils/storage";
 import { Redirect } from "react-router";
 
-
-
-
-
-
 function Logout() {
 
     const [ isLoggedOut, setIsLoggedOut ] = useState(false);
