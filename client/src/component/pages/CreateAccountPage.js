@@ -184,39 +184,6 @@ function CreateAccountPage(props) {
             });
         //grab state and post request to backend
     }
-    // const logout = () => {
-    //     setLoading({
-    //         isLoading: true,
-    //     })
-    //     const obj = getFromStorage('symptom_tracker');
-
-    //     if (obj && obj.token) {
-    //         const { token } = obj;
-    //         //verify token
-    //         fetch('/api/account/logout?token=' + token)
-    //             .then(res => res.json())
-    //             .then(json => {
-    //                 if (json.success) {
-    //                     setToken({
-    //                         token: '',
-    //                     });
-    //                     setLoading({
-    //                         isLoading: false,
-    //                     })
-    //                 } else {
-    //                     setLoading({
-    //                         isLoading: false,
-    //                     });
-    //                 }
-    //             });
-    //     } else {
-    //         setLoading({
-    //             isLoading: false,
-    //             // set state for different things/
-    //         });
-    //     }
-    // }
-    //destructure the object
     const onSignInChange = (e) => {
         const { name, value } = e.target;
         setSignIn({
@@ -244,7 +211,7 @@ function CreateAccountPage(props) {
                 </div>
                 <div className="row">
                     <div className="col-7">
-                        <h4 className="h4">User Log In</h4>
+                        <h4 className="h4 lightBlue">User Log In</h4>
                         <form className="form-group">
                             {/* <label htmlFor="username">Email:</label> */}
                             {/* each input should have a name (email) */}
@@ -266,14 +233,14 @@ function CreateAccountPage(props) {
                             />
                             <br />
                             <button onClick={onSignIn}
-                                className="btn btn-primary mt-3">Log In</button>
+                                className="btn btn-primary mt-3 medButtons">Log In</button>
                         </form>
                     </div>
                     <br />
                 </div>
                 <div className="row">
                     <div className="col-7">
-                        <h4 className="h4">User Registration</h4>
+                        <h4 className="h4 lightBlue">User Registration</h4>
                         <form className="form-group UserInput">
                             {/* <label htmlFor="username">First Name: </label> */}
                             <input type="text"
@@ -307,7 +274,7 @@ function CreateAccountPage(props) {
                             <br />
 
                             <button onClick={onSignUp}
-                                className="btn btn-primary mt-3">Sign Up</button>
+                                className="btn btn-primary mt-3 medButtons">Sign Up</button>
                         </form>
                     </div>
                     {/* <Logout /> */}

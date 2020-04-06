@@ -17,13 +17,15 @@
     border-radius: 50px;
     font-family: Kanit;
     font-size: 22px;
+    text-align: center;
     margin-top: 10px;
     margin-left: 5px;
 }
 
 .glow-button:hover {
     color: rgba(255, 255, 255, 1);
-    box-shadow: 0 5px 15px rgba(0, 0, 150, .4);
+    box-shadow: 0 5px 25px rgba(0, 0, 150, .4);
+    cursor: pointer;
    }
    
 .prevent{
@@ -31,3 +33,6 @@
     justify-content: center;    
     align-items: center;
 }
+
+
+

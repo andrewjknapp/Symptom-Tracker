@@ -19,8 +19,12 @@ function AdditionalMedicalSupport() {
 
         <Fragment>
             <div className='buttonDiv' >
-                <a className='supportButtons glow-button' onClick={showHospital} >Find a Hospital</a>
+                <a className='supportButtons glow-button' onClick={showHospital}>Find a Hospital</a>
                 <a className='supportButtons glow-button' onClick={showService}>Preventative Services</a>
+
+            </div>
+            <div className="buttonDiv">
+                <a className='supportButtons glow-button' target="_blank" onClick={e => window.location.href = "https://www.cdc.gov/coronavirus/2019-ncov/index.html"}>Visit CDC.gov for COVID-19 Public Health Updates</a>
             </div>
             <div className='prevent'>
                 {
