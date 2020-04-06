@@ -15,7 +15,7 @@ function Navbar() {
             <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav main-navbar">
                     <li className="nav-item">
-                        <Link to='/medical-profile' className="navLink">Medical Profile</Link>
+                        <Link to='/medical-profile-view' className="navLink">Medical Profile</Link>
                     </li>
                     <li className="nav-item">
                         <Link to='/chart' id='chart' className="navLink" >Chart</Link>
