@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./assets/css/Navbar.css";
+import Logout from "./Logout";
 
 
 function Navbar() {
@@ -25,6 +26,7 @@ function Navbar() {
                 </ul>
                 <span className="navbar-text nav-icons"><Link to='/new-post' id='newPost' className="nav-link" >🌡</Link></span>
                 <span className="navbar-text nav-icons"><Link to='print-out' id='printOut' className="nav-link">🖨</Link></span>
+                <Logout/>
             </div>
         </nav>
 
