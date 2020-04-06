@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useContext } from 'react';
-import UserContext from "../../utils/UserContext";
+import React, { useState, useEffect } from 'react';
+// import UserContext from "../../utils/UserContext";
 // import Logout from "../Logout";
 import "whatwg-fetch";
 import "../assets/css/accountpage.css";
@@ -14,7 +14,7 @@ import LogInHeader from '../sections/LogInHeader';
 
 function CreateAccountPage(props) {
 
-    const { dispatch, state } = useContext(UserContext);
+    // const { dispatch, state } = useContext(UserContext);
     //hook it up with some hooks for all our different states
     const [loading, setLoading] = useState({
         isLoading: true,
@@ -138,10 +138,10 @@ function CreateAccountPage(props) {
         setToken({
             token: json.token,
         })
-        dispatch({
-            type: "handleLogIn",
-            payload: json.userId,
-        })
+        // dispatch({
+        //     type: "handleLogIn",
+        //     payload: json.userId,
+        // })
     }
     const onSignIn = (e) => {
         if (e !== null) {
@@ -184,38 +184,38 @@ function CreateAccountPage(props) {
             });
         //grab state and post request to backend
     }
-    const logout = () => {
-        setLoading({
-            isLoading: true,
-        })
-        const obj = getFromStorage('symptom_tracker');
+    // const logout = () => {
+    //     setLoading({
+    //         isLoading: true,
+    //     })
+    //     const obj = getFromStorage('symptom_tracker');
 
-        if (obj && obj.token) {
-            const { token } = obj;
-            //verify token
-            fetch('/api/account/logout?token=' + token)
-                .then(res => res.json())
-                .then(json => {
-                    if (json.success) {
-                        setToken({
-                            token: '',
-                        });
-                        setLoading({
-                            isLoading: false,
-                        })
-                    } else {
-                        setLoading({
-                            isLoading: false,
-                        });
-                    }
-                });
-        } else {
-            setLoading({
-                isLoading: false,
-                // set state for different things/
-            });
-        }
-    }
+    //     if (obj && obj.token) {
+    //         const { token } = obj;
+    //         //verify token
+    //         fetch('/api/account/logout?token=' + token)
+    //             .then(res => res.json())
+    //             .then(json => {
+    //                 if (json.success) {
+    //                     setToken({
+    //                         token: '',
+    //                     });
+    //                     setLoading({
+    //                         isLoading: false,
+    //                     })
+    //                 } else {
+    //                     setLoading({
+    //                         isLoading: false,
+    //                     });
+    //                 }
+    //             });
+    //     } else {
+    //         setLoading({
+    //             isLoading: false,
+    //             // set state for different things/
+    //         });
+    //     }
+    // }
     //destructure the object
     const onSignInChange = (e) => {
         const { name, value } = e.target;

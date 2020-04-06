@@ -5,7 +5,7 @@ import { getFromStorage } from "../../utils/storage";
 import { Redirect } from "react-router";
 
 
-function MedicalProfile(props) {
+function MedicalProfile() {
     
     const [toViewPage, setToViewPage] = useState(false);
     const [userName, setUserName] = useState("Your");
@@ -250,7 +250,9 @@ function MedicalProfile(props) {
                     <button className='submitButton glow-button' onClick={handleSubmit}>Save</button>
                 </div>
             </form>
+
         </article>
+     
 
     )
 }
