@@ -28,9 +28,9 @@ function NewPost() {
   // const [feverNum, setFeverNum] = useState(0);
 
   const [sympNums, setSympNums] = useState({
-    headNum: null,
-    stomNum: null,
-    coughNum: null,
+    headNum: 0,
+    stomNum: 0,
+    coughNum: 0,
     temp: null
   });
 
@@ -120,7 +120,7 @@ function NewPost() {
             <input 
               id="temp-input" 
               name="temp" 
-              min="80" 
+              min="90" 
               type="number"
               onChange={handleNumChange}
             />
