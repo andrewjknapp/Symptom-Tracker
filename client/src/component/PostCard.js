@@ -17,7 +17,7 @@ function PostCard(props) {
           </p>
           <h6 style={{fontSize: '40px'}} >Symptoms</h6>
           <ul>
-          {symptoms.map(symp => <li>{symp.type}, Severity: {symp.severity}</li>)}
+          {symptoms.map(symp => <li style={{listStyleType: 'none'}}>{symp.type}, Severity: {symp.severity}</li>)}
           </ul>
         </div>
         <button style={{ margin: '0 auto', width: '30%', color: 'white',backgroundColor: '#3D52D5', borderRadius:'50px'}} className="btn glow-button my-3" onClick={props.deletePost} description={description}>Delete</button>
