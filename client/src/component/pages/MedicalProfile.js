@@ -3,6 +3,11 @@ import "../assets/css/MedicalProfile.css";
 
 
 function MedicalProfile() {
+
+    const [medicalProfile, setMedicalProfile] = useState({
+        
+    });
+
     const [surgeryCount, setSurgeryCount] = useState(1);
     const addSurgery = () => {
         setSurgeryCount(surgeryCount + 1)
