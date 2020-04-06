@@ -12,6 +12,7 @@ import CreateAccountPage from "./component/pages/CreateAccountPage";
 import Chart from './component/pages/Chart';
 import LandingPage from './component/pages/LandingPage'
 import AdditionalMedicalSupport from "./component/pages/AdditionalMedicalSupport";
+import MedicalProfileView from "./component/pages/MedicalProfileView";
 
 function AppReducer(state, action) {
   if (action.type === "handleLogIn") {
@@ -53,6 +54,10 @@ function App() {
           <Route absolute path="/medical-profile">
             <Navbar />
             <MedicalProfile />
+          </Route>
+          <Route absolute path="/medical-profile-view">
+            <Navbar />
+            <MedicalProfileView />
           </Route>
           <Route absolute path="/additional-medical-support">
             <Navbar />

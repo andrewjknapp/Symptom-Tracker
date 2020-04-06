@@ -1,17 +1,28 @@
 import React, { useState, useEffect } from "react";
 import "../assets/css/MedicalProfile.css";
+import API from "../../utils/API";
+import { getFromStorage } from "../../utils/storage";
+import { Redirect } from "react-router";
 
 
-function MedicalProfile() {
-
+function MedicalProfile(props) {
+    
+    const [toViewPage, setToViewPage] = useState(false);
+    const [userName, setUserName] = useState("Your");
     const [medicalProfile, setMedicalProfile] = useState({
-        DOB: '',
-        sex: '',
-        identity: '',
-        condition: 'no',
-        conditionInfo: '',
-        surgery: 'no',
-
+        exists: false,
+        DOB: 'Decline to Answer',
+        sex: 'Prefer not to say',
+        identity: 'Prefer no to say',
+        condition: 'None',
+        conditionInfo: 'None',
+        surgery: 'None',
+        surgeryInfo: {},
+        med: 'None',
+        medicationInfo: {},
+        medAllergy: 'None',
+        latex: 'No',
+        food: 'None'
     });
 
     const [surgeryCount, setSurgeryCount] = useState(1);
@@ -35,8 +46,25 @@ function MedicalProfile() {
         }
     }
 
-    const handleArrayChange = e => {
+    const handleSurgeryChange = e => {
 
+        setMedicalProfile({
+            ...medicalProfile,
+            surgeryInfo: {
+                ...medicalProfile.surgeryInfo,
+                [e.target.name]: e.target.value
+            }
+        })
+    }
+
+    const handleMedicationChange = e => {
+        setMedicalProfile({
+            ...medicalProfile,
+            medicationInfo: {
+                ...medicalProfile.medicationInfo,
+                [e.target.name]: e.target.value
+            }
+        })
     }
 
     const handleInputChange = e => {
@@ -47,14 +75,41 @@ function MedicalProfile() {
         
     }
 
-    useEffect(()=>{
+    const handleSubmit = e => {
+        e.preventDefault();
+        if(window.confirm("Ensure all data is correct, Save will overwrite all previous data")) {
+            API.saveProfile(medicalProfile);
+        }
+        
         console.log(medicalProfile);
-    }, [medicalProfile])
+        setToViewPage(true);
+    }
+    
+    // useEffect(()=>{
+    //     console.log(medicalProfile);
+    // },[medicalProfile])
 
-    return (
+    useEffect(()=>{
+        const { firstName } = getFromStorage('symptom_tracker');
+        setUserName(firstName + "'s");
+        let bool = false;
+        API.getProfile()
+            .then(res => {
+
+                if(res.data !== ""){
+                    bool = !window.confirm("Press OK to edit and Cancel to View");
+                }
+                
+            })
+            .then(()=>{
+                setToViewPage(bool);
+            })
+    }, [])
+
+    return toViewPage ? <Redirect to="/medical-profile-view"/> : (
         <article className='allMedText'>
 
-            <h1 className='medHead1'>[Name's] Medical Information</h1>
+            <h1 className='medHead1'>{userName} Medical Information</h1>
             <form>
                 <div>
                     <h2 className='medHead2'>General Information</h2>
@@ -94,7 +149,7 @@ function MedicalProfile() {
                 <div>
                     <h2>Past Medical History</h2>
                     <p>Do you have any chronic illness or serious medical condition?</p>
-                    <input className='medInput' id='cNo' name='condition' type='radio' value='no' onChange={handleInputChange}></input>
+                    <input className='medInput' id='cNo' name='condition' type='radio' value='None' onChange={handleInputChange}></input>
                     <label className='medBody2' htmlFor='cNo'>No</label>
                     <br></br>
                     <input className='medInput' id='cYes' name='condition' type='radio' value='yes' onChange={handleInputChange}></input>
@@ -121,8 +176,8 @@ function MedicalProfile() {
                         <tbody>
                             {[...Array(surgeryCount)].map((m, i) => (
                                 <tr key={i}>
-                                    <td><input type="input" id="surgeryType" name={"surgeryType" + i} /></td>
-                                    <td><input type="input" id="surgeryYear" name={"surgeryYear" + i} /></td>
+                                    <td><input type="input" id="surgeryType" name={"surgeryType_" + i} onChange={handleSurgeryChange}/></td>
+                                    <td><input type="input" id="surgeryYear" name={"surgeryYear_" + i} onChange={handleSurgeryChange}/></td>
                                 </tr>
 
                             ))}
@@ -133,11 +188,11 @@ function MedicalProfile() {
 
                     <h2>Current Medications</h2>
                     <p>Do you take any medications daily or regularly?</p>
-                    <input className='medInput' id='no' name='med' type='radio' value='no'></input>
-                    <label className='medBody2' htmlFor='no'>No</label>
+                    <input className='medInput' id='noMedication' name='med' type='radio' value='no' onChange={handleInputChange}></input>
+                    <label className='medBody2' htmlFor='noMedication'>No</label>
                     <br></br>
-                    <input className='medInput' id='yes' name='med' type='radio' value='yes'></input>
-                    <label className='medBody2' htmlFor='yes'>Yes</label>
+                    <input className='medInput' id='yesMedication' name='med' type='radio' value='yes' onChange={handleInputChange}></input>
+                    <label className='medBody2' htmlFor='yesMedication'>Yes</label>
                     <p>If yes, please list any OTC (over the counter) or prescribed medications, vitamins and herbs that you currently take below.</p>
                     <table id='table'>
                         <thead>
@@ -150,9 +205,9 @@ function MedicalProfile() {
                         <tbody>
                             {[...Array(medCount)].map((m, i) => (
                                 <tr key={i}>
-                                    <td><input type="input" id="medname" name="medName" /></td>
-                                    <td><input type="input" id="medname" name="medDosage" /></td>
-                                    <td><input type="input" id="medname" name="medHowMuch" /></td>
+                                    <td><input type="input" id={"medname" + i} name={"medName_" + i} onChange={handleMedicationChange}/></td>
+                                    <td><input type="input" id={"medDose" + i} name={"medDosage_" + i} onChange={handleMedicationChange}/></td>
+                                    <td><input type="input" id={"medHowMuch" + i} name={"medHowMuch_" + i} onChange={handleMedicationChange}/></td>
                                 </tr>
                             ))}
                         </tbody>
@@ -164,35 +219,35 @@ function MedicalProfile() {
                     <h2>Allergies</h2>
                     <p>Have you ever had an adverse reaction (allergy) to medications?</p>
 
-                    <input className='medInput' checked id='no' name='medAllergy' type='radio' value='no' />
-                    <label className='medBody2' htmlFor='Allergy'>No</label>
+                    <input className='medInput' defaultChecked id='noAllergy' name='medAllergy' type='radio' value='None' onClick={handleInputChange}/>
+                    <label className='medBody2' htmlFor='noAllergy'>No</label>
                     <br></br>
-                    <input className='medInput' id='yes' name='medAllergy' type='radio' value='yes' />
-                    <label className='medBody2' htmlFor='Allergy'>Yes</label>
-                    <input className='medInput' placeholder='If yes, please list...'></input>
+                    <input className='medInput' id='yesAllergy' name='medAllergy' type='radio' value='yes' />
+                    <label className='medBody2' htmlFor='yesAllergy'>Yes</label>
+                    <input className='medInput' placeholder='If yes, please list...' name="medAllergy" onChange={handleInputChange}></input>
 
 
                     <p>Have you ever had an adverse reaction (allergy) to latex?</p>
 
-                    <input className='medInput' checked name='latex' id='noLatex' type='radio'></input>
+                    <input className='medInput' defaultChecked name='latex' id='noLatex' type='radio' value='None' onClick={handleInputChange}></input>
                     <label className='medBody2' htmlFor='noLatex'>No</label>
                     <br></br>
-                    <input className='medInput' name='latex' type='radio'></input>
+                    <input className='medInput' name='latex' type='radio' value='Yes' onClick={handleInputChange}></input>
                     <label className='medBody2' htmlFor='latex'>Yes</label>
 
                     <p>Have you ever had an adverse reaction (allergy) to any foods?</p>
 
-                    <input className='medInput' checked name='food' type='radio'></input>
+                    <input className='medInput' defaultChecked name='food' type='radio' value='None' onClick={handleInputChange}></input>
                     <label className='medBody2' htmlFor='noFood'>No</label>
                     <br></br>
                     <input className='medInput' name='food' type='radio'></input>
                     <label className='medBody2' htmlFor='food'>Yes </label>
-                    <input className='medInput' placeholder='If yes, please list...'></input>
+                    <input className='medInput' placeholder='If yes, please list...' name='food' onChange={handleInputChange}></input>
 
 
                 </div>
                 <div>
-                    <button className='submitButton glow-button' type='submit'>Save</button>
+                    <button className='submitButton glow-button' onClick={handleSubmit}>Save</button>
                 </div>
             </form>
         </article>
