@@ -14,12 +14,14 @@
     align-items: center;
     padding: 10px 20px;
     background-color: #3D52D5;
+    color: white;
     border-radius: 50px;
     font-family: Kanit;
     font-size: 22px;
     text-align: center;
     margin-top: 10px;
     margin-left: 5px;
+    cursor: pointer;
 }
 
 .glow-button:hover {

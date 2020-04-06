@@ -1,4 +1,4 @@
-import React, { Fragment, Component, useState } from "react";
+import React, { Fragment, useState } from "react";
 import "../assets/css/AdditionalMedicalSupport.css";
 
 
@@ -28,12 +28,12 @@ function AdditionalMedicalSupport() {
             </div>
             <div className='prevent'>
                 {
-                    hospital ? <iframe src="http://www.ushospitalfinder.com/widgets/widget" width="400" height="200" frameborder="0"> </iframe> : ''
+                    hospital ? <iframe src="http://www.ushospitalfinder.com/widgets/widget" width="400" height="200" frameBorder="0"> </iframe> : ''
                 }
             </div>
             {
-                service ? <iframe src="https://www.health.gov/myhealthfinder?widget=true" name="myhealthfinderframe" frameborder="0" id="myhealthfinderframe" scrolling="yes" height="550"
-                    width="100%" marginheight="0" title="myhealthfinder widget" marginwidth="0"><p>Your browser does not support iframes.</p></iframe> : ''
+                service ? <iframe src="https://www.health.gov/myhealthfinder?widget=true" name="myhealthfinderframe" frameBorder="0" id="myhealthfinderframe" scrolling="yes" height="550"
+                    width="100%" marginHeight="0" title="myhealthfinder widget" marginWidth="0"><p>Your browser does not support iframes.</p></iframe> : ''
             }
         </Fragment>
     )

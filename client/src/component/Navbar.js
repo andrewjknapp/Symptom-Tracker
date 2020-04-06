@@ -15,7 +15,7 @@ function Navbar() {
             <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav main-navbar">
                     <li className="nav-item">
-                        <Link to='/medical-profile' className="navLink">Medical Profile</Link>
+                        <Link to='/medical-profile-view' className="navLink">Medical Profile</Link>
                     </li>
                     <li className="nav-item">
                         <Link to='/chart' id='chart' className="navLink" >Chart</Link>
@@ -24,8 +24,8 @@ function Navbar() {
                         <Link to='/additional-medical-support' className="navLink" >Additional Resources</Link>
                     </li>
                 </ul>
-                <span className="navbar-text nav-icons"><Link to='/new-post' id='newPost' className="nav-link" >🌡</Link></span>
-                <span className="navbar-text nav-icons"><Link to='print-out' id='printOut' className="nav-link">🖨</Link></span>
+                <span className="navbar-text nav-icons"><Link title='Create New Post' to='/new-post' id='newPost' className="nav-link" >🌡</Link></span>
+                <span className="navbar-text nav-icons"><Link title='Print Preview' to='print-out' id='printOut' className="nav-link">🖨</Link></span>
                 <Logout />
             </div>
         </nav>

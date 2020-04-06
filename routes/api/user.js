@@ -26,10 +26,12 @@ router.route("/posts/:id")
     .get(userController.getPosts)
 
 router.route("/profile")
-    .get(userController.getProfile) //return user profile information
+    //.get(userController.getProfile) //return user profile information
     //Expects req.body { profile: { all the profile info }} 
     .post(userController.setProfile) // add user profile info
     //put() //update user profile info
     //.delete() //remove user profile info
+router.route("/profile/:id")
+    .get(userController.getProfile)
 
 module.exports = router;
