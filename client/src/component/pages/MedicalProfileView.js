@@ -30,7 +30,12 @@ function MedicalProfileView() {
         const { firstName } = getFromStorage('symptom_tracker');
         setUserName(firstName + "'s");
         API.getProfile()
-            .then(res => setMedicalProfile(res.data))
+            .then(res => {
+                if(res.data === "") {
+                    setToEditPage(true);
+                } 
+                setMedicalProfile(res.data)
+            })
     }, [])
 
     

@@ -97,7 +97,7 @@ function MedicalProfile() {
             .then(res => {
 
                 if(res.data !== ""){
-                    bool = !window.confirm("Press OK to edit and Cancel to View");
+                    bool = !window.confirm("Press OK to edit and Cancel to go back");
                 }
                 
             })
