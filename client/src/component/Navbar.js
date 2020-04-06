@@ -24,8 +24,8 @@ function Navbar() {
                         <Link to='/additional-medical-support' className="navLink" >Additional Medical Support</Link>
                     </li>
                 </ul>
-                <span className="navbar-text nav-icons"><Link to='/new-post' id='newPost' className="nav-link" >🌡</Link></span>
-                <span className="navbar-text nav-icons"><Link to='print-out' id='printOut' className="nav-link">🖨</Link></span>
+                <span className="navbar-text nav-icons"><Link title='Create New Post' to='/new-post' id='newPost' className="nav-link" >🌡</Link></span>
+                <span className="navbar-text nav-icons"><Link title='Print Preview' to='print-out' id='printOut' className="nav-link">🖨</Link></span>
                 <Logout/>
             </div>
         </nav>
