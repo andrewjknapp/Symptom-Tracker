@@ -211,7 +211,7 @@ function CreateAccountPage(props) {
                 </div>
                 <div className="row">
                     <div className="col-7">
-                        <h4 className="h4 lightBlue">User Log In</h4>
+                        <h4 className="h4 user">User Log In</h4>
                         <form className="form-group">
                             {/* <label htmlFor="username">Email:</label> */}
                             {/* each input should have a name (email) */}
@@ -240,7 +240,7 @@ function CreateAccountPage(props) {
                 </div>
                 <div className="row">
                     <div className="col-7">
-                        <h4 className="h4 lightBlue">User Registration</h4>
+                        <h4 className="h4 user">User Registration</h4>
                         <form className="form-group UserInput">
                             {/* <label htmlFor="username">First Name: </label> */}
                             <input type="text"

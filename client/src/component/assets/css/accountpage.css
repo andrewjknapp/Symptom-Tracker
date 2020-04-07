@@ -29,6 +29,12 @@
     text-align: center;
 }
 
+.user {
+    color: #FBFFF1 !important;
+    font-family: 'Kanit';
+    font-weight: 500;
+}
+
 h3 {
     text-align: center;
     text-emphasis: emphasis;

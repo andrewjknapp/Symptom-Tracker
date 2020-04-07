@@ -151,44 +151,11 @@ function Chart() {
           dataset = temp
         ]
       }
-<<<<<<< HEAD
-    }, [posts, chartToggle])
-
-    
-    let graphLabel = chartToggle ? 'Symptom Severity' : 'Temperature';
-    let buttonLabel = chartToggle ? 'Temperature' : 'Symptom Severity';
-    
-      return (
-        <div>
-          <button
-            className='glow-button'
-            onClick={()=>setChartToggle(!chartToggle)}
-          >{buttonLabel}</button>
-          <Line
-            data={chartData}
-            options={{
-              title:{
-                display:true,
-                text: graphLabel,
-                fontFamily: 'Kanit',
-                fontColor: '#090C9B',
-                fontSize: 40
-              },
-              legend:{
-                display:true,
-                position:'right'
-              }
-            }}
-          />
-        </div>
-      );
-=======
 
       setChartData({
         labels: formattedLabels,
         datasets: dataset
       })
->>>>>>> master
     }
   }, [posts, chartToggle])
 
