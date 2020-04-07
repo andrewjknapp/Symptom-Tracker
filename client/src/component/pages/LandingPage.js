@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import PostCard from '../PostCard';
 import API from '../../utils/API';
 import UserContext from '../../utils/UserContext';
+import { Link } from 'react-router-dom'
 import '../assets/css/LandingPage.css';
 import '../assets/css/loader.css';
 
@@ -34,6 +35,11 @@ function LandingPage() {
     return (
         <article className="landingPage">
             <h2 className='landing-header' >Symptom Posts</h2>
+            <div className='text-center'>
+            <Link to='/new-post'><button className='new-post-btn'>Create New Post</button></Link>
+            </div>
+        
+            
             {isLoading ? <h2 className="text-center loading">Loading...</h2> : posts.map((userPost, i) => <PostCard keyNumber={i} post={userPost} deletePost={deletePost} />)}
         </article>
     )

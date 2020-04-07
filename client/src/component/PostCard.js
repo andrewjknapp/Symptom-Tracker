@@ -13,7 +13,7 @@ function PostCard(props) {
       <div key={props.keyNumber} className="card text-center m-5 postCard">
         <div className="card-header">{formatDate(time)}</div>
         <div className="card-body">
-          <h5 style={{fontSize: '40px'}} className="card-title">{title}</h5>
+          <h5 className="post-title card-title">{title}</h5>
           <p className="card-text">
             {description}
           </p>

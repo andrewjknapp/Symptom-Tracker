@@ -8,3 +8,17 @@
     font-family: 'Kanit';
     font-size: 60px;
 }
+
+.new-post-btn {
+    margin-top: 15px;
+    padding: 5px 16px;
+    background-color: #3D52D5;
+    color: #FBFFF1;
+    border-radius: 35px;
+    font-size: 16px;
+}
+
+.new-post-btn:hover {
+    color: rgba(255, 255, 255, 1);
+    box-shadow: 0 5px 15px rgba(0, 0, 150, .4);
+   }
