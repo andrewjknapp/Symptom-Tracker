@@ -1,40 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
 import API from '../../utils/API';
+import "../assets/css/loader.css";
 
 function Chart() {
 
   const [chartToggle, setChartToggle] = useState(true);
   const [posts, setPosts] = useState([]);
-  const [chartData, setChartData] = useState(
-    {
-      labels: ['Monday', 'Tuesday', 'Wednesday',
-        'Thursday', 'Friday'],
-      datasets: [
-        {
-          label: 'Cough',
-          fill: false,
-          lineTension: 0.5,
-          backgroundColor: '#3FE744',
-          borderColor: '#3FE744',
-          borderWidth: 3,
-          pointHoverRadius: 6,
-          data: [3, 8, null, 9, 2]
-        },
-        {
-          label: 'Cough',
-          fill: false,
-          lineTension: 0.5,
-          backgroundColor: '#3F7CE7',
-          borderColor: '#3F7CE7',
-          borderWidth: 3,
-          pointHoverRadius: 6,
-          data: [5, 7, 6, 4, 3]
-        },
-
-      ]
-    }
-  );
+  const [chartData, setChartData] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
   function newLine(color, data, label) {
 
@@ -121,6 +95,7 @@ function Chart() {
     API.getPosts()
       .then(res => {
         setPosts(res.data)
+        setIsLoading(false);
       })
   }, []);
 
@@ -163,7 +138,7 @@ function Chart() {
   let graphLabel = chartToggle ? 'Symptom Severity' : 'Temperature';
   let buttonLabel = chartToggle ? 'Temperature' : 'Symptom Severity';
 
-  return (
+  return isLoading ? <h2 className="text-center loading">Loading...</h2> : (
     <div>
       <button
         onClick={() => setChartToggle(!chartToggle)}

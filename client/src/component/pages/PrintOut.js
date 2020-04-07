@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+import React, { Fragment} from "react";
+=======
 import React, { useState, Fragment } from "react";
+>>>>>>> d7f5f133a860cb49d9c1a4432b051fa46f6cf8fc
 import ReactToPrint from "react-to-print";
 import PrintComponent from '../PrintComponent';
 import "../assets/css/PrintOut.css";
