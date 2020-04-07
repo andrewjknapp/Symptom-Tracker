@@ -85,7 +85,7 @@ function MedicalProfileView() {
             </div>
 
   <div className="card profile-view-card" >
-    <ul className="list-group-flush list-group">
+    <ul className="profile-view-elements list-group-flush list-group">
         <li className="list-group-item"><span className='list-num'>1. Date of Birth:</span> {DOB}</li>
         <li className="list-group-item"><span className='list-num'>2. Sex:</span> {sex}</li>
         <li className="list-group-item"><span className='list-num'>3. Gender Identity:</span> {identity}</li>
@@ -100,18 +100,6 @@ function MedicalProfileView() {
         <li className="list-group-item"><span className='list-num'>9. Food Allergies:</span> {food}</li>
     </ul>
 </div>
-            {/* <p>1. Date of Birth: {DOB}</p>
-            <p>Sex: {sex}</p>
-            <p>Gender Identity: {identity}</p>
-            <p>Medical Conditions: {condition}</p>
-            {(condition === "None") ? null : <p>{conditionInfo}</p> }
-            <p>Surgical History: {surgery}</p>
-            {(surgery === "None") ? null : surgeryList}
-            <p>Medication: {med}</p>
-            {(med === "None") ? null : medicationList}
-            <p>Medication Allergies: {medAllergy}</p>
-            <p>Latex Allergy: {latex}</p>
-            <p>Food Allergies: {food}</p> */}
         </article>
     )
 }

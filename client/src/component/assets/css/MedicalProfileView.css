@@ -11,6 +11,10 @@
     margin-bottom: 40px;
 }
 
+.profile-view-elements {
+    padding: 10px;
+}
+
 .list-num {
     font-weight: bold;
 }
