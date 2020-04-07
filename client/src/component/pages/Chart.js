@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
 import API from '../../utils/API';
-import '../assets/css/Chart.css'
+import "../assets/css/Chart.css";
 import "../assets/css/loader.css";
 
 function Chart() {
@@ -144,21 +144,26 @@ function Chart() {
       <button class='toggleButton'
         onClick={() => setChartToggle(!chartToggle)}
       >{buttonLabel}</button>
-      <Line
-        data={chartData}
-        options={{
-          maintainAspectRatio: false,
-          title: {
-            display: true,
-            text: graphLabel,
-            fontFamily: 'Kanit',
-          },
-          legend: {
-            display: true,
-            position: 'right',
-          }
-        }}
-      />
+      <article className="canvas-container">
+        <Line
+          data={chartData}
+          options={{
+            maintainAspectRatio: false,
+            title: {
+              display: true,
+              text: graphLabel,
+              fontFamily: 'Kanit',
+              fontColor: '#090C9B',
+              fontSize: 40
+            },
+            legend: {
+              display: true,
+              position: 'bottom'
+            }
+          }}
+        />
+      </article>
+
     </div>
   );
 }
