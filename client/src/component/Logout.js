@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { removeFromStorage } from "../utils/storage";
 import { Redirect } from "react-router";
+import "./assets/css/Navbar.css";
+
 
 function Logout() {
 
@@ -13,7 +15,7 @@ function Logout() {
 
     return isLoggedOut ? <Redirect to="/"/> : (
 
-    <button onClick={logoutUser}>Logout</button>
+    <button class='navLogout' onClick={logoutUser}>Logout</button>
    
     )
 }
