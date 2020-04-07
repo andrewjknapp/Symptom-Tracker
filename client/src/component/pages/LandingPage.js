@@ -2,30 +2,16 @@ import React, { useState, useEffect, useContext } from 'react'
 import PostCard from '../PostCard';
 import API from '../../utils/API';
 import UserContext from '../../utils/UserContext';
-import '../assets/css/LandingPage.css'
+import '../assets/css/LandingPage.css';
+import '../assets/css/loader.css';
 
 function LandingPage() {
     const {
         state, dispatch
     } = useContext(UserContext);
     //console.log(state, dispatch);
-    const [posts, setPosts] = useState([
-        {
-            title: "My Head Hurts",
-            description: "I have had this headache since 12 this morning",
-            date: "2/12/20",
-            symptoms: [
-                {
-                    type: "Coughing",
-                    severity: 4
-                },
-                {
-                    type: "Headache",
-                    severity: 2
-                }
-            ]
-        }
-    ]);
+    const [posts, setPosts] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         displayPosts();
@@ -35,6 +21,7 @@ function LandingPage() {
         API.getPosts()
             .then((res) => {
                 setPosts(res.data.reverse());
+                setIsLoading(false);
             })
     }
 
@@ -46,8 +33,8 @@ function LandingPage() {
 
     return (
         <article>
-            <h1 className='landing-header' >Symptom Posts</h1>
-            {posts.map((userPost, i) => <PostCard keyNumber={i} post={userPost} deletePost={deletePost} />)}
+            <h2 className='landing-header' >Symptom Posts</h2>
+            {isLoading ? <h2 className="text-center loading">Loading...</h2> : posts.map((userPost, i) => <PostCard keyNumber={i} post={userPost} deletePost={deletePost} />)}
         </article>
     )
 }
