@@ -8,6 +8,7 @@ function PostCard(props) {
   let { symptoms } = props.post;
   console.log(props.key);
     return (
+
       <div key={props.keyNumber} className="card text-center m-5">
         <div className="card-header">{date}</div>
         <div className="card-body">
@@ -15,10 +16,26 @@ function PostCard(props) {
           <p className="card-text">
             {description}
           </p>
-          <h6 style={{fontSize: '40px'}} >Symptoms</h6>
-          <ul>
-          {symptoms.map(symp => <li style={{listStyleType: 'none'}}>{symp.type}, Severity: {symp.severity}</li>)}
-          </ul>
+
+<div className='table-responsive'>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Symptom</th>
+      <th scope="col">Severity</th>
+    </tr>
+  </thead>
+  <tbody>
+    {symptoms.map(symp => 
+    <tr>
+      <td>{symp.type}</td>
+      <td>{symp.severity}</td>
+    </tr>)}
+  </tbody>
+</table>
+</div>
+          
+
         </div>
         <button  className="postCardButton" onClick={props.deletePost} description={description}>Delete</button>
         <div className="card-footer text-muted"></div>
