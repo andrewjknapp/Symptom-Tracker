@@ -32,12 +32,12 @@
 }
 
 .form-check-label {
-    font-size: 20px;
+    font-size: 15px;
+    padding-right: 10px;
 }
 
-.symptom .checkBoxes {
-    width: col-sm-6;
-    margin: 15px;
+.checkBoxes {
+    width: 100%
 }
 
 .checkBoxPadding {
@@ -46,4 +46,11 @@
 
 .saveMargin {
     margin-right: 20%;
+}
+.form-check {
+    width: 100%;
+}
+
+.form-check .symptomInput {
+    margin-right: 10px;
 }
