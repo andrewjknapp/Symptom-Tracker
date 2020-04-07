@@ -29,6 +29,12 @@
     text-align: center;
 }
 
+.user {
+    color: #FBFFF1 !important;
+    font-family: 'Kanit';
+    font-weight: 500;
+}
+
 h3 {
     text-align: center;
     text-emphasis: emphasis;
@@ -48,11 +54,14 @@ h3 {
     align-content: center !important;
 }
 
-button {
-    left: 20% !important;
-    border-radius: 25px;
-    color: #FBFFF1 !important;
-    background-color: #3D52D5 !important;
+.logbutton {
+    display: inline-block;
+    padding: 5px 16px;
+    background-color: #3D52D5;
+    color: #FBFFF1;
+    border-radius: 35px;
+    font-size: 16px;
+    margin-top: 10px;
 }
 
 

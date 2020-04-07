@@ -10,17 +10,26 @@
     text-align: center;
 }
 
-.glow-button:hover {
+.saveButton {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3D52D5;
+    color: #FBFFF1;
+    border-radius: 50px;
+    font-size: 22px;
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+.saveButton:hover {
     color: rgba(255, 255, 255, 1);
-    box-shadow: 0 5px 15px rgba(0, 0, 150, .4);
+    box-shadow: 0 5px 25px rgba(0, 0, 150, .4);
+    cursor: pointer;
 }
 
 #userInstruction {
     text-align: center;
 }
-/* input .sympt {
-    margin-right: 10px;git 
-} */
 
 .form-check-label {
     font-size: 20px;

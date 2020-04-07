@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
 import API from '../../utils/API';
+import '../assets/css/Chart.css'
 import "../assets/css/loader.css";
 
 function Chart() {
@@ -140,7 +141,7 @@ function Chart() {
 
   return isLoading ? <h2 className="text-center loading">Loading...</h2> : (
     <div>
-      <button
+      <button class='toggleButton'
         onClick={() => setChartToggle(!chartToggle)}
       >{buttonLabel}</button>
       <Line
@@ -151,8 +152,6 @@ function Chart() {
             display: true,
             text: graphLabel,
             fontFamily: 'Kanit',
-            fontColor: '#090C9B',
-            fontSize: 40
           },
           legend: {
             display: true,
