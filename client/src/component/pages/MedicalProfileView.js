@@ -85,7 +85,7 @@ function MedicalProfileView() {
             { isLoading ? <h2 className="text-center loading">Loading...</h2> : (
                 <section>
             <div className='text-center'> 
-            <button className='editBtn glow-button' onClick={()=>setToEditPage(true)}>Edit Profile</button>
+            <button className='editButton' onClick={()=>setToEditPage(true)}>Edit Profile</button>
             </div>
 
               <div className="card profile-view-card" >
