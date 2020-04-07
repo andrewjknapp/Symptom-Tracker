@@ -32,7 +32,7 @@ function LandingPage() {
     }
 
     return (
-        <article>
+        <article className="landingPage">
             <h2 className='landing-header' >Symptom Posts</h2>
             {isLoading ? <h2 className="text-center loading">Loading...</h2> : posts.map((userPost, i) => <PostCard keyNumber={i} post={userPost} deletePost={deletePost} />)}
         </article>
