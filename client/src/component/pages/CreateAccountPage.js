@@ -233,7 +233,7 @@ function CreateAccountPage(props) {
                             />
                             <br />
                             <button onClick={onSignIn}
-                                className="btn btn-primary mt-3 medButtons">Log In</button>
+                                className="logbutton">Log In</button>
                         </form>
                     </div>
                     <br />
@@ -274,7 +274,7 @@ function CreateAccountPage(props) {
                             <br />
 
                             <button onClick={onSignUp}
-                                className="btn btn-primary mt-3 medButtons">Sign Up</button>
+                                className="logbutton">Sign Up</button>
                         </form>
                     </div>
                     {/* <Logout /> */}
