@@ -136,13 +136,14 @@ function NewPost() {
         <div className="row mb-5">
           <div className="col-sm-3"></div>
           <div className="col-sm-6">
-            <div id="userInstruction">Please check off and rate the severity of any symptoms that you are currently experiencing on a scale from 0-10</div>
+            <div id="userInstruction">Please check off and rate the severity of any symptoms that you are currently experiencing on a scale from 1 to 10</div>
           </div>
           <div className="col-sm-3"></div>
         </div>
-        <div className="row">
+        <div className="row mb-5">
           <div className="col-sm-3"></div>
-          <div className="symptom checkBoxes">
+          <div className="col-sm-6 checkBoxes">
+
             <div className="checkBoxPadding">
 
               <div className="form-check">
@@ -153,10 +154,9 @@ function NewPost() {
                   name="showHead"
                   onClick={handleCheckBox}
                 ></input>
-                <label className="form-check-label">Headache</label>
-                {showNums.showHead ? <input className="sympt" type="number" min="0" max="9" name="headNum" onChange={handleNumChange} /> : null}
+                <label className="form-check-label">Headache </label>
+                {showNums.showHead ? <div > <input className="symptomInput" type="number" min="0" max="10" name="headNum" onChange={handleNumChange} /><p>Rate severity from 1-10</p> </div> : null}
               </div>
-
               <div className="form-check">
                 <input
                   className="form-check-input sympt"
@@ -165,8 +165,8 @@ function NewPost() {
                   name="showStom"
                   onClick={handleCheckBox}
                 ></input>
-                <label className="form-check-label">Stomach Ache</label>
-                {showNums.showStom ? <input type="number" min="0" max="9" name="stomNum" onChange={handleNumChange} /> : null}
+                <label className="form-check-label">Stomach Ache </label>
+                {showNums.showStom ? <div> <input type="number" min="0" max="10" name="stomNum" onChange={handleNumChange} /><p>Rate severity from 1-10</p> </div> : null}
               </div>
 
               <div className="form-check">
@@ -177,8 +177,8 @@ function NewPost() {
                   name="showCough"
                   onClick={handleCheckBox}
                 ></input>
-                <label className="form-check-label">Cough</label>
-                {showNums.showCough ? <input type="number" min="0" max="9" name="coughNum" onChange={handleNumChange} /> : null}
+                <label className="form-check-label">Cough </label>
+                {showNums.showCough ? <div><input type="number" min="0" max="10" name="coughNum" onChange={handleNumChange} /><p>Rate severity from 1-10</p> </div> : null}
               </div>
               <div className="form-check">
                 <input
@@ -189,7 +189,7 @@ function NewPost() {
                   onClick={handleCheckBox}
                 ></input>
                 <label className="form-check-label">Shortness of Breath</label>
-                {showNums.showShortness ? <input type="number" min="0" max="9" name="breathNum" onChange={handleNumChange} /> : null}
+                {showNums.showShortness ? <div><input className="symptomInput" type="number" min="0" max="9" name="breathNum" onChange={handleNumChange} /><p>Rate severity from 1-10</p> </div> : null}
               </div>
               <Link to="/landing-page"><button onClick={handleSubmit} className="saveButton">Save</button></Link>
             </div>
