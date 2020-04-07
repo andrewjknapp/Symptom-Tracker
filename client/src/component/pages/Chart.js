@@ -144,24 +144,6 @@ function Chart() {
       <button class='toggleButton'
         onClick={() => setChartToggle(!chartToggle)}
       >{buttonLabel}</button>
-<<<<<<< HEAD
-      <Line
-      
-        data={chartData}
-        options={{
-          maintainAspectRatio: false,
-          title: {
-            display: true,
-            text: graphLabel,
-            fontFamily: 'Kanit',
-          },
-          legend: {
-            display: true,
-            position: 'right',
-          }
-        }}
-      />
-=======
       <article className="canvas-container">
         <Line
           data={chartData}
@@ -182,7 +164,6 @@ function Chart() {
         />
       </article>
 
->>>>>>> master
     </div>
   );
 }
