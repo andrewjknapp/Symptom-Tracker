@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Redirect } from "react-router";
 import { getFromStorage } from "../../utils/storage";
 import API from "../../utils/API";
+import '../assets/css/MedicalProfileView.css'
 
 function MedicalProfileView() {
 
@@ -75,9 +76,31 @@ function MedicalProfileView() {
 
     return toEditPage ? <Redirect to="/medical-profile" try="hope"/> :(
         <article>
-            <button onClick={()=>setToEditPage(true)}>Edit Profile</button>
-            <h1>{userName} Profile View</h1>
-            <p>Date of Birth: {DOB}</p>
+            
+
+            <h1 className='profile-view-header'>{userName} Profile View</h1>
+
+            <div className='text-center'> 
+            <button className='editBtn glow-button' onClick={()=>setToEditPage(true)}>Edit Profile</button>
+            </div>
+
+  <div className="card profile-view-card" >
+    <ul className="list-group-flush list-group">
+        <li className="list-group-item"><span className='list-num'>1. Date of Birth:</span> {DOB}</li>
+        <li className="list-group-item"><span className='list-num'>2. Sex:</span> {sex}</li>
+        <li className="list-group-item"><span className='list-num'>3. Gender Identity:</span> {identity}</li>
+        <li className="list-group-item"><span className='list-num'>4. Medical Conditions:</span> {condition}</li>
+        {(condition === "None") ? null :<li className="list-group-item">{conditionInfo}</li>}
+        <li className="list-group-item"><span className='list-num'>5. Surgery History:</span> {surgery}</li>
+        {(surgery === "None") ? null : <li className="list-group-item">Past Surgeries: {surgeryList}</li>}
+        <li className="list-group-item"><span className='list-num'>6. Medication:</span> {med}</li>
+        {(med === "None") ? null : <li className="list-group-item">Medication List: {medicationList}</li>}
+        <li className="list-group-item"><span className='list-num'>7. Medication Allergies:</span> {medAllergy}</li>
+        <li className="list-group-item"><span className='list-num'>8. Latex Allergy:</span> {latex}</li>
+        <li className="list-group-item"><span className='list-num'>9. Food Allergies:</span> {food}</li>
+    </ul>
+</div>
+            {/* <p>1. Date of Birth: {DOB}</p>
             <p>Sex: {sex}</p>
             <p>Gender Identity: {identity}</p>
             <p>Medical Conditions: {condition}</p>
@@ -88,7 +111,7 @@ function MedicalProfileView() {
             {(med === "None") ? null : medicationList}
             <p>Medication Allergies: {medAllergy}</p>
             <p>Latex Allergy: {latex}</p>
-            <p>Food Allergies: {food}</p>
+            <p>Food Allergies: {food}</p> */}
         </article>
     )
 }
