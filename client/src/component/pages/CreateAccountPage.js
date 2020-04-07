@@ -23,8 +23,8 @@ function CreateAccountPage(props) {
     const [signUp, setSignUp] = useState({
         firstName: '',
         lastName: '',
-        email: '',
-        password: '',
+        userEmail: '',
+        userPassword: '',
     });
     const [errors, setErrors] = useState({
         signInError: '',
@@ -102,17 +102,16 @@ function CreateAccountPage(props) {
                     setLoading({
                         isLoading: false,
                     })
-                    onSignIn(null);
-                    setLoading({
-                        isLoading: true,
-                    });
                     setSignUp({
                         email: '',
                         password: '',
                         firstName: '',
                         lastName: '',
                     });
-
+                    onSignIn(null);
+                    setLoading({
+                        isLoading: false,
+                    });
                 } else {
                     setErrors({
                         signUpError: json.message,
@@ -139,7 +138,7 @@ function CreateAccountPage(props) {
         setToken({
             token: json.token,
         })
-        // dispatch({
+        // dispatchEvent({
         //     type: "handleLogIn",
         //     payload: json.userId,
         // })
@@ -278,7 +277,6 @@ function CreateAccountPage(props) {
                                 className="logbutton">Sign Up</button>
                         </form>
                     </div>
-                    {/* <Logout /> */}
 
                 </div>
 
