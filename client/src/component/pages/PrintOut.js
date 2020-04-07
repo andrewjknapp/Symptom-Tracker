@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+
 import ReactToPrint from "react-to-print";
 import PrintComponent from '../PrintComponent';
 import "../assets/css/PrintOut.css";
