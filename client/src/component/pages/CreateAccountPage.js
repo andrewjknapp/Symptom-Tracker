@@ -81,10 +81,7 @@ function CreateAccountPage(props) {
             userEmail: email,
             userPassword: password
         });
-        onSignIn(null);
-        setLoading({
-            isLoading: true,
-        });
+
 
         fetch('/api/account/signup', {
             method: 'POST',
@@ -105,6 +102,10 @@ function CreateAccountPage(props) {
                     setLoading({
                         isLoading: false,
                     })
+                    onSignIn(null);
+                    setLoading({
+                        isLoading: true,
+                    });
                     setSignUp({
                         email: '',
                         password: '',
