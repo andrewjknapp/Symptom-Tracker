@@ -33,7 +33,7 @@ function LandingPage() {
     }
 
     return (
-        <article>
+        <article className="landingPage">
             <h2 className='landing-header' >Symptom Posts</h2>
             <div className='text-center'>
             <Link to='/new-post'><button className='new-post-btn'>Create New Post</button></Link>

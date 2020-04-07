@@ -80,7 +80,7 @@ function MedicalProfileView() {
         <article>
             
 
-            <h1 className='profile-view-header'>{userName} Profile View</h1>
+            <h1 className='profile-view-header'>{userName} Medical Profile</h1>
             
             { isLoading ? <h2 className="text-center loading">Loading...</h2> : (
                 <section>

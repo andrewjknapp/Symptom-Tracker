@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import UserContext from "../../utils/UserContext";
-// import Logout from "../Logout";
 import "whatwg-fetch";
 import "../assets/css/accountpage.css";
 import "../assets/css/colors.css";
@@ -14,11 +12,6 @@ import LogInHeader from '../sections/LogInHeader';
 
 function CreateAccountPage(props) {
 
-    // const { dispatch, state } = useContext(UserContext);
-    //hook it up with some hooks for all our different states
-    const [loading, setLoading] = useState({
-        isLoading: true,
-    });
     const [token, setToken] = useState('');
     const [signUp, setSignUp] = useState({
         firstName: '',
@@ -49,21 +42,21 @@ function CreateAccountPage(props) {
                         setToken({
                             token,
                         });
-                        setLoading({
-                            isLoading: false
-                        })
+                        // setLoading({
+                        //     isLoading: false
+                        // })
                     }
                     else {
-                        setLoading({
-                            isLoading: false
-                        })
+                        // setLoading({
+                        //     isLoading: false
+                        // })
                     }
                 });
         } else {
-            setLoading({
-                isLoading: false,
-                // set state for different things/
-            });
+            // setLoading({
+            //     isLoading: false,
+            //     // set state for different things/
+            // });
         }
     }, [])
 
@@ -77,10 +70,7 @@ function CreateAccountPage(props) {
             password,
         } = signUp;
 
-        setSignIn({
-            userEmail: email,
-            userPassword: password
-        });
+        
 
 
         fetch('/api/account/signup', {
@@ -94,69 +84,42 @@ function CreateAccountPage(props) {
                 email: email,
                 password: password,
             }),
-        }).then(res => res.json())
-            .then(json => {
-                console.log(json)
-                if (json) {
-                    // setErrors(...errors, {signUpError: json.message})
-                    setLoading({
-                        isLoading: false,
-                    })
-                    onSignIn(null);
-                    setLoading({
-                        isLoading: true,
-                    });
-                    setSignUp({
-                        email: '',
-                        password: '',
-                        firstName: '',
-                        lastName: '',
-                    });
+        })
+        .then(res => res.json())
 
-                } else {
-                    setErrors({
-                        signUpError: json.message,
-
-                    })
-                    setLoading({
-                        isLoading: false,
-                    })
-                }
-
+            .then(()=>{
+                console.log(email);
+                setSignIn({
+                    userEmail: email,
+                    userPassword: password
+                });
+                console.log(userEmail);
+            })
+            .then(()=>{
+                onSignIn(null, email, password);
             });
     }
     const onSignInSuccess = (json) => {
 
         setErrors({ ...errors, signInError: json.message })
-        setLoading({
-            isLoading: false,
-        })
+
         setInStorage('symptom_tracker', { token: json.token, firstName: json.firstName, id: json.userId });
-        setSignIn({
-            pasword: userPassword,
-            email: userEmail,
-        });
+        console.log(userPassword)
+        
         setToken({
             token: json.token,
         })
-        // dispatch({
-        //     type: "handleLogIn",
-        //     payload: json.userId,
-        // })
+
     }
-    const onSignIn = (e) => {
+    const onSignIn = (e, userEmail, userPassword) => {
         if (e !== null) {
             e.preventDefault();
         }
 
-        let {
-            userEmail,
-            userPassword,
-        } = signIn;
-
-        setLoading({
-            isLoading: true,
-        });
+        if (signIn.userEmail !== "") {
+            userEmail = signIn.userEmail;
+            userPassword = signIn.userPassword
+        }
 
         fetch('/api/account/signin', {
             method: 'POST',
@@ -169,7 +132,7 @@ function CreateAccountPage(props) {
             }),
         }).then(res => res.json())
             .then(json => {
-                //console.log(json);
+                
                 if (json.success) {
                     onSignInSuccess(json);
                     setToLandingPage(true);
@@ -178,9 +141,7 @@ function CreateAccountPage(props) {
                     setErrors({
                         signInError: json.message,
                     })
-                    setLoading({
-                        isLoading: false,
-                    });
+                    
                 }
             });
         //grab state and post request to backend
@@ -214,8 +175,7 @@ function CreateAccountPage(props) {
                     <div className="col-7">
                         <h4 className="h4 user">User Log In</h4>
                         <form className="form-group">
-                            {/* <label htmlFor="username">Email:</label> */}
-                            {/* each input should have a name (email) */}
+                            
                             <input type="email"
                                 name="userEmail"
                                 placeholder="Email"
@@ -224,7 +184,7 @@ function CreateAccountPage(props) {
                                 onChange={onSignInChange}
                             />
                             <br />
-                            {/* <label htmlFor="password">Password:</label> */}
+                           
                             <input type="password"
                                 name="userPassword"
                                 placeholder="password"
@@ -243,14 +203,14 @@ function CreateAccountPage(props) {
                     <div className="col-7">
                         <h4 className="h4 user">User Registration</h4>
                         <form className="form-group UserInput">
-                            {/* <label htmlFor="username">First Name: </label> */}
+                            
                             <input type="text"
                                 name="firstName"
                                 placeholder="First Name"
                                 value={firstName}
                                 onChange={onSignUpChange} />
                             <br />
-                            {/* <label htmlFor="Last Name">Last Name: </label> */}
+                            
                             <input
                                 type="text"
                                 name="lastName"
@@ -259,14 +219,14 @@ function CreateAccountPage(props) {
                                 onChange={onSignUpChange}
                             />
                             <br />
-                            {/* <label htmlFor="email">Email: </label> */}
+                            
                             <input type="email" placeholder="Email"
                                 name="email"
                                 value={email}
                                 onChange={onSignUpChange}
                             />
                             <br />
-                            {/* <label htmlFor="password">Password: </label> */}
+                            
                             <input type="password" placeholder="password"
                                 name="password"
                                 value={password}
@@ -278,17 +238,10 @@ function CreateAccountPage(props) {
                                 className="logbutton">Sign Up</button>
                         </form>
                     </div>
-                    {/* <Logout /> */}
-
                 </div>
-
             </div>
-
-            {/* Ternary Operator to render medical profile and button based on login token */}
-
         </div>
     );
-
 }
 
 
