@@ -19,13 +19,20 @@
     font-weight: bold;
 }
 
-.editBtn {
-    font-size: 22px;
-    margin-bottom: 40px;
+.editButton {
+    margin: 0 auto 10px;
+    padding: 5px 16px;
+    background-color: #3D52D5;
+    color: #FBFFF1;
+    border-radius: 35px;
+    font-size: 16px;
 }
 
-.glow-button:hover {
+.editButton:hover {
     color: rgba(255, 255, 255, 1);
     box-shadow: 0 5px 15px rgba(0, 0, 150, .4);
    }
    
+.indent {
+    margin-left: 20px;
+}

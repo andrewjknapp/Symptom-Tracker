@@ -85,10 +85,6 @@ function MedicalProfile() {
         setToViewPage(true);
     }
 
-    // useEffect(()=>{
-    //     console.log(medicalProfile);
-    // },[medicalProfile])
-
     useEffect(() => {
         const { firstName } = getFromStorage('symptom_tracker');
         setUserName(firstName + "'s");

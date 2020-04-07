@@ -85,7 +85,7 @@ function MedicalProfileView() {
             { isLoading ? <h2 className="text-center loading">Loading...</h2> : (
                 <section>
             <div className='text-center'> 
-            <button className='editBtn glow-button' onClick={()=>setToEditPage(true)}>Edit Profile</button>
+            <button className='editButton' onClick={()=>setToEditPage(true)}>Edit Profile</button>
             </div>
 
               <div className="card profile-view-card" >
@@ -96,9 +96,9 @@ function MedicalProfileView() {
                     <li className="list-group-item"><span className='list-num'>4. Medical Conditions:</span> {condition}</li>
                     {(condition === "None") ? null :<li className="list-group-item">{conditionInfo}</li>}
                     <li className="list-group-item"><span className='list-num'>5. Surgery History:</span> {surgery}</li>
-                    {(surgery === "None") ? null : <li className="list-group-item">Past Surgeries: {surgeryList}</li>}
+                    {(surgery === "None") ? null : <li className="list-group-item indent">Past Surgeries: {surgeryList}</li>}
                     <li className="list-group-item"><span className='list-num'>6. Medication:</span> {med}</li>
-                    {(med === "None") ? null : <li className="list-group-item">Medication List: {medicationList}</li>}
+                    {(med === "None") ? null : <li className="list-group-item indent">Medication List: {medicationList}</li>}
                     <li className="list-group-item"><span className='list-num'>7. Medication Allergies:</span> {medAllergy}</li>
                     <li className="list-group-item"><span className='list-num'>8. Latex Allergy:</span> {latex}</li>
                     <li className="list-group-item"><span className='list-num'>9. Food Allergies:</span> {food}</li>
