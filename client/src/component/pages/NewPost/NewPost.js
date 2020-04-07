@@ -191,7 +191,7 @@ function NewPost() {
                 <label className="form-check-label">Shortness of Breath</label>
                 {showNums.showShortness ? <input type="number" min="0" max="9" name="breathNum" onChange={handleNumChange} /> : null}
               </div>
-              <Link to="/landing-page"><button style={{ margin: '0 auto', width: '30%', color: 'white', backgroundColor: '#3D52D5', buttonRadius: '50px' }} onClick={handleSubmit} className="btn btn-primary my-3 glow-button saveMargin">Save</button></Link>
+              <Link to="/landing-page"><button onClick={handleSubmit} className="saveButton">Save</button></Link>
             </div>
             <div className="col-sm-3"></div>
 
