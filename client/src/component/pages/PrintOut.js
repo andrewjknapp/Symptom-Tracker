@@ -1,4 +1,4 @@
-import React, {useState, Fragment} from "react";
+import React, { useState, Fragment } from "react";
 import ReactToPrint from "react-to-print";
 import PrintComponent from '../PrintComponent';
 import MedicalProfile from './MedicalProfile';
@@ -10,7 +10,7 @@ class ComponentToPrint extends React.Component {
     render() {
         return (
             <Fragment>
-            <PrintComponent />
+                <PrintComponent />
             </Fragment>
         )
     }

@@ -37,7 +37,10 @@ h3 {
 .h4 h4 {
     text-align: center;
     font-weight: 800;
-    color: #B4C5E4 !important;
+}
+
+.lightBlue {
+    color: #B4C5E4;
 }
 
 

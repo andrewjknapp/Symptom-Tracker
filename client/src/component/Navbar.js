@@ -21,12 +21,12 @@ function Navbar() {
                         <Link to='/chart' id='chart' className="navLink" >Chart</Link>
                     </li>
                     <li className="nav-item">
-                        <Link to='/additional-medical-support' className="navLink" >Additional Medical Support</Link>
+                        <Link to='/additional-medical-support' className="navLink" >Additional Resources</Link>
                     </li>
                 </ul>
                 <span className="navbar-text nav-icons"><Link title='Create New Post' to='/new-post' id='newPost' className="nav-link" >🌡</Link></span>
                 <span className="navbar-text nav-icons"><Link title='Print Preview' to='print-out' id='printOut' className="nav-link">🖨</Link></span>
-                <Logout/>
+                <Logout />
             </div>
         </nav>
 

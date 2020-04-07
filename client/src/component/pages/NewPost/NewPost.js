@@ -31,13 +31,15 @@ function NewPost() {
     headNum: 0,
     stomNum: 0,
     coughNum: 0,
+    breathNum: 0,
     temp: null
   });
 
   const [showNums, setShowNums] = useState({
     showHead: false,
     showStom: false,
-    showCough: false
+    showCough: false,
+    showShortness: false
   })
 
   const handleCheckBox = e => {
@@ -58,7 +60,7 @@ function NewPost() {
 
   const handleSubmit = e => {
     e.preventDefault();
-   
+
     const symptoms = [
       {
         type: "Headache",
@@ -71,19 +73,23 @@ function NewPost() {
       {
         type: "Cough",
         severity: sympNums.coughNum
+      },
+      {
+        type: "Shortness of Breath",
+        severity: sympNums.breathNum
       }
     ]
 
     const temperature = sympNums.temp;
 
-    API.savePost({ title, description, symptoms, temperature});
+    API.savePost({ title, description, symptoms, temperature });
     setToLandingPage(true);
   }
 
   return (
     <Fragment>
       {toLandingPage ? <Redirect to='/landing-page' /> : null}
-      <h1 className='newpost-header'>Create A New Entry</h1>
+      <h1 className='newpost-header'>Log Symptoms</h1>
       <form>
         <div className="row my-5">
           <div className="col-sm-3"></div>
@@ -116,62 +122,81 @@ function NewPost() {
         <div className="row mb-5">
           <div className="col-sm-3"></div>
           <div className="col-sm-6">
-            <label for="temp-input">Enter your Temperature (Optional)</label>
-            <input 
-              id="temp-input" 
-              name="temp" 
-              min="90" 
+            <label htmlFor="temp-input">Enter your Temperature (Optional)</label>
+            <input
+              id="temp-input"
+              name="temp"
+              min="90"
               type="number"
               onChange={handleNumChange}
             />
           </div>
           <div className="col-sm-3"></div>
         </div>
-
+        <div className="row mb-5">
+          <div className="col-sm-3"></div>
+          <div className="col-sm-6">
+            <div id="userInstruction">Please check off and rate the severity of any symptoms that you are currently experiencing on a scale from 0-10</div>
+          </div>
+          <div className="col-sm-3"></div>
+        </div>
         <div className="row">
-          <div className="col-sm-4"></div>
+          <div className="col-sm-3"></div>
+          <div className="symptom checkBoxes">
+            <div className="checkBoxPadding">
 
-          <div className="col-sm-4">
-            <div className="form-check">
-              <input
-                className="form-check-input"
-                type="checkbox"
-                value=""
-                name="showHead"
-                onClick={handleCheckBox}
-              ></input>
-              <label className="form-check-label">Headache</label>
-              {showNums.showHead ? <input type="number" min="0" max="9" name="headNum" onChange={handleNumChange}/> : null}
+              <div className="form-check">
+                <input
+                  className="form-check-input sympt"
+                  type="checkbox"
+                  value=""
+                  name="showHead"
+                  onClick={handleCheckBox}
+                ></input>
+                <label className="form-check-label">Headache</label>
+                {showNums.showHead ? <input className="sympt" type="number" min="0" max="9" name="headNum" onChange={handleNumChange} /> : null}
+              </div>
+
+              <div className="form-check">
+                <input
+                  className="form-check-input sympt"
+                  type="checkbox"
+                  value=""
+                  name="showStom"
+                  onClick={handleCheckBox}
+                ></input>
+                <label className="form-check-label">Stomach Ache</label>
+                {showNums.showStom ? <input type="number" min="0" max="9" name="stomNum" onChange={handleNumChange} /> : null}
+              </div>
+
+              <div className="form-check">
+                <input
+                  className="form-check-input sympt"
+                  type="checkbox"
+                  value=""
+                  name="showCough"
+                  onClick={handleCheckBox}
+                ></input>
+                <label className="form-check-label">Cough</label>
+                {showNums.showCough ? <input type="number" min="0" max="9" name="coughNum" onChange={handleNumChange} /> : null}
+              </div>
+              <div className="form-check">
+                <input
+                  className="form-check-input sympt"
+                  type="checkbox"
+                  value=""
+                  name="showShortness"
+                  onClick={handleCheckBox}
+                ></input>
+                <label className="form-check-label">Shortness of Breath</label>
+                {showNums.showShortness ? <input type="number" min="0" max="9" name="breathNum" onChange={handleNumChange} /> : null}
+              </div>
+              <Link to="/landing-page"><button style={{ margin: '0 auto', width: '30%', color: 'white', backgroundColor: '#3D52D5', buttonRadius: '50px' }} onClick={handleSubmit} className="btn btn-primary my-3 glow-button saveMargin">Save</button></Link>
             </div>
+            <div className="col-sm-3"></div>
 
-            <div className="form-check">
-              <input
-                className="form-check-input"
-                type="checkbox"
-                value=""
-                name="showStom"
-                onClick={handleCheckBox}
-              ></input>
-              <label className="form-check-label">Stomach Ache</label>
-              {showNums.showStom ? <input type="number" min="0" max="9" name="stomNum" onChange={handleNumChange}/> : null}
-            </div>
-
-            <div className="form-check">
-              <input
-                className="form-check-input"
-                type="checkbox"
-                value=""
-                name="showCough"
-                onClick={handleCheckBox}
-              ></input>
-              <label className="form-check-label">Cough</label>
-              {showNums.showCough ? <input type="number" min="0" max="9" name="coughNum" onChange={handleNumChange}/> : null}
-            </div>
-
-            <Link to="/landing-page"><button style={{ margin: '0 auto', width: '30%', color: 'white',backgroundColor: '#3D52D5', buttonRadius: '50px'}}onClick={handleSubmit} className="btn btn-primary my-3 glow-button">Save</button></Link>
           </div>
 
-          <div className="col-sm-4"></div>
         </div>
       </form>
     </Fragment>
