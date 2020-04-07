@@ -140,7 +140,7 @@ function Chart() {
   let buttonLabel = chartToggle ? 'Temperature' : 'Symptom Severity';
 
   return isLoading ? <h2 className="text-center loading">Loading...</h2> : (
-    <div>
+    <div className="chartDisplay">
       <button class='toggleButton'
         onClick={() => setChartToggle(!chartToggle)}
       >{buttonLabel}</button>

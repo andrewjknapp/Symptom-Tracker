@@ -29,23 +29,23 @@ function MedicalProfileView() {
 
     let { DOB, sex, identity, condition, conditionInfo, surgery, surgeryInfo, med, medicationInfo, medAllergy, latex, food } = medicalProfile;
 
-    useEffect(()=>{
+    useEffect(() => {
         const { firstName } = getFromStorage('symptom_tracker');
         setUserName(firstName + "'s");
         API.getProfile()
             .then(res => {
-                if(res.data === "") {
+                if (res.data === "") {
                     setToEditPage(true);
-                } 
+                }
                 setMedicalProfile(res.data)
                 setIsLoading(false);
             })
     }, [])
 
-    useEffect(()=>{
+    useEffect(() => {
         setSurgeryList(parseSurgery(surgeryInfo));
         setMedicationList(parseMedication(medicationInfo));
-    },[medicalProfile])
+    }, [medicalProfile])
 
     const parseSurgery = surgeryInfo => {
         const keys = Object.keys(surgeryInfo);
@@ -65,9 +65,9 @@ function MedicalProfileView() {
                 return (
                     <React.Fragment>
                         <span>{medicationInfo[key]}</span>
-                        <br/>
+                        <br />
                     </React.Fragment>
-                    )
+                )
             } else if (key.includes("Dosage") === true) {
                 return <span>Dosage: {medicationInfo[key]}</span>
             } else if (key.includes("HowMuch") === true) {
@@ -76,35 +76,35 @@ function MedicalProfileView() {
         })
     }
 
-    return toEditPage ? <Redirect to="/medical-profile" try="hope"/> :(
+    return toEditPage ? <Redirect to="/medical-profile" try="hope" /> : (
         <article>
-            
 
-            <h1 className='profile-view-header'>{userName} Profile View</h1>
-            
-            { isLoading ? <h2 className="text-center loading">Loading...</h2> : (
+
+            <h1 className='profile-view-header'>{userName} Medical Profile</h1>
+
+            {isLoading ? <h2 className="text-center loading">Loading...</h2> : (
                 <section>
-            <div className='text-center'> 
-            <button className='editButton' onClick={()=>setToEditPage(true)}>Edit Profile</button>
-            </div>
+                    <div className='text-center'>
+                        <button className='editButton' onClick={() => setToEditPage(true)}>Edit Profile</button>
+                    </div>
 
-              <div className="card profile-view-card" >
-                <ul className="profile-view-elements list-group-flush list-group">
-                    <li className="list-group-item"><span className='list-num'>1. Date of Birth:</span> {DOB}</li>
-                    <li className="list-group-item"><span className='list-num'>2. Sex:</span> {sex}</li>
-                    <li className="list-group-item"><span className='list-num'>3. Gender Identity:</span> {identity}</li>
-                    <li className="list-group-item"><span className='list-num'>4. Medical Conditions:</span> {condition}</li>
-                    {(condition === "None") ? null :<li className="list-group-item">{conditionInfo}</li>}
-                    <li className="list-group-item"><span className='list-num'>5. Surgery History:</span> {surgery}</li>
-                    {(surgery === "None") ? null : <li className="list-group-item indent">Past Surgeries: {surgeryList}</li>}
-                    <li className="list-group-item"><span className='list-num'>6. Medication:</span> {med}</li>
-                    {(med === "None") ? null : <li className="list-group-item indent">Medication List: {medicationList}</li>}
-                    <li className="list-group-item"><span className='list-num'>7. Medication Allergies:</span> {medAllergy}</li>
-                    <li className="list-group-item"><span className='list-num'>8. Latex Allergy:</span> {latex}</li>
-                    <li className="list-group-item"><span className='list-num'>9. Food Allergies:</span> {food}</li>
-                </ul>
-            </div>
-            </section>)}
+                    <div className="card profile-view-card" >
+                        <ul className="profile-view-elements list-group-flush list-group">
+                            <li className="list-group-item"><span className='list-num'>1. Date of Birth:</span> {DOB}</li>
+                            <li className="list-group-item"><span className='list-num'>2. Sex:</span> {sex}</li>
+                            <li className="list-group-item"><span className='list-num'>3. Gender Identity:</span> {identity}</li>
+                            <li className="list-group-item"><span className='list-num'>4. Medical Conditions:</span> {condition}</li>
+                            {(condition === "None") ? null : <li className="list-group-item">{conditionInfo}</li>}
+                            <li className="list-group-item"><span className='list-num'>5. Surgery History:</span> {surgery}</li>
+                            {(surgery === "None") ? null : <li className="list-group-item indent">Past Surgeries: {surgeryList}</li>}
+                            <li className="list-group-item"><span className='list-num'>6. Medication:</span> {med}</li>
+                            {(med === "None") ? null : <li className="list-group-item indent">Medication List: {medicationList}</li>}
+                            <li className="list-group-item"><span className='list-num'>7. Medication Allergies:</span> {medAllergy}</li>
+                            <li className="list-group-item"><span className='list-num'>8. Latex Allergy:</span> {latex}</li>
+                            <li className="list-group-item"><span className='list-num'>9. Food Allergies:</span> {food}</li>
+                        </ul>
+                    </div>
+                </section>)}
         </article>
     )
 }
