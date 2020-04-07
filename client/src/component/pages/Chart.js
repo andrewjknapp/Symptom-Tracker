@@ -146,6 +146,7 @@ function Chart() {
       <Line
         data={chartData}
         options={{
+          maintainAspectRatio: false,
           title: {
             display: true,
             text: graphLabel,
@@ -155,7 +156,7 @@ function Chart() {
           },
           legend: {
             display: true,
-            position: 'right'
+            position: 'right',
           }
         }}
       />
