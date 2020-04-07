@@ -6,7 +6,7 @@ import { Redirect } from "react-router";
 
 
 function MedicalProfile() {
-    
+
     const [toViewPage, setToViewPage] = useState(false);
     const [userName, setUserName] = useState("Your");
     const [medicalProfile, setMedicalProfile] = useState({
@@ -30,7 +30,7 @@ function MedicalProfile() {
         setSurgeryCount(surgeryCount + 1)
     }
     const removeSurgery = () => {
-        if(surgeryCount > 1) {
+        if (surgeryCount > 1) {
             setSurgeryCount(surgeryCount - 1)
         }
     }
@@ -41,7 +41,7 @@ function MedicalProfile() {
         setMedCount(medCount + 1)
     }
     const removeMed = () => {
-        if(medCount > 1) {
+        if (medCount > 1) {
             setMedCount(medCount - 1)
         }
     }
@@ -72,41 +72,41 @@ function MedicalProfile() {
             ...medicalProfile,
             [e.target.name]: e.target.value
         })
-        
+
     }
 
     const handleSubmit = e => {
         e.preventDefault();
-        if(window.confirm("Ensure all data is correct, Save will overwrite all previous data")) {
+        if (window.confirm("Ensure all data is correct, Save will overwrite all previous data")) {
             API.saveProfile(medicalProfile);
         }
-        
+
         console.log(medicalProfile);
         setToViewPage(true);
     }
-    
+
     // useEffect(()=>{
     //     console.log(medicalProfile);
     // },[medicalProfile])
 
-    useEffect(()=>{
+    useEffect(() => {
         const { firstName } = getFromStorage('symptom_tracker');
         setUserName(firstName + "'s");
         let bool = false;
         API.getProfile()
             .then(res => {
 
-                if(res.data !== ""){
+                if (res.data !== "") {
                     bool = !window.confirm("Press OK to edit and Cancel to go back");
                 }
-                
+
             })
-            .then(()=>{
+            .then(() => {
                 setToViewPage(bool);
             })
     }, [])
 
-    return toViewPage ? <Redirect to="/medical-profile-view"/> : (
+    return toViewPage ? <Redirect to="/medical-profile-view" /> : (
         <article className='allMedText'>
 
             <h1 className='medHead1'>{userName} Medical Information</h1>
@@ -117,11 +117,11 @@ function MedicalProfile() {
                     <input name='DOB' type='date' onChange={handleInputChange}></input>
 
                     <p className='medBody1'>Please select the sex assigned to you at birth:</p>
-                    <input className='medInput' type="radio" id="male" name="sex" value="male" onChange={handleInputChange}/>
+                    <input className='medInput' type="radio" id="male" name="sex" value="male" onChange={handleInputChange} />
                     <label className='medBody2' htmlFor="male">Male</label>
-                    <input className='medInput' type="radio" id="female" name="sex" value="female" onChange={handleInputChange}/>
+                    <input className='medInput' type="radio" id="female" name="sex" value="female" onChange={handleInputChange} />
                     <label className='medBody2' htmlFor="female">Female</label>
-                    <input className='medInput' type="radio" id="perferNot" name="sex" value="Prefer not to say" onChange={handleInputChange}/>
+                    <input className='medInput' type="radio" id="perferNot" name="sex" value="Prefer not to say" onChange={handleInputChange} />
                     <label className='medBody2' htmlFor="prefer-not-to-say">Prefer not to say</label>
 
                     <p className='medBody1'>Please select your gender identity:</p>
@@ -130,19 +130,19 @@ function MedicalProfile() {
                     <input className='medInput' type="radio" id="ifemale" name="identity" value="female" onChange={handleInputChange} />
                     <label className='medBody2' htmlFor="ifemale">Female</label>
                     <br></br>
-                    <input className='medInput' type="radio" id="iTransMan" name="identity" value="Trans Man"  onChange={handleInputChange}/>
+                    <input className='medInput' type="radio" id="iTransMan" name="identity" value="Trans Man" onChange={handleInputChange} />
                     <label className='medBody2' htmlFor="iTransMan">Trans Man</label>
-                    <input className='medInput' type="radio" id="iTransWoman" name="identity" value="Trans Woman" onChange={handleInputChange}/>
+                    <input className='medInput' type="radio" id="iTransWoman" name="identity" value="Trans Woman" onChange={handleInputChange} />
                     <label className='medBody2' htmlFor="iTransWoman">Trans Woman</label>
                     <br></br>
-                    <input className='medInput' type="radio" id="iNonConform" name="identity" value="Nonbinary/Gender Nonconforming" onChange={handleInputChange}/>
+                    <input className='medInput' type="radio" id="iNonConform" name="identity" value="Nonbinary/Gender Nonconforming" onChange={handleInputChange} />
                     <label className='medBody2' htmlFor="iNonConform">Nonbinary/Gender Nonconforming</label>
                     <br></br>
-                    <input className='medInput' type="radio" id="iOther" value=""/>
+                    <input className='medInput' type="radio" id="iOther" value="" />
                     <label className='medBody2' htmlFor="iOther">Other, please specifiy:</label>
                     <input className='medInput' name="identity" onChange={handleInputChange}></input>
                     <br></br>
-                    <input className='medInput' type="radio" id="iPerferNot" name="identity" value="Prefer not to say" onChange={handleInputChange}/>
+                    <input className='medInput' type="radio" id="iPerferNot" name="identity" value="Prefer not to say" onChange={handleInputChange} />
                     <label className='medBody2' htmlFor="iPreferNot">Prefer not to say</label>
                 </div>
 
@@ -176,8 +176,8 @@ function MedicalProfile() {
                         <tbody>
                             {[...Array(surgeryCount)].map((m, i) => (
                                 <tr key={i}>
-                                    <td><input type="input" id="surgeryType" name={"surgeryType_" + i} onChange={handleSurgeryChange}/></td>
-                                    <td><input type="input" id="surgeryYear" name={"surgeryYear_" + i} onChange={handleSurgeryChange}/></td>
+                                    <td><input type="input" id="surgeryType" name={"surgeryType_" + i} onChange={handleSurgeryChange} /></td>
+                                    <td><input type="input" id="surgeryYear" name={"surgeryYear_" + i} onChange={handleSurgeryChange} /></td>
                                 </tr>
 
                             ))}
@@ -205,9 +205,9 @@ function MedicalProfile() {
                         <tbody>
                             {[...Array(medCount)].map((m, i) => (
                                 <tr key={i}>
-                                    <td><input type="input" id={"medname" + i} name={"medName_" + i} onChange={handleMedicationChange}/></td>
-                                    <td><input type="input" id={"medDose" + i} name={"medDosage_" + i} onChange={handleMedicationChange}/></td>
-                                    <td><input type="input" id={"medHowMuch" + i} name={"medHowMuch_" + i} onChange={handleMedicationChange}/></td>
+                                    <td><input type="input" id={"medname" + i} name={"medName_" + i} onChange={handleMedicationChange} /></td>
+                                    <td><input type="input" id={"medDose" + i} name={"medDosage_" + i} onChange={handleMedicationChange} /></td>
+                                    <td><input type="input" id={"medHowMuch" + i} name={"medHowMuch_" + i} onChange={handleMedicationChange} /></td>
                                 </tr>
                             ))}
                         </tbody>
@@ -219,7 +219,7 @@ function MedicalProfile() {
                     <h2>Allergies</h2>
                     <p>Have you ever had an adverse reaction (allergy) to medications?</p>
 
-                    <input className='medInput' defaultChecked id='noAllergy' name='medAllergy' type='radio' value='None' onClick={handleInputChange}/>
+                    <input className='medInput' defaultChecked id='noAllergy' name='medAllergy' type='radio' value='None' onClick={handleInputChange} />
                     <label className='medBody2' htmlFor='noAllergy'>No</label>
                     <br></br>
                     <input className='medInput' id='yesAllergy' name='medAllergy' type='radio' value='yes' />
@@ -252,7 +252,7 @@ function MedicalProfile() {
             </form>
 
         </article>
-     
+
 
     )
 }

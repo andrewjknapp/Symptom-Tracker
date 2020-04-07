@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, { Fragment} from "react";
+=======
+import React, { useState, Fragment } from "react";
+>>>>>>> master
 import ReactToPrint from "react-to-print";
 import PrintComponent from '../PrintComponent';
 import "../assets/css/PrintOut.css";
@@ -8,7 +12,7 @@ class ComponentToPrint extends React.Component {
     render() {
         return (
             <Fragment>
-            <PrintComponent />
+                <PrintComponent />
             </Fragment>
         )
     }
