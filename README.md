@@ -1,29 +1,49 @@
-# Create React Express App
+# Symptom Tracker
 
-## About This Boilerplate
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/andrewjknapp/Symptom Tracker)
 
-This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
+## Description
 
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
+A medical information organization web application. Make private posts to keep track of yours or a loved one's illness.
 
-## Starting the app locally
+## Table of Contents
+1. [Installation](#installation)
+2. [Usage](#usage)
+3. [License](#license)
+4. [Contributors](#contributors)
+5. [Tests](#tests)
+6. [Questions](#questions)
 
-Start by installing front and backend dependencies. While in this directory, run the following command:
+## Installation<a name="installation"></a>
+
+Run the following command to install dependencies:
 
 ```
 npm install
 ```
 
-This should install node modules within the server and the client folder.
+## Usage<a name="usage"></a>
 
-After both installations complete, run the following command in your terminal:
+Git, GitHub, React
+
+## License<a name=license></a>
+
+This project can be used under the MIT License.
+
+## Contributors<a name=contributors></a>
+
+pswk1, arielkhawly, jspielberger, and andrewjknapp
+
+## Tests<a name="tests"></a>
+
+Run the following command to run tests:
 
 ```
-npm start
+npm test
 ```
 
-Your app should now be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
+## Questions<a name="questions"></a>
 
-## Deployment (Heroku)
+<img src="" alt="User Profile Image" height="100">
 
-To deploy, simply add and commit your changes, and push to Heroku. As is, the NPM scripts should take care of the rest.
+If you have any questions about the repo, open an issue or contact [andrewjknapp](https://github.com/andrewjknapp) directly at 
