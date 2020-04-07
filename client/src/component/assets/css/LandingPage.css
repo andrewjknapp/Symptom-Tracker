@@ -8,3 +8,12 @@
     font-family: 'Kanit';
     font-size: 60px;
 }
+
+.new-post-btn {
+    margin-top: 15px;
+    padding: 5px 16px;
+    background-color: #3D52D5;
+    color: #FBFFF1;
+    border-radius: 35px;
+    font-size: 16px;
+}
