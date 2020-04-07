@@ -171,6 +171,7 @@ function Chart() {
       <Line
         data={chartData}
         options={{
+          maintainAspectRatio: false,
           title: {
             display: true,
             text: graphLabel,

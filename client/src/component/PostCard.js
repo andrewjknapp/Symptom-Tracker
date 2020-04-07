@@ -8,6 +8,7 @@ function PostCard(props) {
   let { symptoms } = props.post;
   console.log(props.key);
     return (
+
       <div key={props.keyNumber} className="card text-center m-5">
         <div className="card-header">{date}</div>
         <div className="card-body">
@@ -16,8 +17,8 @@ function PostCard(props) {
             {description}
           </p>
 
-
-          <table class="table table-bordered">
+<div className='table-responsive'>
+<table class="table table-bordered">
   <thead>
     <tr>
       <th scope="col">Symptom</th>
@@ -32,6 +33,7 @@ function PostCard(props) {
     </tr>)}
   </tbody>
 </table>
+</div>
           
 
         </div>
