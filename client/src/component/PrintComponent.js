@@ -1,12 +1,12 @@
 import React from "react";
-import MedicalProfile from "./pages/MedicalProfile";
 import Chart from "./pages/Chart";
+import MedicalProfileView from './pages/MedicalProfileView';
 
 function PrintComponent() {
   return (
     <article>
-      <MedicalProfile />
-        <Chart />
+      <MedicalProfileView />
+      <Chart />
     </article>
         
     

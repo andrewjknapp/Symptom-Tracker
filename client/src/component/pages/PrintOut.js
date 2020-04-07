@@ -1,8 +1,10 @@
+<<<<<<< HEAD
+import React, { Fragment} from "react";
+=======
 import React, { useState, Fragment } from "react";
+>>>>>>> master
 import ReactToPrint from "react-to-print";
 import PrintComponent from '../PrintComponent';
-import MedicalProfile from './MedicalProfile';
-import Chart from './Chart'
 import "../assets/css/PrintOut.css";
 
 

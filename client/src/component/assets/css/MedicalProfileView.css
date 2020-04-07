@@ -1,0 +1,31 @@
+.profile-view-header {
+    text-align: center;
+    color: #090C9B;
+    font-size: 60px;
+    margin-bottom: 40px;
+}
+
+.profile-view-card {
+    width: 70%;
+    margin: auto;
+    margin-bottom: 40px;
+}
+
+.profile-view-elements {
+    padding: 10px;
+}
+
+.list-num {
+    font-weight: bold;
+}
+
+.editBtn {
+    font-size: 22px;
+    margin-bottom: 40px;
+}
+
+.glow-button:hover {
+    color: rgba(255, 255, 255, 1);
+    box-shadow: 0 5px 15px rgba(0, 0, 150, .4);
+   }
+   
