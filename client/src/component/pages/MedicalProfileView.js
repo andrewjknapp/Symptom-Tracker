@@ -49,29 +49,33 @@ function MedicalProfileView() {
 
     const parseSurgery = surgeryInfo => {
         const keys = Object.keys(surgeryInfo);
-        return keys.map(key => {
+        return keys.map((key, i) => {
             if (key.includes("Type") === true) {
-                return <span>{surgeryInfo[key]}:</span>
+                return <span key={i}>{surgeryInfo[key]}:</span>
             } else if (key.includes("Year") === true) {
-                return <p>{surgeryInfo[key]}</p>
+                return <p key={i}>{surgeryInfo[key]}</p>
+            } else {
+                return "";
             }
         })
     }
 
     const parseMedication = medicationInfo => {
         const keys = Object.keys(medicationInfo);
-        return keys.map(key => {
+        return keys.map((key, i) => {
             if (key.includes("Name") === true) {
                 return (
-                    <React.Fragment>
+                    <React.Fragment key={i}>
                         <span>{medicationInfo[key]}</span>
                         <br/>
                     </React.Fragment>
                     )
             } else if (key.includes("Dosage") === true) {
-                return <span>Dosage: {medicationInfo[key]}</span>
+                return <span key={i}>Dosage: {medicationInfo[key]}</span>
             } else if (key.includes("HowMuch") === true) {
-                return <p>{medicationInfo[key]}</p>
+                return <p key={i}>{medicationInfo[key]}</p>
+            } else {
+                return "";
             }
         })
     }
