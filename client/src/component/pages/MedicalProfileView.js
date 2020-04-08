@@ -54,6 +54,8 @@ function MedicalProfileView() {
                 return <span>{surgeryInfo[key]}:</span>
             } else if (key.includes("Year") === true) {
                 return <p>{surgeryInfo[key]}</p>
+            } else {
+                return "";
             }
         })
     }
@@ -72,6 +74,8 @@ function MedicalProfileView() {
                 return <span>Dosage: {medicationInfo[key]}</span>
             } else if (key.includes("HowMuch") === true) {
                 return <p>{medicationInfo[key]}</p>
+            } else {
+                return "";
             }
         })
     }
