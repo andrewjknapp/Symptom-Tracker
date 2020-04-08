@@ -18,7 +18,7 @@ function PostCard(props) {
             {description}
           </p>
           <div className='table-responsive'>
-            <table class="table table-bordered">
+            <table className="table table-bordered">
               <thead>
                 <tr>
                   <th scope="col">Symptom</th>
