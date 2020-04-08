@@ -114,7 +114,7 @@ function Chart() {
 
   return isLoading ? <h2 className="text-center loading">Loading...</h2> : (
     <div className="chartDisplay">
-      <button class='toggleButton'
+      <button className='toggleButton'
         onClick={() => setChartToggle(!chartToggle)}
       >{buttonLabel}</button>
       <article className="canvas-container">
