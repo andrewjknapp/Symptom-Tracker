@@ -100,7 +100,7 @@ function CreateAccountPage() {
                     onSignInSuccess(json);
                     setToLandingPage(true);
                 } else {
-
+                    console.log(token);
                     setErrors({
                         signInError: json.message,
                     })
@@ -124,8 +124,8 @@ function CreateAccountPage() {
         });
     };
 
-    const { email, password, firstName, lastName } = signUp
-    const { userEmail, userPassword } = signIn
+    const { email, password, firstName, lastName } = signUp;
+    const { userEmail, userPassword } = signIn;
     var style = { backgroundImage: 'url( "../assets/images/microscope.jpg")' };
 
     return toLandingPage ? <Redirect to='/landing-page' /> : (
