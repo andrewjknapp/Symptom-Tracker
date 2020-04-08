@@ -37,7 +37,7 @@ function LandingPage() {
             </div>
         
             
-            {isLoading ? <h2 className="text-center loading">Loading...</h2> : posts.map((userPost, i) => <PostCard keyNumber={i} post={userPost} deletePost={deletePost} />)}
+            {isLoading ? <h2 className="text-center loading">Loading...</h2> : posts.map((userPost, i) => <section key={i}><PostCard post={userPost} deletePost={deletePost} /></section>)}
         </article>
     )
 }
