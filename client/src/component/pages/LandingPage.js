@@ -1,15 +1,12 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import PostCard from '../PostCard';
 import API from '../../utils/API';
-import UserContext from '../../utils/UserContext';
 import { Link } from 'react-router-dom'
 import '../assets/css/LandingPage.css';
 import '../assets/css/loader.css';
 
 function LandingPage() {
-    const {
-        state, dispatch
-    } = useContext(UserContext);
+
     //console.log(state, dispatch);
     const [posts, setPosts] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -40,7 +37,7 @@ function LandingPage() {
             </div>
         
             
-            {isLoading ? <h2 className="text-center loading">Loading...</h2> : posts.map((userPost, i) => <PostCard keyNumber={i} post={userPost} deletePost={deletePost} />)}
+            {isLoading ? <h2 className="text-center loading">Loading...</h2> : posts.map((userPost, i) => <section key={i}><PostCard post={userPost} deletePost={deletePost} /></section>)}
         </article>
     )
 }

@@ -6,17 +6,17 @@ import "./assets/css/Navbar.css";
 
 function Logout() {
 
-    const [ isLoggedOut, setIsLoggedOut ] = useState(false);
+    const [isLoggedOut, setIsLoggedOut] = useState(false);
 
     function logoutUser() {
         removeFromStorage('symptom_tracker');
         setIsLoggedOut(true);
     }
 
-    return isLoggedOut ? <Redirect to="/"/> : (
+    return isLoggedOut ? <Redirect to="/" /> : (
 
-    <button class='navLogout' onClick={logoutUser}>Logout</button>
-   
+        <button className='navLogout' onClick={logoutUser}>Logout</button>
+
     )
 }
 

@@ -36,5 +36,11 @@
     align-items: center;
 }
 
+.preventativeServices {
+    background-image: url("../images/coronaLoader.gif");
+    background-repeat: no-repeat;
+    background-position: center top;
+}
+
 
 

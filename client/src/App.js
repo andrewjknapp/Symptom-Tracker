@@ -1,9 +1,7 @@
 import React, { useReducer } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
-
 import UserContext from "./utils/UserContext";
-
 import MedicalProfile from "./component/pages/MedicalProfile"
 import NewPost from './component/pages/NewPost/NewPost'
 import PrintOut from './component/pages/PrintOut';
