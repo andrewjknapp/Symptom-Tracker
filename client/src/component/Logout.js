@@ -15,7 +15,7 @@ function Logout() {
 
     return isLoggedOut ? <Redirect to="/"/> : (
 
-    <button class='navLogout' onClick={logoutUser}>Logout</button>
+    <button className='navLogout' onClick={logoutUser}>Logout</button>
    
     )
 }
