@@ -21,7 +21,9 @@ export default function formatDate(date) {
     }
 
     let minutes = time.getMinutes();
-
+    if (minutes < 10) {
+      minutes = "0" + minutes;
+    }
     let label = `${day} ${time.getDate()}/${time.getMonth()} ${hour}:${minutes} ${amPm}`
     return label;
   }

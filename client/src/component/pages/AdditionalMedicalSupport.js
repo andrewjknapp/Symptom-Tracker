@@ -33,7 +33,7 @@ function AdditionalMedicalSupport() {
             </div>
             {
                 service ? <iframe src="https://www.health.gov/myhealthfinder?widget=true" name="myhealthfinderframe" frameBorder="0" id="myhealthfinderframe" scrolling="yes" height="550"
-                    width="100%" marginHeight="0" title="myhealthfinder widget" marginWidth="0"><p>Your browser does not support iframes.</p></iframe> : ''
+                    width="100%" marginHeight="0" title="myhealthfinder widget" marginWidth="0" className="preventativeServices">Loading<p>Your browser does not support iframes.</p></iframe> : ''
             }
         </Fragment>
     )
