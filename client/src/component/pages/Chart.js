@@ -56,7 +56,9 @@ function Chart() {
           breathSev.push(symp.severity);
 
         }
+        return "";
       })
+      return "";
     });
 
     return {

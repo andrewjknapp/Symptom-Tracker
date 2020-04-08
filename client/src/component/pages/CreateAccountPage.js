@@ -10,7 +10,7 @@ import { Redirect } from 'react-router';
 import LogInHeader from '../sections/LogInHeader';
 
 
-function CreateAccountPage(props) {
+function CreateAccountPage() {
 
     const [token, setToken] = useState('');
     const [signUp, setSignUp] = useState({
