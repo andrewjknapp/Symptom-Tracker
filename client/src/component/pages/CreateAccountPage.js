@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import "whatwg-fetch";
 import "../assets/css/accountpage.css";
 import "../assets/css/colors.css";
-
-import {
-    getFromStorage, setInStorage
-} from '../../utils/storage';
+import { setInStorage } from '../../utils/storage';
 import { Redirect } from 'react-router';
 import LogInHeader from '../sections/LogInHeader';
 
@@ -29,37 +26,6 @@ function CreateAccountPage() {
     });
     const [toLandingPage, setToLandingPage] = useState(false);
 
-
-    useEffect(() => {
-        const obj = getFromStorage('symptom_tracker');
-        if (obj && obj.token) {
-            const { token } = obj;
-            //verify token
-            fetch('/api/account/verify?token=' + token)
-                .then(res => res.json())
-                .then(json => {
-                    if (json.success) {
-                        setToken({
-                            token,
-                        });
-                        // setLoading({
-                        //     isLoading: false
-                        // })
-                    }
-                    else {
-                        // setLoading({
-                        //     isLoading: false
-                        // })
-                    }
-                });
-        } else {
-            // setLoading({
-            //     isLoading: false,
-            //     // set state for different things/
-            // });
-        }
-    }, [])
-
     const onSignUp = (e) => {
         e.preventDefault();
         //grab state and post request to backend
@@ -69,9 +35,6 @@ function CreateAccountPage() {
             email,
             password,
         } = signUp;
-
-        
-
 
         fetch('/api/account/signup', {
             method: 'POST',
