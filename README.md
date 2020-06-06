@@ -1,49 +1,34 @@
 # Symptom Tracker
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/andrewjknapp/Symptom Tracker)
+> Created by:
+> - Andrew Knapp - [andrewjknapp](https://github.com/andrewjknapp)
+> - Peter Kang - [pswk1](https://github.com/pswk1)
+> - Ariel Khawly - [arielkhawly](https://github.com/arielkhawly)
+> - Joel Speilberger - [jspielberger](https://github.com/jspeilberger)
 
-## Description
+## Link to Live Project
+
+[Link to Symptom Tracker](https://nameless-journey-02981.herokuapp.com/)
+
+## Summary
 
 A medical information organization web application. Make private posts to keep track of yours or a loved one's illness.
 
-## Table of Contents
-1. [Installation](#installation)
-2. [Usage](#usage)
-3. [License](#license)
-4. [Contributors](#contributors)
-5. [Tests](#tests)
-6. [Questions](#questions)
+## Languages and Tech Used
 
-## Installation<a name="installation"></a>
+- Javascript
+- React.js
+- CSS3
+- Passport.js
+- MongoDB
 
-Run the following command to install dependencies:
+## Features
 
-```
-npm install
-```
+- Record symptoms experienced
+- View previous symptom entries
+- View sympoms in graphical form
+- Download symptom information as a pdf
 
-## Usage<a name="usage"></a>
+## Live Demo
 
-Git, GitHub, React
-
-## License<a name=license></a>
-
-This project can be used under the MIT License.
-
-## Contributors<a name=contributors></a>
-
-pswk1, arielkhawly, jspielberger, and andrewjknapp
-
-## Tests<a name="tests"></a>
-
-Run the following command to run tests:
-
-```
-npm test
-```
-
-## Questions<a name="questions"></a>
-
-<img src="" alt="User Profile Image" height="100">
-
-If you have any questions about the repo, open an issue or contact [andrewjknapp](https://github.com/andrewjknapp) directly at 
+![](Symptom_Tracker.gif)
