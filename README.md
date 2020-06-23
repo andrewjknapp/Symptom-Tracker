@@ -1,6 +1,7 @@
 # Symptom Tracker
 
 > Created by:
+>
 > - Andrew Knapp - [andrewjknapp](https://github.com/andrewjknapp)
 > - Peter Kang - [pswk1](https://github.com/pswk1)
 > - Ariel Khawly - [arielkhawly](https://github.com/arielkhawly)
@@ -26,7 +27,7 @@ A medical information organization web application. Make private posts to keep t
 
 - Record symptoms experienced
 - View previous symptom entries
-- View sympoms in graphical form
+- View symptoms in graphical form
 - Download symptom information as a pdf
 
 ## Live Demo
