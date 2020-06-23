@@ -9,7 +9,7 @@ function PostCard(props) {
   let { symptoms } = props.post;
 
   return (
-    <div key={props.keyNumber} className="card text-center m-5 postCard">
+    <div key={props.keyNumber} className="card text-center m-5 postCard border-dark">
       <div className="card-header">{formatDate(time)}</div>
       <div className="card-body">
         <h5 className="post-title card-title">{title}</h5>
