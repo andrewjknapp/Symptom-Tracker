@@ -1,17 +1,21 @@
 .postCardButton {
-    margin: 0 auto 10px;
-    padding: 5px 16px;
-    background-color: #3D52D5;
-    color: #FBFFF1;
-    border-radius: 35px;
-    font-size: 16px;
+  margin: 0 auto 10px;
+  padding: 5px 16px;
+  background-color: #3d52d5;
+  color: #fbfff1;
+  border-radius: 35px;
+  font-size: 16px;
 }
 .postCardButton:hover {
-    color: rgba(255, 255, 255, 1);
-    box-shadow: 0 5px 15px rgba(0, 0, 150, .4);
+  color: rgba(255, 255, 255, 1);
+  box-shadow: 0 5px 15px rgba(0, 0, 150, 0.4);
 }
 
 .postCard {
-    margin: 1em auto !important;
-    max-width: 1000px;
+  margin: 1em auto !important;
+  max-width: 1000px;
+}
+
+.card-header {
+  font-size: 1.5em;
 }
