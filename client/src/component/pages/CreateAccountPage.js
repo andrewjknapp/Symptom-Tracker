@@ -170,10 +170,7 @@ function CreateAccountPage() {
   ) : (
     <div className='loginBody' style={style}>
       <div className='login-container'>
-        {/* /* HEADER */}
-        <section>
-          <h1 className='login'>Symptom Tracker</h1>
-        </section>
+
 
         {/* APP DESCRIPTION */}
         <section>
