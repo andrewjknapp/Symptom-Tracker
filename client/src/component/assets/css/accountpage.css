@@ -44,6 +44,13 @@
   text-align: center;
 }
 
+.user-login {
+  margin: 65px auto;
+}
+
+.sign-in-error {
+  margin-top: -65px;
+}
 .user {
   color: #fbfff1 !important;
   font-family: 'Kanit';
