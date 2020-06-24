@@ -51,7 +51,7 @@ router.post("/account/signup", (req, res) => {
         } else if (previousUsers.length > 0) {
             return res.send({
                 success: false,
-                message: 'Account already exists.'
+                message: 'This email is already registered.'
             });
         }
 
@@ -83,13 +83,13 @@ router.post('/account/signin', (req, res, next) => {
     if (!email) {
         return res.send({
             success: false,
-            message: 'Error: Email cannot be blank'
+            message: 'Email cannot be blank'
         })
     }
     if (!password) {
         return res.send({
             success: false,
-            message: 'Error: Password cannot be blank'
+            message: 'Password cannot be blank'
         })
     }
 
