@@ -129,7 +129,7 @@ function CreateAccountPage() {
           {/* /* HEADER */}
           <section>
             <h1 className='login'>Symptom Tracker</h1>
-            <h3 className='login'>Empower your medical visits with personal datar</h3>
+            <h4 className='login'>Empower your medical visits with personal data!</h4>
           </section>
 
           {/* APP DESCRIPTION */}
