@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'whatwg-fetch';
 import '../assets/css/accountpage.css';
 import '../assets/css/colors.css';
@@ -21,7 +21,35 @@ function CreateAccountPage() {
     userEmail: '',
     userPassword: '',
   });
+  const [isRegistrationError, setIsRegistrationError] = useState({
+    error: false,
+    message: ""
+  });
+  const [isSignInError, setIsSignInError] = useState({
+    error: false,
+    message: ""
+  });
   const [toLandingPage, setToLandingPage] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsRegistrationError({
+        error: false,
+        message: ""
+      })
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, [isRegistrationError]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsSignInError({
+        error: false,
+        message: ""
+      })
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, [isSignInError]);
 
   const onSignUp = (e) => {
     e.preventDefault();
@@ -41,18 +69,29 @@ function CreateAccountPage() {
       }),
     })
       .then((res) => res.json())
-
-      .then(() => {
-        console.log(email);
-        setSignIn({
-          userEmail: email,
-          userPassword: password,
-        });
-        console.log(userEmail);
+      .then((json) => {
+        console.log(json);
+        if (json.success) {
+          setSignIn({
+            userEmail: email,
+            userPassword: password,
+          });
+        } else {
+          // alert user that email has already been taken
+          //alert(json.message);
+          setIsRegistrationError({
+            error: true,
+            message: json.message
+          });
+          throw new Error('invalid email');
+        }
       })
       .then(() => {
         onSignIn(null, email, password);
-      });
+      })
+      .catch((err) => {
+        console.log(err);
+      })
   };
   const onSignInSuccess = (json) => {
     setErrors({ ...errors, signInError: json.message });
@@ -94,6 +133,11 @@ function CreateAccountPage() {
           onSignInSuccess(json);
           setToLandingPage(true);
         } else {
+          setIsSignInError({
+            error: true,
+            message: json.message
+          });
+          // Invalid login message here
           console.log(token);
           setErrors({
             signInError: json.message,
@@ -144,7 +188,7 @@ function CreateAccountPage() {
         </section>
 
         {/* USER LOGIN */}
-        <section>
+        <section className='user-login'>
           <div>
             <h4 className='h4 user'>User Log In</h4>
             <form className='form-group'>
@@ -161,7 +205,7 @@ function CreateAccountPage() {
               <input
                 type='password'
                 name='userPassword'
-                placeholder='password'
+                placeholder='Password'
                 id='password'
                 value={userPassword}
                 onChange={onSignInChange}
@@ -174,10 +218,15 @@ function CreateAccountPage() {
           </div>
           {/* USER REGISTRATION */}
         </section>
-
+        {isSignInError.error ? 
+              <div className="alert alert-danger sign-in-error" role="alert">
+                {isSignInError.message}
+              </div> : null}
+        
+        
         <section>
           <div>
-            <h4 className='h4 user'>User Registration</h4>
+          <h4 className='h4 user'>User Registration</h4>
             <form className='form-group UserInput'>
               <input
                 type='text'
@@ -208,7 +257,7 @@ function CreateAccountPage() {
 
               <input
                 type='password'
-                placeholder='password'
+                placeholder='Password'
                 name='password'
                 value={password}
                 onChange={onSignUpChange}
@@ -221,6 +270,10 @@ function CreateAccountPage() {
             </form>
           </div>
         </section>
+        {isRegistrationError.error ? 
+              <div className="alert alert-danger" role="alert">
+                {isRegistrationError.message}
+              </div> : null}
       </div>
     </div>
   );

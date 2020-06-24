@@ -1,5 +1,6 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const uniqueValidator = require('mongoose-unique-validator');
 const Schema = mongoose.Schema;
 
 
@@ -17,6 +18,8 @@ const UserSchema = new Schema({
     medicalProfile: { type: Object },
     posts: { type: Array }
 });
+
+UserSchema.plugin(uniqueValidator);
 
 UserSchema.methods.generateHash = function (password) {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
