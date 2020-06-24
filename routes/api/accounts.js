@@ -15,25 +15,25 @@ router.post("/account/signup", (req, res) => {
     if (!firstName) {
         return res.send({
             success: false,
-            message: 'Error: First name cannot be blank'
+            message: 'First name cannot be blank'
         })
     }
     if (!lastName) {
         return res.send({
             success: false,
-            message: 'Error: Last name cannot be blank'
+            message: 'Last name cannot be blank'
         })
     }
     if (!email) {
         return res.send({
             success: false,
-            message: 'Error: Email cannot be blank'
+            message: 'Email cannot be blank'
         })
     }
     if (!password) {
         return res.send({
             success: false,
-            message: 'Error: Password cannot be blank'
+            message: 'Password cannot be blank'
         })
     }
     email = email.toLowerCase();
@@ -44,14 +44,14 @@ router.post("/account/signup", (req, res) => {
     }, (err, previousUsers) => {
         console.log("Got to this")
         if (err) {
-            res.send({
+            return res.send({
                 success: false,
-                message: 'Error: Server error'
+                message: 'Server error'
             })
         } else if (previousUsers.length > 0) {
-            res.send({
+            return res.send({
                 success: false,
-                message: 'Error: Account already exists.'
+                message: 'Account already exists.'
             });
         }
 

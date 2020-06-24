@@ -41,18 +41,25 @@ function CreateAccountPage() {
       }),
     })
       .then((res) => res.json())
-
-      .then(() => {
-        console.log(email);
-        setSignIn({
-          userEmail: email,
-          userPassword: password,
-        });
-        console.log(userEmail);
+      .then((json) => {
+        console.log(json);
+        if (json.success) {
+          setSignIn({
+            userEmail: email,
+            userPassword: password,
+          });
+        } else {
+          // alert user that email has already been taken
+          alert(json.message);
+          throw new Error('invalid email');
+        }
       })
       .then(() => {
         onSignIn(null, email, password);
-      });
+      })
+      .catch((err) => {
+        console.log(err);
+      })
   };
   const onSignInSuccess = (json) => {
     setErrors({ ...errors, signInError: json.message });
@@ -94,6 +101,7 @@ function CreateAccountPage() {
           onSignInSuccess(json);
           setToLandingPage(true);
         } else {
+          alert("Invalid login credentials") // Invalid login message here
           console.log(token);
           setErrors({
             signInError: json.message,
