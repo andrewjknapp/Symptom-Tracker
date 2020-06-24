@@ -124,106 +124,110 @@ function CreateAccountPage() {
   return toLandingPage ? (
     <Redirect to='/landing-page' />
   ) : (
-    <div className='loginBody' style={style}>
-      <div className='login-container'>
-        {/* /* HEADER */}
-        <section>
-          <h1 className='login'>Symptom Tracker</h1>
-        </section>
+      <div className='loginBody' style={style}>
+        <div className='login-container'>
+          {/* /* HEADER */}
+          <section>
+            <h1 className='login'>Symptom Tracker</h1>
+            <h3 className='login'>Empower your medical visits with personal datar</h3>
+          </section>
 
-        {/* APP DESCRIPTION */}
-        <section>
-          <p className='login-description'>
-            Welcome to a revolutionary personal medical symptom recorder. Upon
-            signup, enter your symptoms into your own private medical profile.
-            View your logged symptoms as they progress using our Symptom
-            Charting Technology. Print your symptom information to bring to your
-            next visit to a medical professional. Empower your medical visits
-            with personal data. Let Symptom Tracker help you!
-          </p>
-        </section>
+          {/* APP DESCRIPTION */}
+          <section>
+            <p className='login-description'>
+              Welcome to your own personal medical symptom recorder.
+            Upon signup, enter any symptoms you are experiencing into your own private medical profile.</p>
+            <p className='login-description'>
+              Using our Symptom Charting Technology, you can view your logged symptoms and their severity as they progress. You can also print medical information and symptom history in order to bring to your
+              next visit to a medical professional. </p>
+            <p className='login-description'>
+              Let Symptom Tracker help you!
+            </p>
+          </section>
 
-        {/* USER LOGIN */}
-        <section>
-          <div>
-            <h4 className='h4 user'>User Log In</h4>
-            <form className='form-group'>
-              <input
-                type='email'
-                name='userEmail'
-                placeholder='Email'
-                id='email'
-                value={userEmail}
-                onChange={onSignInChange}
-              />
-              <br />
 
-              <input
-                type='password'
-                name='userPassword'
-                placeholder='password'
-                id='password'
-                value={userPassword}
-                onChange={onSignInChange}
-              />
-              <br />
-              <button onClick={onSignIn} className='logbutton'>
-                Log In
+
+          {/* USER LOGIN */}
+          <section>
+            <div>
+              <h4 className='h4 user'>User Log In</h4>
+              <form className='form-group'>
+                <input
+                  type='email'
+                  name='userEmail'
+                  placeholder='Email'
+                  id='email'
+                  value={userEmail}
+                  onChange={onSignInChange}
+                />
+                <br />
+
+                <input
+                  type='password'
+                  name='userPassword'
+                  placeholder='password'
+                  id='password'
+                  value={userPassword}
+                  onChange={onSignInChange}
+                />
+                <br />
+                <button onClick={onSignIn} className='logbutton'>
+                  Log In
               </button>
-            </form>
-          </div>
-          {/* USER REGISTRATION */}
-        </section>
+              </form>
+            </div>
+            {/* USER REGISTRATION */}
+          </section>
 
-        <section>
-          <div>
-            <h4 className='h4 user'>User Registration</h4>
-            <form className='form-group UserInput'>
-              <input
-                type='text'
-                name='firstName'
-                placeholder='First Name'
-                value={firstName}
-                onChange={onSignUpChange}
-              />
-              <br />
+          <section>
+            <div>
+              <h4 className='h4 user'>User Registration</h4>
+              <form className='form-group UserInput'>
+                <input
+                  type='text'
+                  name='firstName'
+                  placeholder='First Name'
+                  value={firstName}
+                  onChange={onSignUpChange}
+                />
+                <br />
 
-              <input
-                type='text'
-                name='lastName'
-                placeholder='Last Name'
-                value={lastName}
-                onChange={onSignUpChange}
-              />
-              <br />
+                <input
+                  type='text'
+                  name='lastName'
+                  placeholder='Last Name'
+                  value={lastName}
+                  onChange={onSignUpChange}
+                />
+                <br />
 
-              <input
-                type='email'
-                placeholder='Email'
-                name='email'
-                value={email}
-                onChange={onSignUpChange}
-              />
-              <br />
+                <input
+                  type='email'
+                  placeholder='Email'
+                  name='email'
+                  value={email}
+                  onChange={onSignUpChange}
+                />
+                <br />
 
-              <input
-                type='password'
-                placeholder='password'
-                name='password'
-                value={password}
-                onChange={onSignUpChange}
-              />
-              <br />
+                <input
+                  type='password'
+                  placeholder='password'
+                  name='password'
+                  value={password}
+                  onChange={onSignUpChange}
+                />
+                <br />
 
-              <button onClick={onSignUp} className='logbutton'>
-                Sign Up
+                <button onClick={onSignUp} className='logbutton'>
+                  Sign Up
               </button>
-            </form>
-          </div>
-        </section>
-      </div>
-    </div>
-  );
+              </form>
+            </div>
+          </section>
+        </div >
+      </div >
+    );
 }
 
 export default CreateAccountPage;
