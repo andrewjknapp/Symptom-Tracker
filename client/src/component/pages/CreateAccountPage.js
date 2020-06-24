@@ -177,15 +177,22 @@ function CreateAccountPage() {
 
         {/* APP DESCRIPTION */}
         <section>
-          <p className='login-description'>
-            Welcome to a revolutionary personal medical symptom recorder. Upon
-            signup, enter your symptoms into your own private medical profile.
-            View your logged symptoms as they progress using our Symptom
-            Charting Technology. Print your symptom information to bring to your
-            next visit to a medical professional. Empower your medical visits
-            with personal data. Let Symptom Tracker help you!
-          </p>
-        </section>
+            <h1 className='login'>Symptom Tracker</h1>
+            <h4 className='login'>Empower your medical visits with personal data!</h4>
+          </section>
+
+          {/* APP DESCRIPTION */}
+          <section>
+            <p className='login-description'>
+              Welcome to your own personal medical symptom recorder.
+            Upon signup, enter any symptoms you are experiencing into your own private medical profile.</p>
+            <p className='login-description'>
+              Using our Symptom Charting Technology, you can view your logged symptoms and their severity as they progress. You can also print medical information and symptom history in order to bring to your
+              next visit to a medical professional. </p>
+            <p className='login-description'>
+              Let Symptom Tracker help you!
+            </p>
+          </section>
 
         {/* USER LOGIN */}
         <section className='user-login'>
