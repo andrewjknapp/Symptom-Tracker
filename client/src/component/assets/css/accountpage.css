@@ -1,67 +1,79 @@
 #accountBackground {
-    height: 100vh;
-    background-image: url("../images/microscope.jpg");
+  height: 130vh;
+  background-attachment: fixed;
+  background-image: url('../images/microscope.jpg');
 }
 
 .my-page-text {
-    /*height: inherit;*/
-    padding: 8% 5% 5% 3%;
-    /*top: 55px;*/
+  /*height: inherit;*/
+  padding: 8% 5% 5% 3%;
+  /*top: 55px;*/
 
-    /*To support older browsers*/
-    height: 100%;
-    width: 100%;
+  /*To support older browsers*/
+  height: 100%;
+  width: 100%;
 
-    /* Set the height to match that of the viewport. */
-    height: 100vh;
+  /* Set the height to match that of the viewport. */
+  height: 100vh;
 
-    /* Set the width to match that of the viewport. */
-    width: 100vw;
+  /* Set the width to match that of the viewport. */
+  width: 100vw;
 
-    background-repeat: no-repeat;
-    background-size: 100%; 
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 
 .login {
-    font-weight: 600;
-    color: #FBFFF1 !important;
-    font-family: 'Kanit';
-    text-align: center;
+  font-weight: 600;
+  color: #fbfff1 !important;
+  font-family: 'Kanit';
+  text-align: center;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+}
+
+.login-description {
+  color: #fbfff1 !important;
+  max-width: 600px;
+  padding: 0 40px;
+  text-align: center;
 }
 
 .user {
-    color: #FBFFF1 !important;
-    font-family: 'Kanit';
-    font-weight: 500;
+  color: #fbfff1 !important;
+  font-family: 'Kanit';
+  font-weight: 500;
 }
 
 h3 {
-    text-align: center;
-    text-emphasis: emphasis;
+  text-align: center;
+  text-emphasis: emphasis;
 }
 
 .h4 h4 {
-    text-align: center;
-    font-weight: 800;
+  text-align: center;
+  font-weight: 800;
 }
 
 .lightBlue {
-    color: #B4C5E4;
+  color: #b4c5e4;
 }
 
-
 .UserInput input {
-    align-content: center !important;
+  align-content: center !important;
 }
 
 .logbutton {
-    display: inline-block;
-    padding: 5px 16px;
-    background-color: #3D52D5;
-    color: #FBFFF1;
-    border-radius: 35px;
-    font-size: 16px;
-    margin-top: 10px;
+  display: inline-block;
+  padding: 5px 16px;
+  background-color: #3d52d5;
+  color: #fbfff1;
+  border-radius: 35px;
+  font-size: 16px;
+  margin-top: 10px;
 }
-
-

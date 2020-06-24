@@ -1,212 +1,229 @@
 import React, { useState } from 'react';
-import "whatwg-fetch";
-import "../assets/css/accountpage.css";
-import "../assets/css/colors.css";
+import 'whatwg-fetch';
+import '../assets/css/accountpage.css';
+import '../assets/css/colors.css';
 import { setInStorage } from '../../utils/storage';
 import { Redirect } from 'react-router';
-import LogInHeader from '../sections/LogInHeader';
-
 
 function CreateAccountPage() {
+  const [token, setToken] = useState('');
+  const [signUp, setSignUp] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+  });
+  const [errors, setErrors] = useState({
+    signInError: '',
+    signUpError: '',
+  });
+  const [signIn, setSignIn] = useState({
+    userEmail: '',
+    userPassword: '',
+  });
+  const [toLandingPage, setToLandingPage] = useState(false);
 
-    const [token, setToken] = useState('');
-    const [signUp, setSignUp] = useState({
-        firstName: '',
-        lastName: '',
-        userEmail: '',
-        userPassword: '',
-    });
-    const [errors, setErrors] = useState({
-        signInError: '',
-        signUpError: '',
+  const onSignUp = (e) => {
+    e.preventDefault();
+    //grab state and post request to backend
+    const { firstName, lastName, email, password } = signUp;
+
+    fetch('/api/account/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        password: password,
+      }),
     })
-    const [signIn, setSignIn] = useState({
-        userEmail: '',
-        userPassword: '',
-    });
-    const [toLandingPage, setToLandingPage] = useState(false);
+      .then((res) => res.json())
 
-    const onSignUp = (e) => {
-        e.preventDefault();
-        //grab state and post request to backend
-        const {
-            firstName,
-            lastName,
-            email,
-            password,
-        } = signUp;
-
-        fetch('/api/account/signup', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                firstName: firstName,
-                lastName: lastName,
-                email: email,
-                password: password,
-            }),
-        })
-            .then(res => res.json())
-
-            .then(() => {
-                console.log(email);
-                setSignIn({
-                    userEmail: email,
-                    userPassword: password
-                });
-                console.log(userEmail);
-            })
-            .then(() => {
-                onSignIn(null, email, password);
-            });
-    }
-    const onSignInSuccess = (json) => {
-
-        setErrors({ ...errors, signInError: json.message })
-
-        setInStorage('symptom_tracker', { token: json.token, firstName: json.firstName, id: json.userId });
-        console.log(userPassword)
-
-        setToken({
-            token: json.token,
-        })
-    }
-    const onSignIn = (e, userEmail, userPassword) => {
-        if (e !== null) {
-            e.preventDefault();
-        }
-
-        if (signIn.userEmail !== "") {
-            userEmail = signIn.userEmail;
-            userPassword = signIn.userPassword
-        }
-
-        fetch('/api/account/signin', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                email: userEmail,
-                password: userPassword
-            }),
-        }).then(res => res.json())
-            .then(json => {
-
-                if (json.success) {
-                    onSignInSuccess(json);
-                    setToLandingPage(true);
-                } else {
-                    console.log(token);
-                    setErrors({
-                        signInError: json.message,
-                    })
-
-                }
-            });
-        //grab state and post request to backend
-    }
-    const onSignInChange = (e) => {
-        const { name, value } = e.target;
+      .then(() => {
+        console.log(email);
         setSignIn({
-            ...signIn,
-            [name]: value,
+          userEmail: email,
+          userPassword: password,
         });
-    };
-    const onSignUpChange = (e) => {
-        const { name, value } = e.target;
-        setSignUp({
-            ...signUp,
-            [name]: value,
-        });
-    };
+        console.log(userEmail);
+      })
+      .then(() => {
+        onSignIn(null, email, password);
+      });
+  };
+  const onSignInSuccess = (json) => {
+    setErrors({ ...errors, signInError: json.message });
 
-    const { email, password, firstName, lastName } = signUp;
-    const { userEmail, userPassword } = signIn;
-    var style = { backgroundImage: 'url( "../assets/images/microscope.jpg")' };
+    setInStorage('symptom_tracker', {
+      token: json.token,
+      firstName: json.firstName,
+      id: json.userId,
+    });
+    console.log(userPassword);
 
-    return toLandingPage ? <Redirect to='/landing-page' /> : (
-        <div className="loginBody" style={style}>
-            <div className="container">
-                <div className="row">
-                    <LogInHeader />
-                </div>
-                <div className="row">
-                    <div className="col-7">
-                        <h4 className="h4 user">User Log In</h4>
-                        <form className="form-group">
+    setToken({
+      token: json.token,
+    });
+  };
+  const onSignIn = (e, userEmail, userPassword) => {
+    if (e !== null) {
+      e.preventDefault();
+    }
 
-                            <input type="email"
-                                name="userEmail"
-                                placeholder="Email"
-                                id="email"
-                                value={userEmail}
-                                onChange={onSignInChange}
-                            />
-                            <br />
+    if (signIn.userEmail !== '') {
+      userEmail = signIn.userEmail;
+      userPassword = signIn.userPassword;
+    }
 
-                            <input type="password"
-                                name="userPassword"
-                                placeholder="password"
-                                id="password"
-                                value={userPassword}
-                                onChange={onSignInChange}
-                            />
-                            <br />
-                            <button onClick={onSignIn}
-                                className="logbutton">Log In</button>
-                        </form>
-                    </div>
-                    <br />
-                </div>
-                <div className="row">
-                    <div className="col-7">
-                        <h4 className="h4 user">User Registration</h4>
-                        <form className="form-group UserInput">
+    fetch('/api/account/signin', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: userEmail,
+        password: userPassword,
+      }),
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        if (json.success) {
+          onSignInSuccess(json);
+          setToLandingPage(true);
+        } else {
+          console.log(token);
+          setErrors({
+            signInError: json.message,
+          });
+        }
+      });
+    //grab state and post request to backend
+  };
+  const onSignInChange = (e) => {
+    const { name, value } = e.target;
+    setSignIn({
+      ...signIn,
+      [name]: value,
+    });
+  };
+  const onSignUpChange = (e) => {
+    const { name, value } = e.target;
+    setSignUp({
+      ...signUp,
+      [name]: value,
+    });
+  };
 
-                            <input type="text"
-                                name="firstName"
-                                placeholder="First Name"
-                                value={firstName}
-                                onChange={onSignUpChange} />
-                            <br />
+  const { email, password, firstName, lastName } = signUp;
+  const { userEmail, userPassword } = signIn;
+  var style = { backgroundImage: 'url( "../assets/images/microscope.jpg")' };
 
-                            <input
-                                type="text"
-                                name="lastName"
-                                placeholder="Last Name"
-                                value={lastName}
-                                onChange={onSignUpChange}
-                            />
-                            <br />
+  return toLandingPage ? (
+    <Redirect to='/landing-page' />
+  ) : (
+      <div className='loginBody' style={style}>
+        <div className='login-container'>
+          {/* /* HEADER */}
+          <section>
+            <h1 className='login'>Symptom Tracker</h1>
+          </section>
 
-                            <input type="email" placeholder="Email"
-                                name="email"
-                                value={email}
-                                onChange={onSignUpChange}
-                            />
-                            <br />
+          {/* APP DESCRIPTION */}
+          <section>
+            <p className='login-description'>
+              Welcome to a revolutionary personal medical symptom recorder. Upon
+              signup, enter your symptoms into your own private medical profile.
+              View your logged symptoms as they progress using our Symptom
+              Charting Technology. Print your symptom information to bring to your
+              next visit to a medical professional. Empower your medical visits
+              with personal data. Let Symptom Tracker help you!
+          </p>
+          </section>
 
-                            <input type="password" placeholder="password"
-                                name="password"
-                                value={password}
-                                onChange={onSignUpChange}
-                            />
-                            <br />
+          {/* USER LOGIN */}
+          <section>
+            <div>
+              <h4 className='h4 user'>User Log In</h4>
+              <form className='form-group'>
+                <input
+                  type='email'
+                  name='userEmail'
+                  placeholder='Email'
+                  id='email'
+                  value={userEmail}
+                  onChange={onSignInChange}
+                />
+                <br />
 
-                            <button onClick={onSignUp}
-                                className="logbutton">Sign Up</button>
-                        </form>
-                    </div>
-                </div>
+                <input
+                  type='password'
+                  name='userPassword'
+                  placeholder='password'
+                  id='password'
+                  value={userPassword}
+                  onChange={onSignInChange}
+                />
+                <br />
+                <button onClick={onSignIn} className='logbutton'>
+                  Log In
+              </button>
+              </form>
             </div>
+            {/* USER REGISTRATION */}
+          </section>
+
+          <section>
+            <div>
+              <h4 className='h4 user'>User Registration</h4>
+              <form className='form-group UserInput'>
+                <input
+                  type='text'
+                  name='firstName'
+                  placeholder='First Name'
+                  value={firstName}
+                  onChange={onSignUpChange}
+                />
+                <br />
+
+                <input
+                  type='text'
+                  name='lastName'
+                  placeholder='Last Name'
+                  value={lastName}
+                  onChange={onSignUpChange}
+                />
+                <br />
+
+                <input
+                  type='email'
+                  placeholder='Email'
+                  name='email'
+                  value={email}
+                  onChange={onSignUpChange}
+                />
+                <br />
+
+                <input
+                  type='password'
+                  placeholder='password'
+                  name='password'
+                  value={password}
+                  onChange={onSignUpChange}
+                />
+                <br />
+
+                <button onClick={onSignUp} className='logbutton'>
+                  Sign Up
+              </button>
+              </form>
+            </div>
+          </section>
         </div>
+      </div>
     );
 }
 
-
 export default CreateAccountPage;
-
-

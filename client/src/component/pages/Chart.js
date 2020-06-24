@@ -1,19 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
 import API from '../../utils/API';
-import formatDate from "../DateFormat";
-import "../assets/css/Chart.css";
-import "../assets/css/loader.css";
+import formatDate from '../DateFormat';
+import '../assets/css/Chart.css';
+import '../assets/css/loader.css';
 
-function Chart() {
-
+function Chart(props) {
   const [chartToggle, setChartToggle] = useState(true);
   const [posts, setPosts] = useState([]);
   const [chartData, setChartData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
   function newLine(color, data, label) {
-
     return {
       label: label,
       fill: false,
@@ -22,12 +20,11 @@ function Chart() {
       borderColor: color,
       borderWidth: 3,
       pointHoverRadius: 6,
-      data: data
-    }
+      data: data,
+    };
   }
 
   function parsePosts(posts) {
-
     let headAcheSev = [];
     let stomachAcheSev = [];
     let coughSev = [];
@@ -36,90 +33,92 @@ function Chart() {
     let labels = [];
 
     posts.map((post) => {
-
       labels.push(post.time);
       temperatureArr.push(post.temperature);
 
       post.symptoms.map((symp) => {
-
-        if (symp.type === "Headache") {
+        if (symp.type === 'Headache') {
           headAcheSev.push(symp.severity);
-
-        } else if (symp.type === "Stomach Ache") {
+        } else if (symp.type === 'Stomach Ache') {
           stomachAcheSev.push(symp.severity);
-
-        } else if (symp.type === "Cough") {
+        } else if (symp.type === 'Cough') {
           coughSev.push(symp.severity);
-
-        }
-        else if (symp.type === "Shortness of Breath") {
+        } else if (symp.type === 'Shortness of Breath') {
           breathSev.push(symp.severity);
-
         }
-        return "";
-      })
-      return "";
+        return '';
+      });
+      return '';
     });
 
     return {
-      headAcheSev, stomachAcheSev, coughSev, breathSev, labels, temperatureArr
-    }
+      headAcheSev,
+      stomachAcheSev,
+      coughSev,
+      breathSev,
+      labels,
+      temperatureArr,
+    };
   }
 
   //Gets user posts from database
   useEffect(() => {
-    API.getPosts()
-      .then(res => {
-        setPosts(res.data)
-        setIsLoading(false);
-      })
+    API.getPosts().then((res) => {
+      setPosts(res.data);
+      setIsLoading(false);
+    });
   }, []);
 
   //Gets the severity from the symptoms in the posts
   useEffect(() => {
     if (posts.length > 0) {
+      const {
+        headAcheSev,
+        stomachAcheSev,
+        coughSev,
+        breathSev,
+        labels,
+        temperatureArr,
+      } = parsePosts(posts);
 
-      const { headAcheSev, stomachAcheSev, coughSev, breathSev, labels, temperatureArr } = parsePosts(posts);
-
-      const formattedLabels = labels.map(label => formatDate(label));
+      const formattedLabels = labels.map((label) => formatDate(label));
       //console.log(formattedLabels);
-      let headAche = newLine("green", headAcheSev, "Headache");
-      let stomacheAche = newLine("blue", stomachAcheSev, "Stomache Ache");
-      let cough = newLine("orange", coughSev, "Cough");
-      let breath = newLine("gray", breathSev, "Shortness of Breath");
-      let temp = newLine("blue", temperatureArr, "Temperature");
+      let headAche = newLine('green', headAcheSev, 'Headache');
+      let stomacheAche = newLine('blue', stomachAcheSev, 'Stomache Ache');
+      let cough = newLine('orange', coughSev, 'Cough');
+      let breath = newLine('gray', breathSev, 'Shortness of Breath');
+      let temp = newLine('blue', temperatureArr, 'Temperature');
 
       let dataset;
       if (chartToggle) {
-        dataset = [
-          headAche,
-          stomacheAche,
-          cough,
-          breath
-        ]
+        dataset = [headAche, stomacheAche, cough, breath];
       } else {
-        dataset = [
-          dataset = temp
-        ]
+        dataset = [(dataset = temp)];
       }
 
       setChartData({
         labels: formattedLabels,
-        datasets: dataset
-      })
+        datasets: dataset,
+      });
     }
-  }, [posts, chartToggle])
-
+  }, [posts, chartToggle]);
 
   let graphLabel = chartToggle ? 'Symptom Severity' : 'Temperature';
   let buttonLabel = chartToggle ? 'Temperature' : 'Symptom Severity';
 
-  return isLoading ? <h2 className="text-center loading">Loading...</h2> : (
-    <div className="chartDisplay">
-      <button className='toggleButton'
-        onClick={() => setChartToggle(!chartToggle)}
-      >{buttonLabel}</button>
-      <article className="canvas-container">
+  return isLoading ? (
+    <h2 className='text-center loading'>Loading...</h2>
+  ) : (
+    <div className='chartDisplay'>
+      {!props.isPrinting ? (
+        <button
+          className='toggleButton'
+          onClick={() => setChartToggle(!chartToggle)}
+        >
+          {buttonLabel}
+        </button>
+      ) : null}
+      <article className='canvas-container'>
         <Line
           data={chartData}
           options={{
@@ -129,16 +128,15 @@ function Chart() {
               text: graphLabel,
               fontFamily: 'Kanit',
               fontColor: '#090C9B',
-              fontSize: 40
+              fontSize: 40,
             },
             legend: {
               display: true,
-              position: 'bottom'
-            }
+              position: 'bottom',
+            },
           }}
         />
       </article>
-
     </div>
   );
 }
