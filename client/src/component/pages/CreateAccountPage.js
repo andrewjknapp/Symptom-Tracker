@@ -6,7 +6,9 @@ import { setInStorage } from '../../utils/storage';
 import { Redirect } from 'react-router';
 
 function CreateAccountPage() {
+
   const [token, setToken] = useState('');
+
   const [signUp, setSignUp] = useState({
     firstName: '',
     lastName: '',
@@ -21,14 +23,17 @@ function CreateAccountPage() {
     userEmail: '',
     userPassword: '',
   });
+  // Handles whether or not to display an error for registration
   const [isRegistrationError, setIsRegistrationError] = useState({
     error: false,
     message: ""
   });
+  // Handles whether or not to display an error for logging in
   const [isSignInError, setIsSignInError] = useState({
     error: false,
     message: ""
   });
+  // Handles whether or not to redirect user to landing page
   const [toLandingPage, setToLandingPage] = useState(false);
 
   useEffect(() => {
@@ -171,12 +176,12 @@ function CreateAccountPage() {
     <div className='loginBody' style={style}>
       <div className='login-container'>
 
-
-        {/* APP DESCRIPTION */}
-        <section>
+        <article className='transparent-gray-background'>
+          {/* APP DESCRIPTION */}
+          <section>
             <h1 className='login'>Symptom Tracker</h1>
             <h4 className='login'>Empower your medical visits with personal data!</h4>
-          </section>
+        </section>
 
           {/* APP DESCRIPTION */}
           <section>
@@ -190,9 +195,11 @@ function CreateAccountPage() {
               Let Symptom Tracker help you!
             </p>
           </section>
+        </article>
 
-        {/* USER LOGIN */}
-        <section className='user-login'>
+        <article className="transparent-gray-background form-background">
+          {/* USER LOGIN */}
+          <section className='space-for-error'>
           <div>
             <h4 className='h4 user'>User Log In</h4>
             <form className='form-group'>
@@ -222,13 +229,12 @@ function CreateAccountPage() {
           </div>
           {/* USER REGISTRATION */}
         </section>
-        {isSignInError.error ? 
+          {isSignInError.error ? 
               <div className="alert alert-danger sign-in-error" role="alert">
                 {isSignInError.message}
               </div> : null}
         
-        
-        <section>
+          <section className="space-for-error">
           <div>
           <h4 className='h4 user'>User Registration</h4>
             <form className='form-group UserInput'>
@@ -274,10 +280,11 @@ function CreateAccountPage() {
             </form>
           </div>
         </section>
-        {isRegistrationError.error ? 
-              <div className="alert alert-danger" role="alert">
+          {isRegistrationError.error ? 
+              <div className="alert alert-danger sign-in-error" role="alert">
                 {isRegistrationError.message}
               </div> : null}
+        </article>
       </div>
     </div>
   );
